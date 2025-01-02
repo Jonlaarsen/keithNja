@@ -56,6 +56,7 @@ export default async function page() {
 
   return (
     <div className='py-[15rem]'>
+      <h1 className="text-xl md:text-4xl xl:text-7xl pb-10">OUR WORK</h1>
       <Clips uploads={uploads}/>
     </div>
   )

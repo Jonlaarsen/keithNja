@@ -27,7 +27,6 @@ const Clips = ({ uploads }) => {
     whileInView={true}
     
      className="flex flex-col justify-center items-center">
-      <h1 className="text-xl md:text-4xl xl:text-7xl pb-10">OUR WORK</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center mx-auto">
       {uploads.map((upload) => (
         <div
