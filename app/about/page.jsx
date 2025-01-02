@@ -14,10 +14,10 @@ const page = () => {
     <div className='flex flex-col items-center justify-center pt-[14rem]  min-h-screen '>
       <h1 className='text-5xl md:text-7xl text-center pb-[5rem]'>Learn more about the team!</h1>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 
         {Team.map((pep) =>(
-          <div className='h-[40rem] px-8 ' key={pep.id}>
+          <div className='h-[50rem] px-8 ' key={pep.id}>
             <img src={pep.url}
             className='h-[10rem] w-[10rem] rounded-full'
              alt="" />
