@@ -8,11 +8,23 @@ export const create = async (formData: FormData) => {
   const subtitle = formData.get('subtitle') as string | null;
   const description = formData.get('description') as string | null;
   const imgURL = formData.get('imgURL') as string;
-  const videoURL = formData.get('videoURL') as string;
+  let videoURL = formData.get('videoURL') as string;
   const category = formData.get('category') as string;
 
   if (!title || !imgURL || !videoURL) {
     throw new Error('Title, imgURL, and videoURL are required.');
+  }
+
+  // Validate and transform the YouTube URL
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+  const match = videoURL.match(youtubeRegex);
+
+  if (match) {
+    const videoId = match[3];
+    videoURL = `https://www.youtube.com/embed/${videoId}`;
+  } else {
+    alert("INVALID LINK")
+    throw new Error('Invalid YouTube video link.');
   }
 
   try {
