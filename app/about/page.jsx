@@ -1,4 +1,6 @@
+"use client"
 import React from 'react'
+import {motion} from "framer-motion"
 
 const Team = [
   {id:1 ,url:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png", name:"Keith Keunhyung Park" ,desc:"Keith Park is a seasoned multimedia producer and director with over 8 years of experience across print, radio, television news, documentary, advertisement, and corporate shoots in South Korea. His work for renowned platforms such as VICE, Netflix, Al Jazeera, CNN, and PBS highlights his expertise in delivering compelling and authentic stories. Keith's dedication to storytelling earned him the prestigious 2020 Peabody Award for Global Pandemic Coverage, recognizing his outstanding production on PBS Newshour’s Global Pandemic and Making Sense: The Victims of the Covid Economy."},
@@ -11,14 +13,17 @@ const Team = [
 
 const page = () => {
   return (
-    <div className='flex flex-col items-center justify-center pt-[14rem]  min-h-screen '>
-      <h1 className='text-5xl md:text-7xl text-center pb-[5rem]'>Learn more about the team!</h1>
+    <div className='flex flex-col items-center justify-center pt-[14rem] px-10  min-h-screen '>
+      <h1 className='text-5xl md:text-7xl text-center pb-[5rem] uppercase'>Our team</h1>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 
         {Team.map((pep) =>(
-          <div className='h-[50rem] px-8 ' key={pep.id}>
-            <img src={pep.url}
+          <div className='min-h-full md:h-[50rem] pb-10 px-8 ' key={pep.id}>
+            <motion.img
+            whileHover={{scale:1.2}}
+            transition={{duration:0.5 ,delay:0.1}}
+             src={pep.url}
             className='h-[10rem] w-[10rem] rounded-full'
              alt="" />
             <h1 className='text-4xl py-10'>{pep.name}</h1>

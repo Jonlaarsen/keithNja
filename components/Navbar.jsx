@@ -1,5 +1,9 @@
-import Link from 'next/link'
-import React from 'react'
+"use client"
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { motion, useCycle } from "framer-motion";
+
+
 
 const categories =[
     { id:1 , title:'About', path:"about"},
@@ -10,24 +14,77 @@ const categories =[
 ]
 
 const Navbar = () => {
+    const [isOpen, toggleOpen] = useCycle(false, true);  
+   
+   
+
   return (
-    <div className="w-screen uppercase h-[12rem] top-0 left-0 fixed z-50 flex flex-col items-center justify-center">
+    <div className="w-screen uppercase h-[10rem] top-0 left-0 fixed z-50 flex flex-row items-center justify-between px-10">
+       
         <Link href="/">
-            <img className='w-[10rem] h-[7rem]' src="/Posted.png" alt="" />
+            <img className=' h-[6rem] invert' src="/Posted1.svg" alt="" />
         </Link>
-        <div className='w-screen h-[4rem] flex items-center gap-6 justify-center text-xl '>
-            {categories.map((cat) => (
-                <div 
-                className='py-10'
-                key={cat.id}>
-                <Link  href={cat.path}>
-                    {cat.title}
-                </Link>
-                </div>
-            ))}
+        
+        <div className=' flex items-center'>
+        <motion.button 
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          onClick={()=>toggleOpen(true)}
+          custom="100%"
+          className='focus:outline-none z-30'
+        >
+          <span className={`block w-8 h-1 bg-white transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-8 h-1 bg-white my-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-8 h-1 bg-white transition-transform duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </motion.button>
+      </div>
+
+      {/* Mobile Menu */}
+      
+      {isOpen && (
+        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col items-center justify-center'>
+            <Link 
+            onClick={()=>toggleOpen(false)}
+            href={'/'}>
+               <img src="/posted3.png" className='w-[14rem] invert pb-10' alt="logo" />
+            </Link>
+            
+          <motion.ul
+          >
+          {categories.map((link) => (
+            <motion.li
+            onClick={() => toggleOpen(false)} // Close menu on click
+            key={link.id}
+            initial={{opacity:0}}
+            animate={{opacity:1 }}
+            transition={{ duration: 1, delay: 0.1 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className='pb-10 text-center'
+           >
+            <Link 
+              key={link.id}
+              href={link.path} 
+              
+              className='text-white text-3xl my-4 hover:text-blue-400 transition'
+            >
+              <h1></h1>
+              {link.title}
+            </Link>
+            </motion.li>
+          ))}
+          </motion.ul>  
         </div>
+      )}
+       
+       
+        
+
     </div>
   )
 }
 
 export default Navbar
+
+
+       

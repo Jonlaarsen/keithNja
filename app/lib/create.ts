@@ -9,6 +9,7 @@ export const create = async (formData: FormData) => {
   const description = formData.get('description') as string | null;
   const imgURL = formData.get('imgURL') as string;
   const videoURL = formData.get('videoURL') as string;
+  const category = formData.get('category') as string;
 
   if (!title || !imgURL || !videoURL) {
     throw new Error('Title, imgURL, and videoURL are required.');
@@ -16,9 +17,9 @@ export const create = async (formData: FormData) => {
 
   try {
     await sql(
-      `INSERT INTO uploads (title, subtitle, description, imgURL, videoURL) 
-       VALUES ($1, $2, $3, $4, $5)`,
-      [title, subtitle, description, imgURL, videoURL]
+      `INSERT INTO uploads (title, subtitle, description, imgURL, videoURL, categories) 
+       VALUES ($1, $2, $3, $4, $5, $6)`,
+      [title, subtitle, description, imgURL, videoURL, category]
     );
     console.log('Data inserted successfully!');
   } catch (error) {
