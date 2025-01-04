@@ -120,17 +120,17 @@ function Image({ id, title, content, bgImage }) {
     <section className="relative h-screen w-full bg-cover bg-center" 
     style={{backgroundImage:`url("${bgImage}")`}}
     >
-      <div className='w-[50rem] flex items-center justify-center bg-slate-300 text-center p-10 bg-opacity-35'  ref={ref}>
-      <ul className='w-[35rem]'>
+      <div className='w-screen md:w-[50rem] flex items-center justify-center bg-slate-300 text-center p-10 bg-opacity-35'  ref={ref}>
+      <ul className='w-full md:w-[35rem]'>
           {content.map((item, index) => (
-            <li key={index} className="text-3xl text-slate-100 mb-2">
+            <li key={index} className="text-xs md:text-3xl text-slate-100 mb-2">
               {item}
             </li>
           ))}
         </ul>
       </div>
       <motion.h2
-        className="text-white absolute text-6xl right-[calc(55%+12rem)] "
+        className="text-white absolute text-lg md:text-6xl right-[calc(55%+12rem)] "
         style={{ y }}
       >
         {title}
