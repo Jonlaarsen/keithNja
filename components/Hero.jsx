@@ -27,12 +27,12 @@ const Hero = () => {
          
         </div>
       </div>
-      <div className="flex flex-col text-2xl gap-8 items-center justify-center h-[30rem]">
-        <h1 className="text-6xl">" Where vision meets storytelling "</h1>
+      <div className="flex flex-col text-md md:text-2xl gap-8 items-center justify-center h-[50vh] md:h-[30rem]">
+        <h1 className="text-4xl text-center md:text-6xl">" Where vision meets storytelling "</h1>
         <p>Production & Services in Seoul and Worldwide</p>
         <Link href="emailto:blabla@email.com">contact@posted-productions.com</Link>
         <img 
-        className="w-[7rem]"
+        className="w-[7rem] py-10"
         src="https://images.squarespace-cdn.com/content/v1/668baa90a93f73799f48b8ba/7dcfb365-6ff7-417b-9a68-566e5ef07ecc/PngItem_506629.png?format=500w" alt="" />
       </div>
       <InfiniteCarousel/>
