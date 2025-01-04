@@ -42,12 +42,12 @@ const Clips = ({ uploads }) => {
       className="flex flex-col justify-center items-center"
     >
       {/* Category Filter Links */}
-      <div className="mb-5 flex flex-wrap justify-center pb-[5rem] gap-2">
+      <div className=" flex flex-wrap justify-center pb-[7rem] gap-2">
         {categories.map((category) => (
           <button
             key={category.value}
             onClick={() => setSelectedCategory(category.value)}
-            className={`px-4 py-2 text-xl font-[400] uppercase  ${
+            className={`px-4 py-2 text-xs md:text-xl font-[400] uppercase  ${
               selectedCategory === category.value
                 ? "bg-purple-500 font-normal text-white"
                 : "hover:bg-purple-500  "

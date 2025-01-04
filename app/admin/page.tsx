@@ -17,15 +17,15 @@ const page = () => {
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <label htmlFor="description">Role</label>
-          <textarea id="description" name="description" placeholder="remember commas etc" className='text-black text-xl pl-3 h-[2rem]'  style={{ display: 'block', width: '100%' }} />
+          <textarea id="description" name="description" placeholder="remember commas between roles" className='text-black text-xl pl-3 h-[2rem]'  style={{ display: 'block', width: '100%' }} />
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <label htmlFor="imgURL">image URL</label>
-          <input id="imgURL" name="imgURL" type="url" required className='text-black text-xl pl-3 h-[2rem]' placeholder="imageurl" style={{ display: 'block', width: '100%' }} />
+          <input id="imgURL" name="imgURL" type="url" required className='text-black text-xl pl-3 h-[2rem]' placeholder="imageurl (clicked so not pixelated)" style={{ display: 'block', width: '100%' }} />
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <label htmlFor="videoURL">video URL</label>
-          <input id="videoURL" name="videoURL" type="url" required className='text-black text-xl pl-3 h-[2rem]' placeholder="make sure its an /embed/ link" style={{ display: 'block', width: '100%' }} />
+          <input id="videoURL" name="videoURL" type="url" required className='text-black text-xl pl-3 h-[2rem]' placeholder="make sure its an short link ex https://www.youtube.com/watch?v=abc123abc" style={{ display: 'block', width: '100%' }} />
         </div>
         <div style={{ marginBottom: '1rem' }}>
         <label htmlFor="category">Category</label>
