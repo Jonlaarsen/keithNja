@@ -6,7 +6,7 @@ const page = () => {
       <div >
         <div>
           <h1 className='text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
-          <p className='text-xl font-[300] px-5 w-[90%] pb-[3rem]'>Interested in working with us? Fill out some info and we will be in touch shortly!</p>
+          <p className='text-xl font-[300] px-5 w-[90%] pb-[3rem]'>Interested in working with us? <br/> Fill out some info and we will be in touch shortly!</p>
         </div>
         
         <form 
