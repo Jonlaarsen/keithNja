@@ -47,9 +47,9 @@ const Clips = ({ uploads }) => {
           <button
             key={category.value}
             onClick={() => setSelectedCategory(category.value)}
-            className={`md:px-6 px-2 py-2  md:text-xl font-[500] uppercase  ${
+            className={`md:px-6 px-2 py-2   md:text-xl font-[500] uppercase  ${
               selectedCategory === category.value
-                ? "bg-purple-500 font-normal text-white"
+                ? "bg-purple-500 text-white"
                 : "hover:bg-purple-500 hover:text-white "
             }`}
           >

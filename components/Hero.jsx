@@ -27,8 +27,8 @@ const Hero = () => {
          
         </div>
       </div>
-      <div className="flex flex-col text-md md:text-2xl gap-8 items-center justify-center h-[80vh] md:h-[30rem]">
-        <h1 className="text-4xl text-center md:text-6xl">" Where vision meets storytelling "</h1>
+      <div className="flex flex-col text-md md:text-2xl gap-[2rem] text-center items-center justify-center h-[80vh] md:h-[40rem]">
+        <h1 className="text-4xl text-center md:text-5xl pb-10">"Where vision meets storytelling"</h1>
         <p>Production & Services in Seoul and Worldwide</p>
         <Link href="emailto:blabla@email.com">contact@posted-productions.com</Link>
         <img 

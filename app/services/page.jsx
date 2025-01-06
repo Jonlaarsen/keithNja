@@ -130,7 +130,7 @@ function Image({ id, title, content, bgImage }) {
         </ul>
       </div>
       <motion.h2
-        className="text-white absolute text-lg md:text-6xl right-[calc(55%+12rem)] "
+        className="text-white absolute text-lg md:text-[2.5rem] right-[calc(55%+12rem)] "
         style={{ y }}
       >
         {title}

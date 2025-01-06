@@ -2,8 +2,49 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      contact
+    <div className='grid grid-cols-1 md:grid-cols-2 my-[12rem] gap-4 ml-10'>
+      <div >
+        <div>
+          <h1 className='text-8xl font-bold  pb-[5rem]'>CONTACT US</h1>
+          <p className='text-3xl font-[300] w-[90%] pb-[3rem]'>Interested in working with us? Fill out some info and we will be in touch shortly!</p>
+        </div>
+        
+        <form 
+        className='flex flex-col gap-5'
+        action="https://formsubmit.co/jontoftdallarsen@icloud.com" method="POST">
+          <div className='flex gap-5 w-[80%]'>
+            <div className='flex flex-col w-full'>
+              <label htmlFor="firstname">First Name</label>
+              <input 
+              className='h-[3rem] pl-5'
+              placeholder='required' type="text" name="firstname" required/>
+            </div>
+            <div className='flex flex-col w-full'>
+              <label htmlFor="lastname">Last Name</label>
+              <input 
+              className='h-[3rem] pl-5'
+              placeholder='required' type="text" name="lastname" required/>
+            </div>
+          </div>
+          <div className='flex flex-col w-[80%]'>
+            <label htmlFor="email">Email</label>
+            <input
+            className='h-[3rem] pl-5'
+            placeholder='required' type="email" name="email" required/>
+          </div>
+          <div className='flex flex-col w-[80%]'>
+            <label htmlFor="email">Message</label>
+            <textarea 
+            className='h-[5rem] pl-5'
+            placeholder='required' name="message" type='text' required></textarea>
+          </div>
+          <button className='w-[80%] border-2 border-black py-2 px-1 text-xl' type="submit">Submit</button>
+        </form>
+      </div>
+      <div className='w-full flex justify-center items-center'>
+        <img className='w-full h-[40rem]' src="https://blog.mugafi.com/wp-content/uploads/2021/06/elevated-view-clapperboard-film-reels-film-strips-wooden-backdrop-1-scaled.jpg" alt="" />
+      </div>
+     
     </div>
   )
 }
