@@ -13,32 +13,34 @@ const page = () => {
         className='flex flex-col gap-5'
         action="https://formsubmit.co/jontoftdallarsen@icloud.com" method="POST">
           <div className='flex md: flex-col gap-5 w-screen md:w-[80%]'>
-            <div className='flex flex-col w-full'>
+            <div className='flex px-4 md:px-0 flex-col w-full'>
               <label htmlFor="firstname">First Name</label>
               <input 
-              className='h-[3rem] pl-5'
+              className='h-[3rem] pl-2 md:pl-5'
               placeholder='required' type="text" name="firstname" required/>
             </div>
-            <div className='flex flex-col w-full'>
+            <div className='flex px-4 md:px-0 flex-col w-full'>
               <label htmlFor="lastname">Last Name</label>
               <input 
-              className='h-[3rem] pl-5'
+              className='h-[3rem] pl-2 md:pl-5'
               placeholder='required' type="text" name="lastname" required/>
             </div>
           </div>
-          <div className='flex flex-col w-screen md:w-[80%]'>
+          <div className='flex px-4 md:px-0 flex-col w-screen md:w-[80%]'>
             <label htmlFor="email">Email</label>
             <input
-            className='h-[3rem] pl-5'
+            className='h-[3rem]  pl-2 md:pl-5'
             placeholder='required' type="email" name="email" required/>
           </div>
-          <div className='flex flex-col w-screen md:w-[80%]'>
+          <div className='flex px-4 md:px-0 flex-col w-screen md:w-[80%]'>
             <label htmlFor="email">Message</label>
             <textarea 
-            className='h-[5rem] pl-5'
+            className='h-[5rem] pl-2 md:pl-5'
             placeholder='required' name="message" type='text' required></textarea>
           </div>
-          <button className='w-screen md:w-[80%] border-2 border-black py-2 px-1 text-xl' type="submit">Submit</button>
+          <div className='px-4 md:px-0 w-screen md:w-[80%]'>
+              <button className='w-full border-2 border-black py-2 px-1 text-xl' type="submit">Submit</button>
+          </div>
         </form>
       </div>
       <div className='hidden  w-full md:flex justify-center items-center'>
