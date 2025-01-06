@@ -23,7 +23,12 @@ function Image({ id, title, content, bgImage }) {
     <section className="relative h-screen w-full bg-cover bg-center" 
     style={{backgroundImage:`url("${bgImage}")`}}
     >
-      <div className='w-screen flex-col md:flex-row md:w-[50rem] flex items-center justify-center bg-black text-center p-10 bg-opacity-45'  ref={ref}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        whileInView={true}
+        className='w-screen flex-col md:flex-row md:w-[50rem] flex items-center justify-center bg-black text-center p-10 bg-opacity-45'  ref={ref}>
       <h1 className='text-2xl block md:hidden text-white pb-10'>{title}</h1>
       <ul className='w-full md:w-[35rem]'>
           {content.map((item, index) => (
@@ -32,7 +37,7 @@ function Image({ id, title, content, bgImage }) {
             </li>
           ))}
         </ul>
-      </div>
+      </motion.div>
       <motion.h2
         className="text-white absolute md:block hidden text-lg md:text-[2.5rem] right-[calc(55%+12rem)] "
         style={{ y }}

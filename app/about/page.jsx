@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import {motion} from "framer-motion"
+import { h1 } from 'motion/react-client'
 
 const Team = [
   {id:1 ,url:"/tommy.jpeg", name:"Keith Keunhyung Park" ,desc:"Keith Park is a seasoned multimedia producer and director with over 8 years of experience across print, radio, television news, documentary, advertisement, and corporate shoots in South Korea. His work for renowned platforms such as VICE, Netflix, Al Jazeera, CNN, and PBS highlights his expertise in delivering compelling and authentic stories. Keith's dedication to storytelling earned him the prestigious 2020 Peabody Award for Global Pandemic Coverage, recognizing his outstanding production on PBS Newshour’s Global Pandemic and Making Sense: The Victims of the Covid Economy."},
@@ -13,30 +14,48 @@ const Team = [
 
 const page = () => {
   return (
-    <div className='flex flex-col items-center justify-center pt-[14rem] px-10  min-h-screen '
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      whileInView={true}
+      className='flex flex-col items-center justify-center pt-[14rem] px-10  min-h-screen '
     style={{backgroundImage:"url('https://media4.giphy.com/media/xVn3ZmKrKIOLS/giphy.gif?cid=6c09b952js1r6kgk9udzl8zofq8xyqzyh0wzp3grocnl7e6z&ep=v1_gifs_search&rid=giphy.gif&ct=g')"}}
     >
       <h1 className='text-6xl md:text-7xl text-center pb-[5rem] uppercase'>Our team</h1>
-
+      <div className=" flex-wrap md:flex-row flex-col hidden md:flex justify-center gap-4 mb-10 md:mb-[7rem] ">
+      &#x2605;
+        {Team.map((members) => (
+          <div 
+          key={members.name}>
+            <h1 >
+              {members.name} &#x2605;
+            </h1>
+          </div>
+        ))}
+      </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 
         {Team.map((pep) =>(
-          <div className='min-h-[80vh] md:h-[50rem] pb-10 px-2 ' key={pep.id}>
+          <motion.div
+            whileHover={{scale:1.1}}
+            transition={{duration:0.5 ,delay:0.1}}
+           className='min-h-[110vh] h-full md:h-[50rem] pb-10 px-2 md:px-10  ' key={pep.id}>
             <motion.img
             whileHover={{scale:1.2}}
             transition={{duration:0.5 ,delay:0.1}}
              src={pep.url}
             className='h-[10rem] w-[10rem] rounded-full'
              alt="" />
-            <h1 className='text-3xl py-10'>{pep.name}</h1>
+            <h1 className='text-3xl py-10 underline'>{pep.name}</h1>
             <p>{pep.desc}</p>
-          </div>
+          </motion.div>
         )
         )}
 
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 
