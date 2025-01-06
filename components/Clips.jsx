@@ -96,13 +96,13 @@ const Clips = ({ uploads }) => {
           onClick={closeModal} // Close modal on background click
         >
           <div
-            className="bg-white relative overflow-hidden w-screen md:w-[90vw] max-h-[90vh]"
+            className="bg-white relative overflow-hidden w-screen md:w-[90vw] "
             onClick={(e) => e.stopPropagation()} // Prevent closing on inside click
           >
             <iframe
               allowFullScreen
               src={currentClip.videourl}
-              className="w-full h-screen md:h-[50vh] xl:h-[90vh]"
+              className="w-full h-[25rem] md:h-[50vh] xl:h-[90vh]"
               title={currentClip.title}
             ></iframe>
             <button
