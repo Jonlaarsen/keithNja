@@ -121,7 +121,7 @@ function Image({ id, title, content, bgImage }) {
     style={{backgroundImage:`url("${bgImage}")`}}
     >
       <div className='w-screen flex-col md:flex-row md:w-[50rem] flex items-center justify-center bg-slate-300 text-center p-10 bg-opacity-45'  ref={ref}>
-      <h1 className='text-4xl block md:hidden text-white pb-10'>{title}</h1>
+      <h1 className='text-2xl block md:hidden text-white pb-10'>{title}</h1>
       <ul className='w-full md:w-[35rem]'>
           {content.map((item, index) => (
             <li key={index} className="text-lg md:text-3xl text-white mb-2">
