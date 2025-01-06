@@ -14,18 +14,42 @@ const Hero = () => {
     
     <div className="md:min-h-screen pb-[5rem] relative">
       <div className="flex flex-col items-center gap-8 justify-center">
-        <div
+        {/* <div
           className="flex top-0 left-0 h-[100vh] z-20 w-auto md:w-screen md:h-screen items-center justify-center"
         >
-
+          <iframe src="https://geo.dailymotion.com/player.html?video=x98a970"
+          className="top-0 left-0 w-screen h-screen object-cover"
+          playsInline
+          allowFullScreen
+          title="Dailymotion Video Player"
+          allow="web-share">
+        </iframe>
         <iframe
           id="videoIframe"
-          src="https://drive.google.com/file/d/1YJ8V-UUgOD0MslPW74o7z0QfspjoB-5U/preview?&loop=1&controls=0&playsinline=1"
+          src="https://player.vimeo.com/video/1016625668?h=b71bbce9d6"
+          autoplay
           className="w-screen h-screen bg-red-600 object-cover z-10 bg-video"
           allow="autoplay"
         ></iframe>
          
+        </div> */}
+        <div
+          className="flex top-0 left-0 h-[100vh] w-auto md:w-screen md:h-screen items-center justify-center"
+          
+        >
+          <iframe
+            rel="preload"
+            src="https://geo.dailymotion.com/player.html?video=x98a970"            
+            playsInline
+            autoPlay
+            loop
+            muted = {true}
+            className="w-screen h-screen object-cover"
+          ></iframe>
+          
         </div>
+        
+
       </div>
       <div className="flex flex-col text-md md:text-2xl gap-[2rem] text-center items-center justify-center h-[80vh] md:h-[40rem]">
         <h1 className="text-4xl text-center md:text-5xl pb-10">"Where vision meets storytelling"</h1>

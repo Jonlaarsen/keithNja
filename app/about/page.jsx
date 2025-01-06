@@ -14,6 +14,7 @@ const Team = [
 const page = () => {
   return (
     <div className='flex flex-col items-center justify-center pt-[14rem] px-10  min-h-screen '
+    style={{backgroundImage:"url('https://media4.giphy.com/media/xVn3ZmKrKIOLS/giphy.gif?cid=6c09b952js1r6kgk9udzl8zofq8xyqzyh0wzp3grocnl7e6z&ep=v1_gifs_search&rid=giphy.gif&ct=g')"}}
     >
       <h1 className='text-6xl md:text-7xl text-center pb-[5rem] uppercase'>Our team</h1>
 

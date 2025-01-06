@@ -22,8 +22,8 @@ export default async function page() {
   const uploads = await fetchUploads(); // Fetch uploads data from the database
   console.log(uploads)
   return (
-    <div className='py-[15rem] bg-[50%] md:bg-contain min-h-screen '
-    style={{backgroundImage:"url('https://i.pinimg.com/originals/18/27/52/182752a98afdd09d8d69d83dee3ad75f.jpg')"}}
+    <div className='py-[15rem] bg-contain min-h-screen '
+    style={{backgroundImage:"url('https://i.pinimg.com/originals/6f/9d/c5/6f9dc513096e160a82c2201961b3386b.gif')"}}
     >
       <Clips uploads={uploads}/>
     </div>
