@@ -17,7 +17,7 @@ const page = () => {
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <label htmlFor="description">Role</label>
-          <textarea id="description" name="description" placeholder="remember commas between roles" className='text-black text-xl pl-3 h-[2rem]'  style={{ display: 'block', width: '100%' }} />
+          <textarea id="description" name="description" required placeholder="remember commas between roles" className='text-black text-xl pl-3 h-[2rem]'  style={{ display: 'block', width: '100%' }} />
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <label htmlFor="imgURL">image URL</label>
