@@ -25,19 +25,26 @@ const Navbar = () => {
             <img className=' h-[6rem] invert' src="/Posted1.svg" alt="" />
         </Link>
         
-        <div className=' flex items-center'>
-        <motion.button 
-          initial={false}
-          animate={isOpen ? "open" : "closed"}
-          onClick={()=>toggleOpen(true)}
-          custom="100%"
-          className='focus:outline-none z-30'
-        >
-          <span className={`block w-8 h-1 bg-white transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`block w-8 h-1 bg-white my-1 transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-8 h-1 bg-white transition-transform duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-        </motion.button>
-      </div>
+        <div className="flex items-center">
+          <motion.button 
+            initial={false}
+            animate={isOpen ? "open" : "closed"}
+            onClick={() => toggleOpen(true)}
+            custom="100%"
+            className="focus:outline-none z-30 group"
+          >
+            <span 
+              className={`block w-8 h-1 transition-all duration-300 bg-white ${isOpen ? 'rotate-45 translate-y-2' : ''} group-hover:bg-purple-500`}
+            ></span>
+            <span 
+              className={`block w-8 h-1 my-1 transition-all duration-300 bg-white ${isOpen ? 'opacity-0' : ''} group-hover:bg-purple-500`}
+            ></span>
+            <span 
+              className={`block w-8 h-1 transition-all duration-300 bg-white ${isOpen ? '-rotate-45 -translate-y-2' : ''} group-hover:bg-purple-500`}
+            ></span>
+          </motion.button>
+        </div>
+
 
       {/* Mobile Menu */}
       
@@ -66,7 +73,7 @@ const Navbar = () => {
               key={link.id}
               href={link.path} 
               
-              className='text-white text-3xl my-4 hover:text-blue-400 transition'
+              className='text-white text-3xl my-4 hover:text-purple-500 transition'
             >
               <h1></h1>
               {link.title}

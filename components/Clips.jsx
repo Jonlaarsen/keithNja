@@ -39,18 +39,18 @@ const Clips = ({ uploads }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 0.1 }}
       whileInView={true}
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col justify-center  items-center"
     >
       {/* Category Filter Links */}
-      <div className=" flex flex-wrap justify-center pb-[7rem] gap-2">
+      <div className=" flex flex-wrap md:flex-row flex-col justify-center md:border-2 border-purple-500 mb-10 md:mb-[7rem] ">
         {categories.map((category) => (
           <button
             key={category.value}
             onClick={() => setSelectedCategory(category.value)}
-            className={`px-4 py-2 text-xs md:text-xl font-[400] uppercase  ${
+            className={`md:px-6 px-2 py-2  md:text-xl font-[500] uppercase  ${
               selectedCategory === category.value
                 ? "bg-purple-500 font-normal text-white"
-                : "hover:bg-purple-500  "
+                : "hover:bg-purple-500 hover:text-white "
             }`}
           >
             {category.label}

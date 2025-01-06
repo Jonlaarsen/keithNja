@@ -144,7 +144,7 @@ const sections = [
     id: 1,
     title: "PREPRODUCTIONS",
     bgImage:
-        "https://images4.alphacoders.com/267/thumb-1920-267034.jpg",
+        "https://miro.medium.com/v2/resize:fit:1400/0*Er7_azDS4pmwTobF.png",
         content: [
       "Concept Development",
       "Research & Scripting",

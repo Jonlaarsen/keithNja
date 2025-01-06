@@ -17,10 +17,10 @@ const page = () => {
     >
       <h1 className='text-5xl md:text-7xl text-center pb-[5rem] uppercase'>Our team</h1>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 
         {Team.map((pep) =>(
-          <div className='min-h-[100vh] md:h-[50rem] pb-10 px-8 ' key={pep.id}>
+          <div className='min-h-[80vh] md:h-[50rem] pb-10 px-8 ' key={pep.id}>
             <motion.img
             whileHover={{scale:1.2}}
             transition={{duration:0.5 ,delay:0.1}}
