@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 w-screen pt-[14rem]  gap-4  md:ml-10'>
+    <div className='grid grid-cols-1 md:grid-cols-2 w-screen pt-[12rem]  gap-4  md:ml-10'>
       <div >
         <div>
           <h1 className='text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
@@ -39,12 +39,14 @@ const page = () => {
             placeholder='required' name="message" type='text' required></textarea>
           </div>
           <div className='px-4 md:px-0 w-screen md:w-[80%]'>
-              <button className='w-full border-2 border-black py-2 px-1 text-xl' type="submit">Submit</button>
+              <button className='w-full border-2 border-white py-2 px-1 text-xl' type="submit">Submit</button>
           </div>
         </form>
       </div>
       <div className='hidden  w-full md:flex justify-center items-center'>
-        <img className='w-full h-[40rem]' src="https://blog.mugafi.com/wp-content/uploads/2021/06/elevated-view-clapperboard-film-reels-film-strips-wooden-backdrop-1-scaled.jpg" alt="" />
+        <img className='w-full h-[40rem]' 
+        src='https://media4.giphy.com/media/vbOojWvKFNfbi/giphy.gif?cid=6c09b952oi7seksjmfz0xqxhzt4wkb6kz3lc677hukbb88cc&ep=v1_gifs_search&rid=giphy.gif&ct=g'
+        alt="" />
       </div>
      
     </div>

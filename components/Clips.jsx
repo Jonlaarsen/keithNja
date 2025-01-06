@@ -48,7 +48,7 @@ const Clips = ({ uploads }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.1 }}
       whileInView={true}
-      className="flex flex-col  w-screen min-h-[120vh]"
+      className="flex flex-col justify-center  items-center w-screen"
     >
       {/* Category Filter Links */}
       <div className=" flex flex-wrap md:flex-row flex-col justify-center md:border-2 border-purple-500 mb-10 md:mb-[7rem] ">

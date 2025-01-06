@@ -49,11 +49,12 @@ const Navbar = () => {
       {/* Mobile Menu */}
       
       {isOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col items-center justify-center'>
+        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col items-center justify-center'
+        style={{backgroundImage:"url('https://media.tenor.com/XxndHIKonjMAAAAM/smoke-wavy-lines.gif')"}}>
             <Link 
             onClick={()=>toggleOpen(false)}
             href={'/'}>
-               <img src="/posted3.png" className='w-[14rem] invert pb-10' alt="logo" />
+               <img src="/posted3.png" className='w-[18rem] invert pb-10' alt="logo" />
             </Link>
             
           <motion.ul
@@ -73,9 +74,9 @@ const Navbar = () => {
               key={link.id}
               href={link.path} 
               
-              className='text-white text-3xl my-4 hover:text-purple-500 transition'
+              className='text-white text-3xl md:text-5xl my-4 hover:text-purple-500 transition'
             >
-              <h1></h1>
+              
               {link.title}
             </Link>
             </motion.li>
