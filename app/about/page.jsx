@@ -13,7 +13,8 @@ const Team = [
 
 const page = () => {
   return (
-    <div className='flex flex-col items-center justify-center pt-[14rem] px-10  min-h-screen '>
+    <div className='flex flex-col items-center justify-center pt-[14rem] px-10  min-h-screen '
+    >
       <h1 className='text-5xl md:text-7xl text-center pb-[5rem] uppercase'>Our team</h1>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>

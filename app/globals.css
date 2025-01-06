@@ -8,8 +8,8 @@
 } */
 
 :root {
-  --foreground:#ededed;
-  --background:#0a0a0a;
+  --background:#ededed;
+  --foreground:#0a0a0a;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -27,7 +27,7 @@ body {
   font-weight: 400;
   font-style: normal; 
 }
-a,p, li, button{
+a,p, li, button, h3{
   font-family: sans-serif;
   font-weight: 700;
 }

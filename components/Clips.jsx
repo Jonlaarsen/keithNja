@@ -59,7 +59,7 @@ const Clips = ({ uploads }) => {
       </div>
 
       {/* Display Clips */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center  md:mx-10">
         {filteredUploads.map((upload) => (
           <div
             key={upload.id}
@@ -73,7 +73,7 @@ const Clips = ({ uploads }) => {
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
               <h1 className="hidden group-hover:block text-3xl font-semibold">{upload.title}</h1>
-              <h2 className="hidden group-hover:block text-xl font-semibold w-[24rem]">{upload.subtitle}</h2>
+              <h3 className="hidden group-hover:block text-xl font-semibold w-[24rem]">{upload.subtitle}</h3>
               <p className="hidden group-hover:block text-slate-400 font-semibold">"{upload.description}"</p>
             </div>
           </div>
@@ -93,8 +93,9 @@ const Clips = ({ uploads }) => {
             <iframe
               allowFullScreen
               src={currentClip.videourl}
-              className="w-full h-[40vh] md:h-[80vh]"
+              className="w-full h-screen md:h-[50vh] xl:h-[90vh]"
               title={currentClip.title}
+              autoPlay
             ></iframe>
             <button
               onClick={closeModal}
