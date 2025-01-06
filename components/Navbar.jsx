@@ -19,10 +19,10 @@ const Navbar = () => {
    
 
   return (
-    <div className="w-screen uppercase h-[10rem] top-0 left-0 fixed z-50 flex flex-row items-center justify-between px-10">
+    <div className="w-screen uppercase  top-0 left-0 fixed  z-50 flex flex-row items-center justify-between px-10">
        
         <Link href="/">
-            <img className=' h-[6rem] invert' src="/Posted1.svg" alt="" />
+            <img className=' h-[8rem] py-5 invert' src="/postedlogo.png" alt="" />
         </Link>
         
         <div className="flex items-center">

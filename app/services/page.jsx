@@ -120,17 +120,18 @@ function Image({ id, title, content, bgImage }) {
     <section className="relative h-screen w-full bg-cover bg-center" 
     style={{backgroundImage:`url("${bgImage}")`}}
     >
-      <div className='w-screen md:w-[50rem] flex items-center justify-center bg-slate-300 text-center p-10 bg-opacity-35'  ref={ref}>
+      <div className='w-screen flex-col md:flex-row md:w-[50rem] flex items-center justify-center bg-slate-300 text-center p-10 bg-opacity-45'  ref={ref}>
+      <h1 className='text-4xl block md:hidden text-white pb-10'>{title}</h1>
       <ul className='w-full md:w-[35rem]'>
           {content.map((item, index) => (
-            <li key={index} className="text-xs md:text-3xl text-slate-100 mb-2">
+            <li key={index} className="text-lg md:text-3xl text-white mb-2">
               {item}
             </li>
           ))}
         </ul>
       </div>
       <motion.h2
-        className="text-white absolute text-lg md:text-[2.5rem] right-[calc(55%+12rem)] "
+        className="text-white absolute md:block hidden text-lg md:text-[2.5rem] right-[calc(55%+12rem)] "
         style={{ y }}
       >
         {title}
@@ -200,9 +201,11 @@ export default function App() {
   return (
     <>
       {sections.map((section) => (
+        
         <div key={section.id}>
           <Image id={section.id} title={section.title} content={section.content} bgImage={section.bgImage} />
         </div>
+        
       ))}
       <motion.div className="progress" style={{ scaleX }} />
     </>
