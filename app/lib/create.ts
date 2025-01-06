@@ -15,16 +15,18 @@ export const create = async (formData: FormData) => {
     throw new Error('Title, imgURL, and videoURL are required.');
   }
 
-  // Validate and transform the YouTube URL
+  // Validate and transform the YouTube URL if applicable
   const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
-  const match = videoURL.match(youtubeRegex);
+  const isYouTubeLink = youtubeRegex.test(videoURL);
 
-  if (match) {
-    const videoId = match[3];
-    videoURL = `https://www.youtube.com/embed/${videoId}`;
-  } else {
-    alert("INVALID LINK")
-    throw new Error('Invalid YouTube video link.');
+  if (isYouTubeLink) {
+    const match = videoURL.match(youtubeRegex);
+    if (match) {
+      const videoId = match[3];
+      videoURL = `https://www.youtube.com/embed/${videoId}`;
+    } else {
+      throw new Error('Invalid YouTube video link.');
+    }
   }
 
   try {
