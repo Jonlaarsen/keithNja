@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="icon" href="/postedicon.png" sizes="any" />
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet"/>
