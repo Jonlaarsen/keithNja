@@ -81,9 +81,9 @@ const Clips = ({ uploads }) => {
               className="w-full h-full object-cover transition-transform duration-500 group-hover:brightness-50 group-hover:scale-110"
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-              <h1 className="hidden group-hover:block text-3xl font-semibold">{upload.title}</h1>
-              <h3 className="hidden group-hover:block text-xl font-semibold w-[24rem]">{upload.subtitle}</h3>
-              <p className="hidden group-hover:block text-slate-400 font-semibold">"{upload.description}"</p>
+              <h1 className="hidden group-hover:block text-3xl mb-2 font-semibold">{upload.title}</h1>
+              <h3 className="hidden group-hover:block text-2xl font-semibold w-[24rem]">{upload.subtitle}</h3>
+              <p className="hidden group-hover:block text-slate-200 font-semibold">{`{ `}{upload.description}{` }`}</p>
             </div>
           </div>
         ))}
