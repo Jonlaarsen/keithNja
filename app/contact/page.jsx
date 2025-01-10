@@ -11,7 +11,7 @@ const page = () => {
         
         <form 
         className='flex flex-col gap-5'
-        action="https://formsubmit.co/jontoftdallarsen@icloud.com" method="POST">
+        action="https://formsubmit.co/contact@posted-productions.com" method="POST">
           <div className='flex md: flex-col gap-5 w-screen md:w-[80%]'>
             <div className='flex px-4 md:px-0 flex-col w-full'>
               <label htmlFor="firstname">First Name</label>
@@ -35,7 +35,7 @@ const page = () => {
           <div className='flex px-4 md:px-0 flex-col w-screen md:w-[80%]'>
             <label htmlFor="email">Message</label>
             <textarea 
-            className='h-[5rem] pl-2 md:pl-5'
+            className='h-[5rem] pl-2 md:pl-5 text-black'
             placeholder='required' name="message" type='text' required></textarea>
           </div>
           <div className='px-4 md:px-0 w-screen md:w-[80%]'>

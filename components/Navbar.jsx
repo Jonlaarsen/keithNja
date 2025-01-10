@@ -49,8 +49,8 @@ const Navbar = () => {
       {/* Mobile Menu */}
       
       {isOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col items-center justify-center'
-        style={{backgroundImage:"url('https://media.tenor.com/XxndHIKonjMAAAAM/smoke-wavy-lines.gif')"}}>
+        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col bg-cover items-center justify-center'
+         style={{backgroundImage:"url('https://i.pinimg.com/originals/6f/9d/c5/6f9dc513096e160a82c2201961b3386b.gif')"}} >
             <Link 
             onClick={()=>toggleOpen(false)}
             href={'/'}>

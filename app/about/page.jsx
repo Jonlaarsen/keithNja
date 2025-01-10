@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import {motion} from "framer-motion"
-import { h1 } from 'motion/react-client'
 
 const Team = [
   {id:1 ,url:"/tommy.jpeg", name:"Keith Keunhyung Park" ,desc:"Keith Park is a seasoned multimedia producer and director with over 8 years of experience across print, radio, television news, documentary, advertisement, and corporate shoots in South Korea. His work for renowned platforms such as VICE, Netflix, Al Jazeera, CNN, and PBS highlights his expertise in delivering compelling and authentic stories. Keith's dedication to storytelling earned him the prestigious 2020 Peabody Award for Global Pandemic Coverage, recognizing his outstanding production on PBS Newshour’s Global Pandemic and Making Sense: The Victims of the Covid Economy."},
