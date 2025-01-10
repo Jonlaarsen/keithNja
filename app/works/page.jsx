@@ -23,7 +23,7 @@ export default async function page() {
   console.log(uploads)
   return (
     <div className='md:py-[15rem] pt-[8rem] bg-contain min-h-screen '
-    style={{backgroundImage:"url('https://i.pinimg.com/originals/6f/9d/c5/6f9dc513096e160a82c2201961b3386b.gif')"}}
+    // style={{backgroundImage:"url('https://i.pinimg.com/originals/6f/9d/c5/6f9dc513096e160a82c2201961b3386b.gif')"}}
     >
       <Clips uploads={uploads}/>
     </div>

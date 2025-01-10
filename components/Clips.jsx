@@ -72,7 +72,7 @@ const Clips = ({ uploads }) => {
         {filteredUploads.map((upload) => (
           <div
             key={upload.id}
-            className="cursor-pointer overflow-hidden relative group h-[15rem]"
+            className="cursor-pointer overflow-hidden relative group w-screen h-auto md:max-w-[31rem]  md:h-[16.5rem]"
             onClick={() => openModal(upload)}
           >
             <img
@@ -89,25 +89,24 @@ const Clips = ({ uploads }) => {
         ))}
       </div>
 
-      {/* Modal */}
-      {isModalOpen && currentClip && (
+      {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
-          onClick={closeModal} // Close modal on background click
+          onClick={closeModal} // Closes modal when clicking outside
         >
           <div
-            className="bg-white relative overflow-hidden w-screen md:w-[90vw] "
-            onClick={(e) => e.stopPropagation()} // Prevent closing on inside click
+            className="bg-white rounded-lg overflow-hidden relative"
+            onClick={(e) => e.stopPropagation()} // Prevents close on inside clicks
           >
-            <iframe
-              allowFullScreen
-              src={currentClip.videourl}
-              className="w-full h-[25rem] md:h-[50vh] xl:h-[90vh]"
-              title={currentClip.title}
-            ></iframe>
+            
+            <iframe controls autoPlay className="w-screen md:w-[60rem] h-[35rem]"
+             allow="autoplay"
+             src={currentVideo.videourl} type="video/mp4" />
+            
+
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-white bg-black rounded-full px-4 py-2 text-xl font-bold"
+              className="absolute top-4 right-4 text-white text-3xl font-bold"
             >
               &times;
             </button>
