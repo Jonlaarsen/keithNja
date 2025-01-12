@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 w-screen pt-[12rem]  gap-4  md:ml-10'>
+    <div className='grid grid-cols-1 md:grid-cols-2 max-w-[99vw] pt-[12rem]  gap-4  md:ml-10'>
       <div >
         <div>
           <h1 className='text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>

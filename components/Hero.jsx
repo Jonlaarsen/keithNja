@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     
-    <div className="md:min-h-screen pb-[5rem] relative">
+    <div className="md:min-h-screen max-w-[99vw] pb-[5rem] relative">
       <div className="flex flex-col items-center gap-8 justify-center">
         {/* <div
           className="flex top-0 left-0 h-[100vh] z-20 w-auto md:w-screen md:h-screen items-center justify-center"
@@ -34,7 +34,7 @@ const Hero = () => {
          
         </div> */}
         <div
-          className="flex top-0 left-0 h-[100vh] w-auto md:w-screen md:h-screen items-center justify-center"
+          className="flex top-0 left-0 h-[100vh] w-auto md:w-full md:h-screen items-center justify-center"
           
         >
           <iframe
@@ -43,7 +43,7 @@ const Hero = () => {
             playsInline
             autoPlay
             loop
-            className="w-screen h-screen object-cover"
+            className="w-full h-screen object-cover"
           ></iframe>
           
         </div>

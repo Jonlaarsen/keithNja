@@ -27,7 +27,7 @@ const page = () => {
         {Team.map((members) => (
           <div 
           key={members.name}>
-            <h1 >
+            <h1 className=' text-sm md:text-xl'>
               {members.name} &#x2605;
             </h1>
           </div>

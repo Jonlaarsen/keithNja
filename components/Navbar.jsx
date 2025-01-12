@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { motion, useCycle } from "framer-motion";
+import { usePathname, useRouter } from 'next/navigation';
 
 
 
@@ -15,17 +16,32 @@ const categories =[
 
 const Navbar = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);  
-   
-   
+    const pathname = usePathname();
+    const isHomePage = pathname === "/";
+  
+
 
   return (
     <div className="w-screen uppercase  top-0 left-0 fixed  z-50 flex flex-row items-center justify-between px-10">
        
+       {isHomePage ? (
         <Link href="/">
-            <img className=' h-[8rem] py-5 invert' src="/postedlogo.png" alt="" />
+          <img
+            className="h-[8rem] py-5 invert"
+            src="/postedlogo.png"
+            alt="homepage logo"
+          />
         </Link>
-        
-        <div className="flex items-center">
+      ) : (
+        <Link href="/">
+          <img
+            className="h-[8rem] py-5 invert absolute left-1/2 transform -translate-x-1/2 top-2"
+            src="/posted3.png"
+            alt="other pages logo"
+          />
+        </Link>
+      )}
+        <div className="flex items-center absolute right-[2rem] top-6">
           <motion.button 
             initial={false}
             animate={isOpen ? "open" : "closed"}
