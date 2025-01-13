@@ -22,6 +22,7 @@ export default function LoginPage() {
       setLoginError('');
       router.push('/admin');
     } else {
+      console.log(process.env.NEXT_PUBLIC_USERNAME, process.env.NEXT_PUBLIC_PASSWORD);
       setLoginError('Invalid username or password');
     }
   };
