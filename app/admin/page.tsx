@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
-import CreateForm from '@/components/CreateForm';
 import { redirect } from 'next/navigation';
+import CreateForm from '@/components/CreateForm';
+import LogoutButton from '@/components/LogoutButton';
 
 export default async function AdminPage() {
   const cookieStore = cookies();
@@ -11,8 +12,9 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex flex-col justify-center items-center">
       <CreateForm />
+      <LogoutButton />
     </div>
   );
 }

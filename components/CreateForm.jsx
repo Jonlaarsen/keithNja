@@ -6,7 +6,7 @@ const CreateForm = () => {
     <div className="w-screen">
     <form
       action={create}
-      style={{ maxWidth: '600px', margin: 'auto' }}
+      style={{ maxWidth: '600px', margin: 'auto', marginTop:"15rem" }}
     >
       <div style={{ marginBottom: '1rem' }}>
         <label htmlFor="title">Client name</label>
@@ -85,7 +85,7 @@ const CreateForm = () => {
       </div>
       <button
         type="submit"
-        className="mt-10 text-2xl border-2"
+        className="mt-10 text-2xl border-2 w-full"
         style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}
       >
         Submit
