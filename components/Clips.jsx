@@ -1,27 +1,26 @@
-"use client"
-import React, { useState, useEffect } from "react";
+"use client";
+import React, { useState } from "react";
 import { motion } from "motion/react";
-// Dynamically import the socket.io-client only on the client side
-import dynamic from 'next/dynamic';
-
-const io = dynamic(() => import('socket.io-client'), { ssr: false });
 
 const Clips = ({ uploads }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentClip, setCurrentClip] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [realTimeUploads, setRealTimeUploads] = useState(uploads);
 
-  // Open modal logic for clips
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
+
   const openModal = (clip) => {
     if (youtubeRegex.test(clip.videourl)) {
+      // Open in modal if it's a YouTube link
       setCurrentClip(clip);
       setIsModalOpen(true);
       document.body.style.overflow = "hidden"; // Prevent background scroll
     } else {
+      // Open external links in a new tab
       window.open(clip.videourl, "_blank");
     }
   };
+  
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -29,23 +28,11 @@ const Clips = ({ uploads }) => {
     document.body.style.overflow = "auto"; // Re-enable background scroll
   };
 
-  // Initialize socket connection and listen for real-time updates
-  useEffect(() => {
-    const socket = io();  // Initialize socket client
-    socket.on("dataUpdate", (newUpload) => {
-      setRealTimeUploads((prevUploads) => [...prevUploads, newUpload]);
-    });
-
-    return () => {
-      socket.disconnect(); // Clean up on unmount
-    };
-  }, []);
-
-  // Filter uploads based on selected category
-  const filteredUploads = selectedCategory === "All" 
-    ? realTimeUploads 
-    : realTimeUploads.filter((upload) => upload.categories === selectedCategory);
-
+  // Filter uploads based on the selected category
+  const filteredUploads =
+    selectedCategory === "All"
+      ? uploads
+      : uploads.filter((upload) => upload.categories === selectedCategory);
 
   const categories = [
     { label: "All", value: "All" },
