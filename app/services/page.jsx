@@ -1,53 +1,6 @@
 
-"use client";
-import './services.css'
-
-import { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-
-function useParallax(value, distance) {
-  return useTransform(value, [0, 1], [-distance, distance]);
-}
-
-function Image({ id, title, content, bgImage }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useParallax(scrollYProgress, 300);
-
-  return (
-    <section className="relative h-screen w-full bg-cover bg-center" 
-    style={{backgroundImage:`url("${bgImage}")`}}
-    >
-      
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        whileInView={true}
-        className='w-screen flex-col xl:flex-row md:w-[50rem] flex items-center justify-center bg-black text-center p-10 bg-opacity-45'  ref={ref}>
-      <h1 className='text-2xl block xl:hidden lg:text-4xl text-white pb-10'>{title}</h1>
-      <ul className='w-full md:w-[35rem]s'>
-          {content.map((item, index) => (
-            <li key={index} className="text-lg md:text-2xl text-white ">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </motion.div>
-      <motion.h2
-        className="text-white absolute xl:block hidden text-lg md:text-[1.5rem] sm:text-[1rem] lg:text-[2rem] 2xl:text-[2.5rem]  right-[calc(54%+12rem)] "
-        style={{ y }}
-      >
-        {title}
-      </motion.h2>
-    </section>
-  );
-}
+import React from 'react'
+// import Parallax from '@/components/parallax/Parallax'
 
 const sections = [
   // {
@@ -85,10 +38,10 @@ const sections = [
       "https://images.squarespace-cdn.com/content/v1/668baa90a93f73799f48b8ba/1726027163743-QYWYQZGF887V6VLJ475T/unsplash-image-iBEPt9udRz4.jpg?format=2500w",
     content: [
       <ul key="list2" className='flex flex-col gap-6'>
-        <li>&#9830;  Full Production & Filming Crew</li>
+        <li> Full Production & Filming Crew &#9830;  </li>
         <p key="p1">i.e. Producer, Director, DoP, Sound, Drone, PA, etc.</p>
-        <li>&#9830;  Camera & Equipment Rentals</li>
-        <li>&#9830;  Logistical Support & Coordination</li>
+        <li> Camera & Equipment Rentals &#9830;  </li>
+        <li>Logistical Support & Coordination &#9830;  </li>
       </ul>
     ]
   },
@@ -113,24 +66,44 @@ const sections = [
   }
 ];
 
-export default function App() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
+const page = () => {
   return (
-    <>
-      {sections.map((section) => (
-        
-        <div key={section.id}>
-          <Image id={section.id} title={section.title} content={section.content} bgImage={section.bgImage} />
+    <div className="pt-[10rem]">
+      <div className='flex items-center justify-center py-[10rem] '>
+        <h1 className='text-5xl text-center w-[80rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
+       offering solutions to all your needs."</h1>
+      </div>
+      <div className='h-[3rem]  bg-gradient-to-t from-[#ededed] to-[#0a0a0a63] '/>
+      <div className='flex items-center justify-center py-[10rem] bg-white'>
+        <h1 className='text-4xl text-black text-center w-[70rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
+       offering solutions to all your needs."</h1>
+      </div>
+      <div className='h-[4rem]  bg-gradient-to-t to-[#ededed] from-[#0a0a0a4d] '/>
+      
+      {sections.map((item) => (
+        <div
+          key={item.id}
+          className="h-full w-full grid grid-cols-1 md:grid-cols-2"
+          style={{ direction: item.id === 2 ? 'rtl' : 'ltr' }} 
+        >
+          {/* Title Section */}
+          <div
+            style={{ backgroundImage: `url("${item.bgImage}")` }} 
+           className=' flex items-center justify-center bg-cover min-h-[20rem]'
+          >
+            <h1 className=' text-4xl md:text-6xl md:font-bold '>{item.title}</h1>
+          </div>
+
+          {/* Content Section */}
+          <div className="flex text-xl font-[300] md:text-3xl items-center text-center md:min-h-[40rem]  justify-center mx-5 py-[5rem]">
+            {item.content}
+          </div>
         </div>
-        
       ))}
-      <motion.div className="progress" style={{ scaleX }} />
-    </>
+    </div>
   );
-}
+};
+
+export default page;
+
+

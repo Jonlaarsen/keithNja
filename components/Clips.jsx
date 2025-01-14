@@ -6,21 +6,20 @@ const Clips = ({ uploads }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentClip, setCurrentClip] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [realTimeUploads, setRealTimeUploads] = useState(uploads);  // Add a state to store the real-time data
 
   const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
 
+  // Open modal logic for clips
   const openModal = (clip) => {
     if (youtubeRegex.test(clip.videourl)) {
-      // Open in modal if it's a YouTube link
       setCurrentClip(clip);
       setIsModalOpen(true);
       document.body.style.overflow = "hidden"; // Prevent background scroll
     } else {
-      // Open external links in a new tab
       window.open(clip.videourl, "_blank");
     }
   };
-  
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -28,12 +27,26 @@ const Clips = ({ uploads }) => {
     document.body.style.overflow = "auto"; // Re-enable background scroll
   };
 
-  // Filter uploads based on the selected category
-  const filteredUploads =
-    selectedCategory === "All"
-      ? uploads
-      : uploads.filter((upload) => upload.categories === selectedCategory);
+  // Filter uploads based on selected category
+  const filteredUploads = selectedCategory === "All" 
+    ? realTimeUploads 
+    : realTimeUploads.filter((upload) => upload.categories === selectedCategory);
 
+  // Initialize socket connection and listen for real-time updates
+  useEffect(() => {
+    const socket = io();  // Use the default server URL (Vercel will auto-use the correct socket URL)
+
+    // Listen for 'dataUpdate' event and update state
+    socket.on("dataUpdate", (newUpload) => {
+      setRealTimeUploads((prevUploads) => [...prevUploads, newUpload]);
+    });
+
+    return () => {
+      socket.disconnect(); // Clean up on unmount
+    };
+  }, []);
+  // Filter uploads based on the selected category
+ 
   const categories = [
     { label: "All", value: "All" },
     { label: "Documentary", value: "docummentary" },

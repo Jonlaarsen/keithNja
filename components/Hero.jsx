@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import InfiniteCarousel from '@/components/InfiniteCarousel'
+import RotatingLogo from "./Logo";
 
 
 const Hero = () => {
@@ -47,6 +48,7 @@ const Hero = () => {
           ></iframe>
           
         </div>
+        {/* <RotatingLogo/> */}
         
 
       </div>
