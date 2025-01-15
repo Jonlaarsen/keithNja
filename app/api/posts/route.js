@@ -39,26 +39,27 @@
 // }
 
 export default async function handler(req, res) {
-  if (req.method === 'GET') {
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-    res.flushHeaders();
-
-    // Send a simple test message every 2 seconds
-    let counter = 0;
-    const interval = setInterval(() => {
-      counter += 1;
-      res.write(`data: { "message": "Test message ${counter}" }\n\n`);
-    }, 2000);
-
-    // Stop sending messages after 10 seconds
-    setTimeout(() => {
-      clearInterval(interval);
-      res.write('data: { "message": "No more updates." }\n\n');
-      res.end();
-    }, 10000);
-  } else {
-    res.status(405).json({ error: `Method ${req.method} not allowed` });
+    if (req.method === 'GET') {
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+      res.flushHeaders();
+  
+      // Send a simple test message every 2 seconds
+      let counter = 0;
+      const interval = setInterval(() => {
+        counter += 1;
+        res.write(`data: { "message": "Test message ${counter}" }\n\n`);
+      }, 2000);
+  
+      // Stop sending messages after 10 seconds
+      setTimeout(() => {
+        clearInterval(interval);
+        res.write('data: { "message": "No more updates." }\n\n');
+        res.end();
+      }, 10000);
+    } else {
+      res.status(405).json({ error: `Method ${req.method} not allowed` });
+    }
   }
-}
+  

@@ -128,6 +128,8 @@ const Clips = ({ uploads }) => {
   const [currentClip, setCurrentClip] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [newUploads, setNewUploads] = useState(uploads); // State to store new uploads
+  const [sseError, setSseError] = useState(null); // Add state for SSE errors
+
 
   const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
 
@@ -163,24 +165,29 @@ const Clips = ({ uploads }) => {
     { label: "News and Podcast", value: "News and podcast" },
   ];
 
-  // Set up SSE connection to listen for new uploads
-  useEffect(() => {
-    const eventSource = new EventSource("/api/posts");
-
-    eventSource.onmessage = (event) => {
-      const newPost = JSON.parse(event.data);
-      setNewUploads((prevUploads) => [newPost, ...prevUploads]); // Add the new post at the top
-    };
-
-    eventSource.onerror = (error) => {
-      console.error("Error with SSE connection:", error);
-      eventSource.close();
-    };
-
-    return () => {
-      eventSource.close();
-    };
-  }, []); // Empty dependency array means it runs only once when the component mounts
+ 
+  
+    // useEffect(() => {
+    //   const eventSource = new EventSource("http://localhost:3000/api/posts");
+  
+    //   eventSource.onmessage = function (event) {
+    //     const newPost = JSON.parse(event.data);
+    //     // Handle the new post data here (e.g., update state)
+    //     console.log(newPost);
+    //   };
+  
+    //   eventSource.onerror = function (error) {
+    //     console.error("Error with SSE connection:", error);
+    //     setSseError("An error occurred while receiving updates.");
+    //   };
+  
+    //   return () => {
+    //     eventSource.close();
+    //   };
+    // }, []);
+  
+ 
+  
 
   return (
     <motion.div
