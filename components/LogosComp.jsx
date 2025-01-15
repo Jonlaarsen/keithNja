@@ -31,7 +31,7 @@ const LogosComp = () => {
   return (
     <div className='w-[100vw] '>
     <h1 className='md:text-7xl uppercase font-bold text-center  py-[10rem]'>"Companys We Have Worked with"</h1>
-    <div className='h-[7rem] w-[100vw] bg-gradient-to-t from-[#ededed] via-[#edededc7] to-[#0a0a0a63] '>
+    <div className='h-[9rem] w-[100vw] bg-gradient-to-t from-white   to-[#0a0a0a63] '>
     </div>
     
     <div className='grid md:grid-cols-6 grid-cols-3  w-[100vw] bg-white gap-6 md:gap-20 py-10 px-[4rem] '>
@@ -44,7 +44,7 @@ const LogosComp = () => {
     )}
     </div>
 
-    <div className='h-[7rem] w-[100vw] bg-gradient-to-b from-[#ededed] via-[#edededc7] to-[#0a0a0a] '>
+    <div className='h-[9rem] w-[100vw] bg-gradient-to-b from-white  to-[#0a0a0a] '>
     </div>
     <div className='flex flex-col items-center text-center justify-center font-[300] text-xl md:text-4xl gap-[4rem] w-[100vw] py-[7rem] '>
     

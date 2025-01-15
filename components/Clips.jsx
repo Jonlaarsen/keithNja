@@ -167,24 +167,24 @@ const Clips = ({ uploads }) => {
 
  
   
-    useEffect(() => {
-      const eventSource = new EventSource("http://localhost:3000/api/posts");
+    // useEffect(() => {
+    //   const eventSource = new EventSource('http://localhost:3000/api/posts');
   
-      eventSource.onmessage = function (event) {
-        const newPost = JSON.parse(event.data);
-        // Handle the new post data here (e.g., update state)
-        console.log(newPost);
-      };
+    //   eventSource.onmessage = function (event) {
+    //     const newPost = JSON.parse(event.data);
+    //     // Handle the new post data here (e.g., update state)
+    //     console.log(newPost);
+    //   };
   
-      eventSource.onerror = function (error) {
-        console.error("Error with SSE connection:", error);
-        setSseError("An error occurred while receiving updates.");
-      };
+    //   eventSource.onerror = function (error) {
+    //     console.error("Error with SSE connection:", error);
+    //     setSseError("An error occurred while receiving updates.");
+    //   };
   
-      return () => {
-        eventSource.close();
-      };
-    }, []);
+    //   return () => {
+    //     eventSource.close();
+    //   };
+    // }, []);
   
  
   
@@ -215,7 +215,7 @@ const Clips = ({ uploads }) => {
       </div>
 
       {/* Display Clips */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center lg:mx-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-center lg:mx-10">
         {filteredUploads.map((upload) => (
           <div
             key={upload.id}
