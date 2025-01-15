@@ -167,24 +167,24 @@ const Clips = ({ uploads }) => {
 
  
   
-    // useEffect(() => {
-    //   const eventSource = new EventSource("http://localhost:3000/api/posts");
+    useEffect(() => {
+      const eventSource = new EventSource("http://localhost:3000/api/posts");
   
-    //   eventSource.onmessage = function (event) {
-    //     const newPost = JSON.parse(event.data);
-    //     // Handle the new post data here (e.g., update state)
-    //     console.log(newPost);
-    //   };
+      eventSource.onmessage = function (event) {
+        const newPost = JSON.parse(event.data);
+        // Handle the new post data here (e.g., update state)
+        console.log(newPost);
+      };
   
-    //   eventSource.onerror = function (error) {
-    //     console.error("Error with SSE connection:", error);
-    //     setSseError("An error occurred while receiving updates.");
-    //   };
+      eventSource.onerror = function (error) {
+        console.error("Error with SSE connection:", error);
+        setSseError("An error occurred while receiving updates.");
+      };
   
-    //   return () => {
-    //     eventSource.close();
-    //   };
-    // }, []);
+      return () => {
+        eventSource.close();
+      };
+    }, []);
   
  
   
