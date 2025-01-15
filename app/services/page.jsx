@@ -69,16 +69,10 @@ const sections = [
 const page = () => {
   return (
     <div className="pt-[10rem]">
-      <div className='flex items-center justify-center py-[10rem] '>
-        <h1 className='text-5xl text-center w-[80rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
+      <div className='flex items-center justify-center py-10 md:py-[10rem] mx-5 '>
+        <h1 className='text-2xl md:text-5xl text-center w-[80rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
        offering solutions to all your needs."</h1>
       </div>
-      <div className='h-[3rem]  bg-gradient-to-t from-[#ededed] to-[#0a0a0a63] '/>
-      <div className='flex items-center justify-center py-[10rem] bg-white'>
-        <h1 className='text-4xl text-black text-center w-[70rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
-       offering solutions to all your needs."</h1>
-      </div>
-      <div className='h-[4rem]  bg-gradient-to-t to-[#ededed] from-[#0a0a0a4d] '/>
       
       {sections.map((item) => (
         <div

@@ -44,7 +44,7 @@ const Hero = () => {
             playsInline
             autoPlay
             loop
-            className="w-full h-screen object-cover"
+            className="w-screen h-screen object-cover"
           ></iframe>
           
         </div>

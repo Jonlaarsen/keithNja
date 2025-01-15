@@ -35,7 +35,7 @@ const Navbar = () => {
       ) : (
         <Link href="/">
           <img
-            className="h-[8rem] py-5 invert absolute left-1/2 transform -translate-x-1/2 top-2"
+            className="h-[6.5rem] md:h-[8rem] py-5 invert absolute left-1/2 transform -translate-x-1/2 top-2"
             src="/posted3.png"
             alt="other pages logo"
           />

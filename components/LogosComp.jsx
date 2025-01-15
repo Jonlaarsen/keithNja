@@ -29,30 +29,33 @@ const BrandLogos =[
 
 const LogosComp = () => {
   return (
-    <>
-    <h1 className='md:text-7xl uppercase font-bold text-center w-[99vw] py-[10rem]'>"Companys We Have Worked with"</h1>
-    <div className='h-[7rem] w-[99vw] bg-gradient-to-t from-[#ededed] to-[#0a0a0a63] '>
+    <div className='w-[100vw] '>
+    <h1 className='md:text-7xl uppercase font-bold text-center  py-[10rem]'>"Companys We Have Worked with"</h1>
+    <div className='h-[7rem] w-[100vw] bg-gradient-to-t from-[#ededed] via-[#edededc7] to-[#0a0a0a63] '>
     </div>
     
-    <div className='grid md:grid-cols-6 grid-cols-3  w-[99vw] bg-white  gap-20 py-10 px-[4rem] '>
+    <div className='grid md:grid-cols-6 grid-cols-3  w-[100vw] bg-white gap-6 md:gap-20 py-10 px-[4rem] '>
       {BrandLogos.map((item) =>
       (
-        <div key={item.id}>
-            <img src={item.src} className='w-[9rem] h-auto object-contain'  alt="" />
+        <div key={item.id} className='flex items-center justify-center'>
+            <img src={item.src} className='md:w-[9rem] w-full h-auto object-contain'  alt="" />
         </div>
       )
     )}
     </div>
 
-    <div className='h-[7rem] w-[99vw] bg-gradient-to-b from-[#ededed] to-[#0a0a0a] '>
+    <div className='h-[7rem] w-[100vw] bg-gradient-to-b from-[#ededed] via-[#edededc7] to-[#0a0a0a] '>
     </div>
-    <div className='flex flex-col items-center justify-center text-4xl gap-[4rem] w-[99vw] py-[7rem] '>
-    <h2 >"insert some review here" - blabla blason</h2>
-    <h2 >"insert some review here" - blabla blason</h2>
-    <h2 >"insert some review here" - blabla blason</h2>
-
+    <div className='flex flex-col items-center text-center justify-center font-[300] text-xl md:text-4xl gap-[4rem] w-[100vw] py-[7rem] '>
+    
+    <div>
+      <h2 >"insert some review here"</h2><span className='font-[500]' > - wes anderson</span>
     </div>
-    </>
+    <div>
+      <h2 >"insert some review here"</h2><span className='font-[500]' > - tarantino</span>
+    </div>  
+    </div>
+    </div>
   )
 }
 
