@@ -2,9 +2,9 @@ name: Daily Post Update
 
 on:
   schedule:
-    # Runs once a day at midnight UTC
-    - cron: '0 0 * * *'  # This is the cron expression for "once a day"
-  workflow_dispatch:  # Optional: Allow manual trigger from GitHub UI
+    # Runs every day at 5:30 AM KST (8:30 PM UTC)
+    - cron: '30 20 * * *'
+  workflow_dispatch:  # Allow manual triggering from the GitHub UI
 
 jobs:
   update-website:
@@ -14,7 +14,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Run post-update script
+    - name: Call API to check for new posts
       run: |
-        # Your command to check for new posts and update the website
-        curl -X GET https://your-api-endpoint.com/update
+        # Trigger your API endpoint to check for new posts
+        curl -X GET https://your-vercel-app-url/api/posts
