@@ -1,0 +1,20 @@
+name: Daily Post Update
+
+on:
+  schedule:
+    # Runs once a day at midnight UTC
+    - cron: '0 0 * * *'  # This is the cron expression for "once a day"
+  workflow_dispatch:  # Optional: Allow manual trigger from GitHub UI
+
+jobs:
+  update-website:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run post-update script
+      run: |
+        # Your command to check for new posts and update the website
+        curl -X GET https://your-api-endpoint.com/update
