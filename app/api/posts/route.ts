@@ -8,7 +8,8 @@ const pool = new Pool({
   },
 });
 
-const query = (text: string, params?: any[]) => pool.query(text, params);
+// Define a more specific type for query parameters (could be string, number, or boolean)
+const query = (text: string, params?: Array<string | number | boolean>) => pool.query(text, params);
 
 export async function GET(req: NextRequest) {
   let lastPostId: number | null = null; // Track the last sent post ID
