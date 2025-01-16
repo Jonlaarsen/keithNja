@@ -168,66 +168,40 @@ const Clips = ({ uploads }) => {
  
   
    
-  // useEffect(() => {
-  //   const eventSource = new EventSource("https://postedproductions.vercel.app/api/posts");
-  
-  //   eventSource.onopen = () => {
-  //     console.log("SSE connection opened.");
-  //   };
-  
-  //   eventSource.onmessage = (event) => {
-  //     try {
-  //       const newPost = JSON.parse(event.data);
-  //       console.log("New post received:", newPost);
-  //     } catch (error) {
-  //       console.error("Error parsing SSE data:", error);
-  //     }
-  //   };
-  
-  //   eventSource.onerror = (error) => {
-  //     console.error("Error with SSE connection:", error);
-  //     if (error instanceof ErrorEvent) {
-  //       console.error("Error details:", error.message);
-  //     } else {
-  //       console.error("Unknown SSE error:", error);
-  //     }
-  //     eventSource.close(); // Close the connection on error
-  //   };
-  
-  //   return () => {
-  //     console.log("SSE connection closed")
-  //     eventSource.close(); // Clean up when the component unmounts
-  //   };
-  // }, []);
-  
-  
   useEffect(() => {
     const eventSource = new EventSource("https://postedproductions.vercel.app/api/posts");
-
+  
     eventSource.onopen = () => {
       console.log("SSE connection opened.");
     };
-
+  
     eventSource.onmessage = (event) => {
       try {
         const newPost = JSON.parse(event.data);
         console.log("New post received:", newPost);
-        // Update the UI with the new post
       } catch (error) {
         console.error("Error parsing SSE data:", error);
       }
     };
-
+  
     eventSource.onerror = (error) => {
       console.error("Error with SSE connection:", error);
+      if (error instanceof ErrorEvent) {
+        console.error("Error details:", error.message);
+      } else {
+        console.error("Unknown SSE error:", error);
+      }
       eventSource.close(); // Close the connection on error
     };
-
+  
     return () => {
-      console.log("SSE connection closed");
+      console.log("SSE connection closed")
       eventSource.close(); // Clean up when the component unmounts
     };
   }, []);
+  
+  
+ 
   
 
   return (
