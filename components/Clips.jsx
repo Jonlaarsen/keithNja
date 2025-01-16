@@ -169,7 +169,7 @@ const Clips = ({ uploads }) => {
   
    
   useEffect(() => {
-    const eventSource = new EventSource("http://localhost:3000/api/posts");
+    const eventSource = new EventSource("/api/posts");
   
     eventSource.onopen = () => {
       console.log("SSE connection opened.");
@@ -186,10 +186,8 @@ const Clips = ({ uploads }) => {
   
     eventSource.onerror = (error) => {
       console.error("Error with SSE connection:", error);
-      console.log("EventSource readyState:", eventSource.readyState); // Check the state of the EventSource
       eventSource.close(); // Close the connection on error
     };
-    
   
     return () => {
       eventSource.close(); // Clean up when the component unmounts

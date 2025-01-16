@@ -8,82 +8,51 @@ const pool = new Pool({
   },
 });
 
-// Query-funktion för att utföra SQL-frågor
-const query = (text: string, params?: any[]) => pool.query(text, params);
+// Type for params to avoid 'any'
+const query = (text: string, params?: string[]) => pool.query(text, params);
 
 export async function GET(req: NextRequest) {
+  let lastPostId: number | null = null; // Track the last sent post ID
+  
   try {
-    const result = await query('SELECT * FROM uploads ORDER BY id DESC LIMIT 1');
-
-    if (result.rows.length > 0) {
-      const newPost = result.rows[0];
-
-      const readableStream = new ReadableStream({
-        start(controller) {
-          const encoder = new TextEncoder();
+    const readableStream = new ReadableStream({
+      start(controller) {
+        // Poll for new posts
+        const interval = setInterval(async () => {
+          const result = await query('SELECT * FROM uploads ORDER BY id DESC LIMIT 1');
           
-          // Log the message to check its content
-          console.log("Sending new post:", newPost);
-          
-          const message = `data: ${JSON.stringify(newPost)}\n\n`;
+          if (result.rows.length > 0) {
+            const newPost = result.rows[0];
+            
+            // If the post ID is different from the last sent post, send it via SSE
+            if (newPost.id !== lastPostId) {
+              lastPostId = newPost.id;
+              
+              // Format message and send to client
+              const message = `data: ${JSON.stringify(newPost)}\n\n`;
+              controller.enqueue(new TextEncoder().encode(message));
+            }
+          }
+        }, 5000); // Poll for new posts every 5 seconds
 
-          // Ensure we are sending the correct format
-          controller.enqueue(encoder.encode(message));
+        // Cleanup when the connection is closed
+        // Ensuring 'req.signal' is utilized for cleanup
+        req.signal.addEventListener('abort', () => {
+          clearInterval(interval);
+        });
+      },
+    });
 
-          // Optionally, send a keep-alive message (if needed)
-          setTimeout(() => {
-            controller.enqueue(encoder.encode("data: {}\n\n"));
-          }, 10000); // Send a dummy message every 10 seconds (to keep the connection alive)
-
-          // Optionally, remove the controller.close() if you want to keep the connection open
-          // controller.close();
-        },
-      });
-
-      return new Response(readableStream, {
-        headers: {
-          'Content-Type': 'text/event-stream',
-          'Cache-Control': 'no-cache',
-          'Connection': 'keep-alive',
-          'Access-Control-Allow-Origin': '*', // Allow all origins
-          'Access-Control-Allow-Methods': 'GET', // Allow GET requests
-          'Access-Control-Allow-Headers': 'Content-Type', // Allow content-type headers
-        },
-      });
-    } else {
-      return NextResponse.json({ error: 'No posts found' }, { status: 404 });
-    }
+    return new Response(readableStream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
   } catch (error) {
     console.error('Error fetching posts:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-
-
-
-// export async function GET() {
-//   try {
-//     const readableStream = new ReadableStream({
-//       start(controller) {
-//         const encoder = new TextEncoder();
-        
-//         // Encode the message as a Uint8Array
-//         const message = `data: ${JSON.stringify({ message: "Hello, world!" })}\n\n`;
-//         controller.enqueue(encoder.encode(message));
-        
-//         // Optionally, keep the stream open for future messages
-//         // controller.close(); // Remove this if you want to keep the connection open
-//       },
-//     });
-
-//     return new Response(readableStream, {
-//       headers: {
-//         "Content-Type": "text/event-stream",
-//         "Cache-Control": "no-cache",
-//         "Connection": "keep-alive",
-//       },
-//     });
-//   } catch (error) {
-//     return new Response("Internal Server Error", { status: 500 });
-//   }
-// }
