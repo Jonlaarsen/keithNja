@@ -162,7 +162,7 @@ const Clips = ({ uploads }) => {
     { label: "Documentary", value: "docummentary" },
     { label: "Music Video", value: "MusicVideo" },
     { label: "Branded And Corporate", value: "Branded And corporate" },
-    { label: "News and Podcast", value: "News and podcast" },
+    { label: "News and Podcast", value: "news and podcast" },
   ];
 
  
@@ -186,10 +186,16 @@ const Clips = ({ uploads }) => {
   
     eventSource.onerror = (error) => {
       console.error("Error with SSE connection:", error);
+      if (error instanceof ErrorEvent) {
+        console.error("Error details:", error.message);
+      } else {
+        console.error("Unknown SSE error:", error);
+      }
       eventSource.close(); // Close the connection on error
     };
   
     return () => {
+      console.log("SSE connection closed")
       eventSource.close(); // Clean up when the component unmounts
     };
   }, []);

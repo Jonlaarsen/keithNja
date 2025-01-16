@@ -33,7 +33,11 @@ export async function GET(req: NextRequest) {
               controller.enqueue(new TextEncoder().encode(message));
             }
           }
-        }, 5000); // Poll every 5 seconds
+        }, 15000); // Poll every 5 seconds
+
+        req.headers.set("Access-Control-Allow-Origin", "*");
+        req.headers.set("Access-Control-Allow-Methods", "GET, POST");
+        req.headers.set("Access-Control-Allow-Headers", "Content-Type");
 
         // Cleanup when the connection is closed
         req.signal.addEventListener('abort', () => {
