@@ -157,6 +157,12 @@ const Clips = ({ uploads }) => {
       ? uploads
       : uploads.filter((upload) => upload.categories === selectedCategory);
 
+  //     const filteredUploads = 
+  // selectedCategory === "All"
+  //   ? Array.isArray(newUploads) ? newUploads : [] // Ensure it's an array
+  //   : Array.isArray(newUploads) ? newUploads.filter((upload) => upload.categories === selectedCategory) : [];
+
+
   const categories = [
     { label: "All", value: "All" },
     { label: "Documentary", value: "docummentary" },

@@ -1,20 +1,25 @@
-name: Daily Post Update
+name: Daily Deployment
 
 on:
   schedule:
-    # Runs every day at 5:30 AM KST (8:30 PM UTC)
-    - cron: '45 08 * * *'
-  workflow_dispatch:  # Allow manual triggering from the GitHub UI
+    - cron: "51 15 * * *" # Runs every day at midnight UTC
 
 jobs:
-  update-website:
+  redeploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Call API to check for new posts
-      run: |
-        # Trigger your API endpoint to check for new posts
-        curl -X GET https://postedproductions.vercel.app/api/posts
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Trigger Vercel deployment
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel deploy --prod --token $VERCEL_TOKEN
