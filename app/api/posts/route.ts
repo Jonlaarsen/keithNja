@@ -4,20 +4,19 @@ import { Pool } from 'pg';
 const pool = new Pool({
   connectionString: process.env.NEON_DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false, // This is required for some cloud database setups, like Neon.
+    rejectUnauthorized: false,
   },
 });
 
-// Type for params to avoid 'any'
-const query = (text: string, params?: string[]) => pool.query(text, params);
+const query = (text: string, params?: any[]) => pool.query(text, params);
 
 export async function GET(req: NextRequest) {
-  let lastPostId: number | null = null; // Track the last sent post ID
-  
+  let lastPostId: null = null; // Track the last sent post ID
+
   try {
     const readableStream = new ReadableStream({
       start(controller) {
-        // Poll for new posts
+        // Poll for new posts every 5 seconds
         const interval = setInterval(async () => {
           const result = await query('SELECT * FROM uploads ORDER BY id DESC LIMIT 1');
           
@@ -27,18 +26,16 @@ export async function GET(req: NextRequest) {
             // If the post ID is different from the last sent post, send it via SSE
             if (newPost.id !== lastPostId) {
               lastPostId = newPost.id;
-              
-              // Format message and send to client
               const message = `data: ${JSON.stringify(newPost)}\n\n`;
               controller.enqueue(new TextEncoder().encode(message));
             }
           }
-        }, 5000); // Poll for new posts every 5 seconds
+        }, 5000);
 
         // Cleanup when the connection is closed
-        // Ensuring 'req.signal' is utilized for cleanup
         req.signal.addEventListener('abort', () => {
-          clearInterval(interval);
+          console.log('Connection aborted by client.');
+          clearInterval(interval); // Clear interval when the connection is closed
         });
       },
     });
@@ -48,7 +45,7 @@ export async function GET(req: NextRequest) {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*', // Allow cross-origin requests if necessary
       },
     });
   } catch (error) {
