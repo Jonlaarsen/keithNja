@@ -167,24 +167,35 @@ const Clips = ({ uploads }) => {
 
  
   
-    // useEffect(() => {
-    //   const eventSource = new EventSource('http://localhost:3000/api/posts');
+   
+  useEffect(() => {
+    const eventSource = new EventSource("http://localhost:3000/api/posts");
   
-    //   eventSource.onmessage = function (event) {
-    //     const newPost = JSON.parse(event.data);
-    //     // Handle the new post data here (e.g., update state)
-    //     console.log(newPost);
-    //   };
+    eventSource.onopen = () => {
+      console.log("SSE connection opened.");
+    };
   
-    //   eventSource.onerror = function (error) {
-    //     console.error("Error with SSE connection:", error);
-    //     setSseError("An error occurred while receiving updates.");
-    //   };
+    eventSource.onmessage = (event) => {
+      try {
+        const newPost = JSON.parse(event.data);
+        console.log("New post received:", newPost);
+      } catch (error) {
+        console.error("Error parsing SSE data:", error);
+      }
+    };
   
-    //   return () => {
-    //     eventSource.close();
-    //   };
-    // }, []);
+    eventSource.onerror = (error) => {
+      console.error("Error with SSE connection:", error);
+      console.log("EventSource readyState:", eventSource.readyState); // Check the state of the EventSource
+      eventSource.close(); // Close the connection on error
+    };
+    
+  
+    return () => {
+      eventSource.close(); // Clean up when the component unmounts
+    };
+  }, []);
+  
   
  
   
