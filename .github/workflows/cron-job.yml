@@ -3,7 +3,7 @@ name: Daily Post Update
 on:
   schedule:
     # Runs every day at 5:30 AM KST (8:30 PM UTC)
-    - cron: '30 20 * * *'
+    - cron: '35 20 * * *'
   workflow_dispatch:  # Allow manual triggering from the GitHub UI
 
 jobs:
@@ -17,4 +17,4 @@ jobs:
     - name: Call API to check for new posts
       run: |
         # Trigger your API endpoint to check for new posts
-        curl -X GET https://your-vercel-app-url/api/posts
+        curl -X GET https://postedproductions.vercel.app/api/posts

@@ -168,38 +168,21 @@ const Clips = ({ uploads }) => {
  
   
    
-  // useEffect(() => {
-  //   const eventSource = new EventSource("https://postedproductions.vercel.app/api/posts");
-  
-  //   eventSource.onopen = () => {
-  //     console.log("SSE connection opened.");
-  //   };
-  
-  //   eventSource.onmessage = (event) => {
-  //     try {
-  //       const newPost = JSON.parse(event.data);
-  //       console.log("New post received:", newPost);
-  //     } catch (error) {
-  //       console.error("Error parsing SSE data:", error);
-  //     }
-  //   };
-  
-  //   eventSource.onerror = (error) => {
-  //     console.error("Error with SSE connection:", error);
-  //     if (error instanceof ErrorEvent) {
-  //       console.error("Error details:", error.message);
-  //     } else {
-  //       console.error("Unknown SSE error:", error);
-  //     }
-  //     eventSource.close(); // Close the connection on error
-  //   };
-  
-  //   return () => {
-  //     console.log("SSE connection closed")
-  //     eventSource.close(); // Clean up when the component unmounts
-  //   };
-  // }, []);
-  
+  useEffect(() => {
+    // Fetch the latest uploads on initial load
+    const fetchUploads = async () => {
+      try {
+        const response = await fetch('/api/posts');
+        const data = await response.json();
+        if (data.newPost) {
+          setNewUploads(data.newPost);
+        }
+      } catch (error) {
+        setSseError('Error fetching new uploads.');
+      }
+    };
+    fetchUploads();
+  }, []);
   
  
   
