@@ -154,8 +154,8 @@ const Clips = ({ uploads }) => {
   // Filter uploads based on the selected category
   const filteredUploads =
     selectedCategory === "All"
-      ? newUploads
-      : newUploads.filter((upload) => upload.categories === selectedCategory);
+      ? uploads
+      : uploads.filter((upload) => upload.categories === selectedCategory);
 
   const categories = [
     { label: "All", value: "All" },
