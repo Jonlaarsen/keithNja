@@ -11,8 +11,8 @@ const pool = new Pool({
 const query = (text: string, params?: any[]) => pool.query(text, params);
 
 export async function GET(req: NextRequest) {
-  let lastPostId: null = null; // Track the last sent post ID
-
+  let lastPostId: number | null = null; // Track the last sent post ID
+  
   try {
     const readableStream = new ReadableStream({
       start(controller) {
@@ -26,16 +26,17 @@ export async function GET(req: NextRequest) {
             // If the post ID is different from the last sent post, send it via SSE
             if (newPost.id !== lastPostId) {
               lastPostId = newPost.id;
+              
+              // Format the message and send it to the client
               const message = `data: ${JSON.stringify(newPost)}\n\n`;
               controller.enqueue(new TextEncoder().encode(message));
             }
           }
-        }, 5000);
+        }, 5000); // Poll every 5 seconds
 
         // Cleanup when the connection is closed
         req.signal.addEventListener('abort', () => {
-          console.log('Connection aborted by client.');
-          clearInterval(interval); // Clear interval when the connection is closed
+          clearInterval(interval); // Clear the interval when the SSE connection is closed
         });
       },
     });
@@ -45,7 +46,7 @@ export async function GET(req: NextRequest) {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
-        'Access-Control-Allow-Origin': '*', // Allow cross-origin requests if necessary
+        'Access-Control-Allow-Origin': '*',
       },
     });
   } catch (error) {
