@@ -169,7 +169,7 @@ const Clips = ({ uploads }) => {
   
    
   useEffect(() => {
-    const eventSource = new EventSource("/api/posts");
+    const eventSource = new EventSource("https://postedproductions.vercel.app/api/posts");
   
     eventSource.onopen = () => {
       console.log("SSE connection opened.");
