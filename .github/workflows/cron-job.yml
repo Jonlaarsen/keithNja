@@ -19,6 +19,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Debug secrets
+        run: echo "Secrets loaded successfully"
+        env:
+          PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
       - name: Trigger Vercel deployment
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
