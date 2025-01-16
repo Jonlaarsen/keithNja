@@ -59,8 +59,7 @@
 //     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
 //   }
 // }
-
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { Pool } from 'pg';
 
 // Create a connection to your Neon database
@@ -75,7 +74,7 @@ const pool = new Pool({
 const query = (text: string, params?: Array<string | number | boolean>) => pool.query(text, params);
 
 // GET endpoint to check for new posts
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     // Query the latest post
     const result = await query('SELECT * FROM uploads ORDER BY id DESC LIMIT 1');
