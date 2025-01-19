@@ -1,6 +1,6 @@
 export const TriggerWorkflow = async (operationType) => {
     const response = await fetch(
-      `https://api.github.com/repos/{owner}/{repo}/actions/workflows/deploy.yml/dispatches`,
+      `https://api.github.com/repos/jonlaarsen/keithNja/actions/workflows/deploy.yml/dispatches`,
       {
         method: 'POST',
         headers: {
