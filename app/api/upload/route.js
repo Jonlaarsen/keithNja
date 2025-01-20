@@ -9,8 +9,8 @@ import { TriggerWorkflow } from '@/app/lib/githubWorkflow';
 export async function POST(req, res) {
   const { title, subtitle, description, url } = req.body;
 
-  if (!title || !url) {
-    return res.status(400).json({ error: 'Title and URL are required.' });
+  if (!title || !videourl) {
+    return NextResponse.json({ error: 'Title and Video URL are required.' }, { status: 400 });
   }
 
   try {
@@ -22,10 +22,17 @@ export async function POST(req, res) {
 
     await TriggerWorkflow('create');
 
-    res.status(201).json(result.rows[0]);
+  //   res.status(201).json(result.rows[0]);
+  // } catch (error) {
+  //   console.error('Error saving to database:', error);
+  //   res.status(500).json({ error: 'Database error' });
+  // }
+  await TriggerWorkflow('create');
+
+    return NextResponse.json(result.rows[0], { status: 200 });
   } catch (error) {
     console.error('Error saving to database:', error);
-    res.status(500).json({ error: 'Database error' });
+    return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }
 }
 
@@ -72,6 +79,8 @@ export async function PUT(req) {
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }
 }
+
+
 export async function DELETE(req) {
   const { id } = await req.json();
   
