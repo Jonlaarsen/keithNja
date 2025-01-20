@@ -1,4 +1,5 @@
 import { query } from '../../lib/db';
+import {TriggerWorkflow} from '../lib/githubWorkflow'
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -14,6 +15,8 @@ export default async function handler(req, res) {
          VALUES ($1, $2, $3, $4) RETURNING *`,
         [title, subtitle, description, url]
       );
+
+      await TriggerWorkflow('create');
 
       res.status(201).json(result.rows[0]);
     } catch (error) {
