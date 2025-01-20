@@ -2,10 +2,25 @@
 import { create } from '@/app/lib/create';
 
 const CreateForm = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      const response = await create(formData);
+      alert('Form submitted successfully!');
+      console.log('Response:', response);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error submitting form');
+    }
+  };
+
   return (
     <div className="w-screen">
     <form
-      action={create}
+      onSubmit={handleSubmit}
       style={{ maxWidth: '600px', margin: 'auto', marginTop:"15rem" }}
     >
       <div style={{ marginBottom: '1rem' }}>

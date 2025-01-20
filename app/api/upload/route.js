@@ -6,8 +6,38 @@ import { TriggerWorkflow } from '@/app/lib/githubWorkflow';
 // import { query } from '../../../lib/db'; // Adjust path if needed
 
 // Handle POST requests
+// export async function POST(req) {
+//   const { title, subtitle, description,imgurl, videourl, categories } = req.body;
+
+//   if (!title || !videourl) {
+//     return NextResponse.json({ error: 'Title and Video URL are required.' }, { status: 400 });
+//   }
+
+//   try {
+//     const result = await query(
+//       `INSERT INTO uploads (title, subtitle, description, imgurl, videourl, categories) 
+//        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+//       [title, subtitle, description, imgurl, videourl, categories]
+//     );    
+
+//   //   res.status(201).json(result.rows[0]);
+//   // } catch (error) {
+//   //   console.error('Error saving to database:', error);
+//   //   res.status(500).json({ error: 'Database error' });
+//   // }
+//   await TriggerWorkflow('create');
+//   console.log("trigger activated")
+
+
+//     return NextResponse.json(result.rows[0], { status: 200 });
+//   } catch (error) {
+//     console.error('Error saving to database:', error);
+//     return NextResponse.json({ error: 'Database error' }, { status: 500 });
+//   }
+// }
+
 export async function POST(req) {
-  const { title, subtitle, description,imgurl, videourl, categories } = req.body;
+  const { title, subtitle, description, imgurl, videourl, categories } = await req.json();
 
   if (!title || !videourl) {
     return NextResponse.json({ error: 'Title and Video URL are required.' }, { status: 400 });
@@ -18,16 +48,10 @@ export async function POST(req) {
       `INSERT INTO uploads (title, subtitle, description, imgurl, videourl, categories) 
        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
       [title, subtitle, description, imgurl, videourl, categories]
-    );    
+    );
 
-  //   res.status(201).json(result.rows[0]);
-  // } catch (error) {
-  //   console.error('Error saving to database:', error);
-  //   res.status(500).json({ error: 'Database error' });
-  // }
-  await TriggerWorkflow('create');
-  console.log("trigger activated")
-
+    await TriggerWorkflow('create');
+    console.log('trigger activated');
 
     return NextResponse.json(result.rows[0], { status: 200 });
   } catch (error) {
@@ -35,6 +59,7 @@ export async function POST(req) {
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }
 }
+
 
 
 // export async function GET(req) {
