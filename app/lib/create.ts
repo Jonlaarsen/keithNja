@@ -1,5 +1,4 @@
 import { neon } from '@neondatabase/serverless';
-import {TriggerWorkflow} from './githubWorkflow'
 
 // export const create = async (formData: FormData) => {
 //   'use server';
