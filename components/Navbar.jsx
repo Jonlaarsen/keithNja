@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { motion, useCycle } from "framer-motion";
 import { usePathname, useRouter } from 'next/navigation';
+import LogoutButton from './LogoutButton';
 
 
 
@@ -16,8 +17,14 @@ const categories =[
 
 const Navbar = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);  
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const pathname = usePathname();
     const isHomePage = pathname === "/";
+
+    useEffect(() => {
+        const isUserLoggedIn = document.cookie.includes("isLoggedin=true");
+        setIsLoggedIn(isUserLoggedIn);
+      }, []);
   
 
 
@@ -98,6 +105,7 @@ const Navbar = () => {
             </motion.li>
           ))}
           </motion.ul>  
+           
         </div>
       )}
        
