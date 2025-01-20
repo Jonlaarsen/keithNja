@@ -1,4 +1,5 @@
 import { neon } from '@neondatabase/serverless';
+import { TriggerWorkflow } from './githubWorkflow';
 
 export const create = async (formData: FormData) => {
   'use server';
@@ -36,6 +37,8 @@ export const create = async (formData: FormData) => {
       [title, subtitle, description, imgURL, videoURL, category]
     );
     console.log('Data inserted successfully!');
+    TriggerWorkflow('create')
+    console.log('workflow triggered')
     
   } catch (error) {
     console.error('Error inserting data:', error);
