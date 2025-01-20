@@ -7,7 +7,7 @@ import { TriggerWorkflow } from '@/app/lib/githubWorkflow';
 
 // Handle POST requests
 export async function POST(req, res) {
-  const { title, subtitle, description, url } = req.body;
+  const { title, subtitle, description,imgurl, videourl, categories } = req.body;
 
   if (!title || !videourl) {
     return NextResponse.json({ error: 'Title and Video URL are required.' }, { status: 400 });
@@ -15,9 +15,9 @@ export async function POST(req, res) {
 
   try {
     const result = await query(
-      `INSERT INTO uploads (title, subtitle, description, url) 
+      `INSERT INTO uploads (title, subtitle, description, imgurl, videourl, categories) 
        VALUES ($1, $2, $3, $4) RETURNING *`,
-      [title, subtitle, description, url]
+      [title, subtitle, description, imgurl, videourl, categories]
     );
 
     await TriggerWorkflow('create');
