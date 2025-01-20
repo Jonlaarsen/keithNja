@@ -6,7 +6,7 @@ import { TriggerWorkflow } from '@/app/lib/githubWorkflow';
 // import { query } from '../../../lib/db'; // Adjust path if needed
 
 // Handle POST requests
-export async function POST(req, res) {
+export async function POST(req) {
   const { title, subtitle, description,imgurl, videourl, categories } = req.body;
 
   if (!title || !videourl) {
