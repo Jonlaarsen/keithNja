@@ -81,8 +81,6 @@ export const create = async (formData: FormData) => {
 
     console.log('Data inserted successfully!');
 
-    // Trigger GitHub Actions workflow
-    await TriggerWorkflow('create'); 
 
   } catch (error) {
     console.error('Error inserting data:', error);
