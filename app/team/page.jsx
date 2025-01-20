@@ -57,7 +57,7 @@ const page = () => {
             className='h-[25rem] group inset-0 w-screen md:w-[25rem] object-cover group-hover:brightness-50'
              alt={pep.name} />
                 <div className="absolute inset-0 flex flex-col justify-center items-center mx-8 text-center text-white">
-                <h1 className='hidden absolute group-hover:block text-xl text-blue-400' >Learn More</h1>
+                <h1 className='hidden absolute group-hover:block text-xl text-blue-400 uppercase font-[300]' >Learn More</h1>
                 </div>
             <h1 className='text-3xl text-center md:text-left footerheader py-10'>{pep.name}</h1>
           {/*   <p>{pep.desc}</p> */}
@@ -71,25 +71,40 @@ const page = () => {
           className="fixed inset-0 bg-black bg-opacity-85  flex justify-center items-center z-50"
           onClick={closeModal}
         >
-          <div
-            className="bg-white text-black  h-full md:h-auto w-[56rem] gap-10 overflow-hidden flex flex-col md:flex-row items-center justify-center  relative"
+          <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale:1}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileInView={true}
+            className="bg-black text-white  h-full md:h-auto w-[56rem] gap-10 overflow-hidden flex flex-col md:flex-row items-center justify-center  relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <img src={currentPep.url} className='md:h-auto h-[20rem] w-screen md:w-[20rem] object-cover' alt="" />
+            <motion.img 
+            initial={{ scale: 1.3 }}
+            animate={{ scale:1}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileInView={true}
+            src={currentPep.url} className='md:h-auto h-[20rem] w-screen md:w-[20rem] object-cover' alt="" />
 
-            <div className='flex flex-col font-[500] gap-4 text-center mx-4 md:text-left md:mx-0'>
-              <h1 className='footerheader text-3xl font-semibold md:text-5xl'>{currentPep.name}</h1>
+            <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale:1}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileInView={true}
+             className='flex flex-col font-[500] gap-4 text-center mx-4 md:text-left md:mx-0'>
+              <h1 className='footerheader text-3xl font-semibold md:text-5xl '>{currentPep.name}</h1>
               <p>{currentPep.desc}</p>
-            </div>
+            </motion.div>
 
             <button
               onClick={closeModal}
-              className="absolute top-4 text-blue-500 right-4 md:text-white text-3xl font-bold"
+              className="absolute top-4 text-white right-4  text-3xl font-bold"
             >
               &times;
             </button>
+            </motion.div>
           </div>
-        </div>
+        
       )}
 
     </motion.div>

@@ -6,9 +6,6 @@ const page = () => {
   return (
     <div>
       <Stats/>
-      <div>text number of projexts</div>
-      <div> numbers of global partners</div>
-      <div>brand logos</div>
     </div>
   )
 }
