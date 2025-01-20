@@ -1,30 +1,31 @@
 // // import { query } from '../../lib/db';
 
-// // export default async function handler(req, res) {
-// //   if (req.method === 'POST') {
-// //     const { title, subtitle, description, url } = req.body;
+// export default async function handler(req, res) {
+//   if (req.method === 'POST') {
+//     const { title, subtitle, description, url } = req.body;
 
-// //     if (!title || !url) {
-// //       return res.status(400).json({ error: 'Title and URL are required.' });
-// //     }
+//     if (!title || !url) {
+//       return res.status(400).json({ error: 'Title and URL are required.' });
+//     }
 
-// //     try {
-// //       const result = await query(
-// //         `INSERT INTO uploads (title, subtitle, description, url) 
-// //          VALUES ($1, $2, $3, $4) RETURNING *`,
-// //         [title, subtitle, description, url]
-// //       );
+//     try {
+//       const result = await query(
+//         `INSERT INTO uploads (title, subtitle, description, url) 
+//          VALUES ($1, $2, $3, $4) RETURNING *`,
+//         [title, subtitle, description, url]
+//       );
+//       console.log("sup cunt")
 
-// //       res.status(201).json(result.rows[0]);
-// //     } catch (error) {
-// //       console.error('Error saving to database:', error);
-// //       res.status(500).json({ error: 'Database error' });
-// //     }
-// //   } else {
-// //     res.setHeader('Allow', ['POST']);
-// //     res.status(405).json({ error: `Method ${req.method} not allowed` });
-// //   }
-// // }
+//       res.status(201).json(result.rows[0]);
+//     } catch (error) {
+//       console.error('Error saving to database:', error);
+//       res.status(500).json({ error: 'Database error' });
+//     }
+//   } else {
+//     res.setHeader('Allow', ['POST']);
+//     res.status(405).json({ error: `Method ${req.method} not allowed` });
+//   }
+// }
 
 // // let clients = []; // To store connected clients
 
@@ -68,87 +69,89 @@
 // // }
 
 
-import { query } from '../../lib/db';
+// import { query } from '../../lib/db';
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const { title, subtitle, description, url } = req.body;
+// export default async function handler(req, res) {
+//   if (req.method === 'POST') {
+//     const { title, subtitle, description, url } = req.body;
 
-    if (!title || !url) {
-      return res.status(400).json({ error: 'Title and URL are required.' });
-    }
+//     if (!title || !url) {
+//       return res.status(400).json({ error: 'Title and URL are required.' });
+//     }
 
-    try {
-      const result = await query(
-        `INSERT INTO uploads (title, subtitle, description, url) 
-         VALUES ($1, $2, $3, $4) RETURNING *`,
-        [title, subtitle, description, url]
-      );
+//     try {
+//       const result = await query(
+//         `INSERT INTO uploads (title, subtitle, description, url) 
+//          VALUES ($1, $2, $3, $4) RETURNING *`,
+//         [title, subtitle, description, url]
+//       );
 
-      res.status(201).json(result.rows[0]);
-    } catch (error) {
-      console.error('Error saving to database:', error);
-      res.status(500).json({ error: 'Database error' });
-    }
-  } else if (req.method === 'PUT') {
-    const { id } = req.query;
-    const { title, subtitle, description, url } = req.body;
+//       res.status(201).json(result.rows[0]);
+//     } catch (error) {
+//       console.error('Error saving to database:', error);
+//       res.status(500).json({ error: 'Database error' });
+//     }
+//   } else if (req.method === 'PUT') {
+//     const { id } = req.query;
+//     const { title, subtitle, description, url } = req.body;
 
-    if (!title || !url) {
-      return res.status(400).json({ error: 'Title and URL are required.' });
-    }
+//     if (!title || !url) {
+//       return res.status(400).json({ error: 'Title and URL are required.' });
+//     }
 
-    try {
-      // Check if the clip exists
-      const checkClip = await query(
-        `SELECT * FROM uploads WHERE id = $1`,
-        [id]
-      );
+//     try {
+//       // Check if the clip exists
+//       const checkClip = await query(
+//         `SELECT * FROM uploads WHERE id = $1`,
+//         [id]
+//       );
 
-      if (checkClip.rows.length === 0) {
-        return res.status(404).json({ error: 'Clip not found.' });
-      }
+//       if (checkClip.rows.length === 0) {
+//         return res.status(404).json({ error: 'Clip not found.' });
+//       }
 
-      // Update the clip
-      const result = await query(
-        `UPDATE uploads
-         SET title = $1, subtitle = $2, description = $3, url = $4
-         WHERE id = $5 RETURNING *`,
-        [title, subtitle, description, url, id]
-      );
+//       // Update the clip
+//       const result = await query(
+//         `UPDATE uploads
+//          SET title = $1, subtitle = $2, description = $3, url = $4
+//          WHERE id = $5 RETURNING *`,
+//         [title, subtitle, description, url, id]
+//       );
 
-      res.status(200).json(result.rows[0]);
-    } catch (error) {
-      console.error('Error updating clip:', error);
-      res.status(500).json({ error: 'Database error' });
-    }
-  } else if (req.method === 'DELETE') {
-    const { id } = req.query;
+//       res.status(200).json(result.rows[0]);
+//     } catch (error) {
+//       console.error('Error updating clip:', error);
+//       res.status(500).json({ error: 'Database error' });
+//     }
+//   } else if (req.method === 'DELETE') {
+//     const { id } = req.query;
 
-    try {
-      // Check if the clip exists
-      const checkClip = await query(
-        `SELECT * FROM uploads WHERE id = $1`,
-        [id]
-      );
+//     try {
+//       // Check if the clip exists
+//       const checkClip = await query(
+//         `SELECT * FROM uploads WHERE id = $1`,
+//         [id]
+//       );
 
-      if (checkClip.rows.length === 0) {
-        return res.status(404).json({ error: 'Clip not found.' });
-      }
+//       if (checkClip.rows.length === 0) {
+//         return res.status(404).json({ error: 'Clip not found.' });
+//       }
 
-      // Delete the clip
-      await query(
-        `DELETE FROM uploads WHERE id = $1`,
-        [id]
-      );
+//       // Delete the clip
+//       await query(
+//         `DELETE FROM uploads WHERE id = $1`,
+//         [id]
+//       );
 
-      res.status(204).end(); // No content returned after successful delete
-    } catch (error) {
-      console.error('Error deleting clip:', error);
-      res.status(500).json({ error: 'Database error' });
-    }
-  } else {
-    res.setHeader('Allow', ['POST', 'PUT', 'DELETE']);
-    res.status(405).json({ error: `Method ${req.method} not allowed` });
-  }
-}
+//       res.status(204).end(); // No content returned after successful delete
+//     } catch (error) {
+//       console.error('Error deleting clip:', error);
+//       res.status(500).json({ error: 'Database error' });
+//     }
+//   } else {
+//     res.setHeader('Allow', ['POST', 'PUT', 'DELETE']);
+//     res.status(405).json({ error: `Method ${req.method} not allowed` });
+//   }
+// }
+
+

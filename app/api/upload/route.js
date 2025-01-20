@@ -16,11 +16,9 @@ export async function POST(req) {
   try {
     const result = await query(
       `INSERT INTO uploads (title, subtitle, description, imgurl, videourl, categories) 
-       VALUES ($1, $2, $3, $4) RETURNING *`,
+       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
       [title, subtitle, description, imgurl, videourl, categories]
-    );
-
-    await TriggerWorkflow('create');
+    );    
 
   //   res.status(201).json(result.rows[0]);
   // } catch (error) {
@@ -28,6 +26,8 @@ export async function POST(req) {
   //   res.status(500).json({ error: 'Database error' });
   // }
   await TriggerWorkflow('create');
+  console.log("trigger activated")
+
 
     return NextResponse.json(result.rows[0], { status: 200 });
   } catch (error) {
