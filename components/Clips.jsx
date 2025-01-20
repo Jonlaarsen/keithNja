@@ -125,7 +125,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.1 }}
       whileInView={true}
-      className="flex flex-col justify-center w-screen md:w-full overflow-x-hidden items-center "
+      className="flex flex-col justify-center w-screen md:w-full overflow-x-hidden items-center md:pt-0 pt-[10rem] "
     >
       <div className="flex flex-wrap md:flex-row flex-col justify-center md:border-2 border-blue-800 mb-10 md:mb-[2rem] ">
         {categories.map((category) => (
@@ -184,7 +184,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
           onClick={closeModal}
         >
           <div
-            className="bg-white rounded-lg overflow-hidden relative"
+            className="bg-white  overflow-hidden relative"
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
