@@ -6,7 +6,7 @@ import InfiniteCarousel from '@/components/InfiniteCarousel'
 const Footer = () => {
   return (
     <div>
-      <div className="flex flex-col text-md md:text-2xl gap-[2rem] max-w-[99vw] text-center items-center justify-center h-[80vh] md:h-[40rem]">
+      <div className="flex flex-col text-md md:text-2xl gap-[2rem] w-full text-center items-center justify-center h-[80vh] md:h-[40rem]">
         <h1 className="text-4xl text-center md:text-5xl pb-10">"Where vision meets storytelling"</h1>
         <p className="font-[200]">Production & Services in Seoul and Worldwide</p>
         <Link href="emailto:blabla@email.com" className="font-[200]">contact@posted-productions.com</Link>

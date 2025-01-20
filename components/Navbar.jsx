@@ -17,14 +17,10 @@ const categories =[
 
 const Navbar = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);  
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const pathname = usePathname();
     const isHomePage = pathname === "/";
 
-    useEffect(() => {
-        const isUserLoggedIn = document.cookie.includes("isLoggedin=true");
-        setIsLoggedIn(isUserLoggedIn);
-      }, []);
+
   
 
 
@@ -104,7 +100,7 @@ const Navbar = () => {
             </Link>
             </motion.li>
           ))}
-          </motion.ul>  
+          </motion.ul>
            
         </div>
       )}

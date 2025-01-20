@@ -3,7 +3,8 @@ import LogosComp from '@/components/LogosComp'
 
 const page = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 w-[100vw] pt-[12rem]  gap-4'>
+    <>
+    <div className='grid grid-cols-1 md:grid-cols-2 pt-[12rem]  gap-4'>
       <div >
         <div>
           <h1 className='text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
@@ -50,13 +51,10 @@ const page = () => {
         alt="" />
       </div>
       <div>
-        
-        <LogosComp/>
-     
       </div>
-      
-     
     </div>
+    <LogosComp/>
+    </>
   )
 }
 
