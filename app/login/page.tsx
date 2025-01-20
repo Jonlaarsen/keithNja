@@ -18,7 +18,7 @@ export default function LoginPage() {
       username === process.env.NEXT_PUBLIC_USERNAME &&
       password === process.env.NEXT_PUBLIC_PASSWORD
     ) {
-      document.cookie = 'isLoggedin=true; path=/;'; // Set cookie
+      document.cookie = `isLoggedin=true; path=/; expires=${new Date(Date.now() + 86400 * 1000).toUTCString()}`;
       setLoginError('');
       router.push('/admin');
     } else {
