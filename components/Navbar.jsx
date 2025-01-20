@@ -3,15 +3,15 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { motion, useCycle } from "framer-motion";
 import { usePathname, useRouter } from 'next/navigation';
-import LogoutButton from './LogoutButton';
 
 
 
 const categories =[
     { id:1 , title:'About', path:"about"},
-    { id:2 , title:'Works', path:"works"},
+    { id:2 , title:'Our Team', path:"team"}, // fix new page
     { id:3 , title:'Services', path:"services"},
-    { id:4 , title:'Contact', path:"contact"},
+    { id:4 , title:'Works', path:"works"},
+    { id:5 , title:'Contact', path:"contact"},
 
 ]
 
@@ -25,7 +25,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="w-screen uppercase  top-0 left-0 fixed  z-50 flex flex-row items-center justify-between px-10">
+    <div className="w-screen uppercase  top-0 left-0 absolute  z-50 flex flex-row items-center justify-between px-10">
        
        {isHomePage ? (
         <Link href="/">
@@ -53,13 +53,13 @@ const Navbar = () => {
             className="focus:outline-none z-30 group"
           >
             <span 
-              className={`block w-8 h-1 transition-all duration-300 bg-white ${isOpen ? 'rotate-45 translate-y-2' : ''} group-hover:bg-purple-500`}
+              className={`block w-[3rem] mb-2 h-1 transition-all duration-300 bg-white ${isOpen ? 'rotate-45 translate-y-3' : ''} group-hover:bg-blue-800`}
             ></span>
             <span 
-              className={`block w-8 h-1 my-1 transition-all duration-300 bg-white ${isOpen ? 'opacity-0' : ''} group-hover:bg-purple-500`}
+              className={`block w-[3rem] mb-2 h-1 my-1 transition-all duration-300 bg-white ${isOpen ? 'opacity-0' : ''} group-hover:bg-blue-800`}
             ></span>
             <span 
-              className={`block w-8 h-1 transition-all duration-300 bg-white ${isOpen ? '-rotate-45 -translate-y-2' : ''} group-hover:bg-purple-500`}
+              className={`block w-[3rem] mb-2 h-1 transition-all duration-300 bg-white ${isOpen ? '-rotate-45 -translate-y-3' : ''} group-hover:bg-blue-800`}
             ></span>
           </motion.button>
         </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
               key={link.id}
               href={link.path} 
               
-              className='text-white text-3xl md:text-5xl my-4 hover:text-purple-500 transition'
+              className='text-white text-3xl md:text-5xl my-4 hover:text-blue-800 transition'
             >
               
               {link.title}

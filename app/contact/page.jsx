@@ -6,9 +6,9 @@ const page = () => {
     <>
     <div className='grid grid-cols-1 md:grid-cols-2 pt-[12rem]  gap-4'>
       <div >
-        <div>
-          <h1 className='text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
-          <p className='text-xl font-[300] px-5 w-[90%] pb-[3rem]'>Interested in working with us? <br/> Fill out some info and we will be in touch shortly!</p>
+        <div className='md:pl-5'>
+          <h1 className=' text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
+          <p className=' text-xl font-[300] px-5 w-[90%] pb-[3rem]'>Interested in working with us? <br/> Fill out some info and we will be in touch shortly!</p>
         </div>
         
         <form 
@@ -53,7 +53,7 @@ const page = () => {
       <div>
       </div>
     </div>
-    <LogosComp/>
+    
     </>
   )
 }

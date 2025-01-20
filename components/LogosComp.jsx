@@ -29,32 +29,18 @@ const BrandLogos =[
 
 const LogosComp = () => {
   return (
-    <div className=' '>
-    <h1 className='md:text-7xl uppercase font-bold text-center  py-[10rem]'>"Companys We Have Worked with"</h1>
-    <div className='h-[9rem] w-full bg-gradient-to-t from-white   to-[#0a0a0a63] '>
-    </div>
+   
+ 
     
     <div className='grid md:grid-cols-6 grid-cols-3  w-full bg-white gap-6 md:gap-20 py-10 px-[4rem] '>
       {BrandLogos.map((item) =>
       (
         <div key={item.id} className='flex items-center justify-center'>
-            <img src={item.src} className='md:w-[9rem] w-full h-auto object-contain'  alt="" />
+            <img src={item.src} className='md:w-[4rem] w-full h-auto object-contain'  alt="" />
         </div>
       )
     )}
-    </div>
-
-    <div className='h-[9rem] w-full bg-gradient-to-b from-white  to-[#0a0a0a] '>
-    </div>
-    <div className='flex flex-col items-center text-center justify-center font-[300] text-xl md:text-4xl gap-[4rem] w-full py-[7rem] '>
-    
-    <div>
-      <h2 >"insert some review here"</h2><span className='font-[500]' > - wes anderson</span>
-    </div>
-    <div>
-      <h2 >"insert some review here"</h2><span className='font-[500]' > - tarantino</span>
-    </div>  
-    </div>
+ 
     </div>
   )
 }

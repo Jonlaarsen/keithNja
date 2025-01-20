@@ -8,7 +8,7 @@ export default async function Page() {
   return (
     <div>
     <Hero/>
-    <LogosComp/>
+    {/* <LogosComp/> */}
     </div>
   );
 }

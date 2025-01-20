@@ -70,7 +70,7 @@ const page = () => {
   return (
     <div className="pt-[10rem]">
       <div className='flex items-center justify-center py-10 md:py-[10rem] mx-5 '>
-        <h1 className='text-2xl md:text-5xl text-center w-[80rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
+        <h1 className='text-2xl md:text-xl text-left w-[80rem] uppercase'>"Posted Productions expertly brings your vision to life through compelling storytelling, <br/>
        offering solutions to all your needs."</h1>
       </div>
       

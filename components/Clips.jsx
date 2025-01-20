@@ -127,15 +127,15 @@ const Clips = ({ uploads, onUpdateClip }) => {
       whileInView={true}
       className="flex flex-col justify-center w-screen md:w-full overflow-x-hidden items-center "
     >
-      <div className="flex flex-wrap md:flex-row flex-col justify-center md:border-2 border-purple-500 mb-10 md:mb-[7rem] ">
+      <div className="flex flex-wrap md:flex-row flex-col justify-center md:border-2 border-blue-800 mb-10 md:mb-[2rem] ">
         {categories.map((category) => (
           <button
             key={category.value}
             onClick={() => setSelectedCategory(category.value)}
             className={`md:px-6 px-2 text-white py-2 md:text-xl font-[400] uppercase ${
               selectedCategory === category.value
-                ? "bg-purple-500 text-white"
-                : "hover:bg-purple-500 hover:text-white"
+                ? "bg-blue-800 border-blue-800 text-white"
+                : "hover:bg-blue-border-blue-800 hover:text-white"
             }`}
           >
             {category.label}
@@ -164,7 +164,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
             {isLoggedIn && (
               <div>
                 <button
-                  className="absolute top-4 left-4 text-white bg-purple-500 p-2 rounded-full"
+                  className="absolute top-4 left-4 text-white bg-blue-border-blue-800 p-2 rounded-full"
                   onClick={(e) => {
                     e.stopPropagation(); 
                     openEditModal(upload); 
@@ -288,7 +288,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-purple-500 text-white rounded"
+                  className="px-4 py-2 bg-blue-border-blue-800 text-white rounded"
                 >
                   Save Changes
                 </button>

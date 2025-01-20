@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     
-    <div className="md:min-h-screen pb-[5rem] relative">
+    <div className="md:min-h-screen pb-[5rem] z-10">
       <div className="flex flex-col items-center gap-8 justify-center">
         {/* <div
           className="flex top-0 left-0 h-[100vh] z-20 w-auto md:w-screen md:h-screen items-center justify-center"
@@ -47,9 +47,8 @@ const Hero = () => {
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
             className="absolute top-1/2 left-1/2 w-[177.77777778vh] h-[56.25vw] min-h-full min-w-full transform -translate-x-1/2 -translate-y-1/2 box-border pointer-events-none"
           ></iframe>
+          {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
         </div>
-
-        {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
 
       </div>
     </div>
