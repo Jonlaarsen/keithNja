@@ -21,8 +21,8 @@ const sections = [
       "https://miro.medium.com/v2/resize:fit:1400/0*Er7_azDS4pmwTobF.png",
     content: [
       <motion.ul
-      initial={{ x: 400, opacity: 0}}
-      whileInView={{ x: 0, opacity: 1}}
+      initial={{  opacity: 0}}
+      whileInView={{ opacity: 1}}
       transition={{duration:1}}
        key="list1" className='flex flex-col gap-6'>
         <li>&#9830; Concept Development</li>
@@ -63,8 +63,8 @@ const sections = [
       "https://images.squarespace-cdn.com/content/v1/668baa90a93f73799f48b8ba/1726027199352-EYD3D2QN7HWL879V5CO6/unsplash-image-U4-_lvnjkd8.jpg?format=2500w",
     content: [
       <motion.ul
-      initial={{ x: 400, opacity: 0}}
-      whileInView={{ x: 0, opacity: 1}}
+      initial={{  opacity: 0}}
+      whileInView={{ opacity: 1}}
       transition={{duration:1}}
        key="list3" className='flex  flex-col gap-6'>
         <li>&#9830; Transcoding</li>
@@ -83,8 +83,8 @@ const sections = [
 
 const page = () => {
   return (
-    <div className="pt-[10rem]">
-      <div className='flex items-center overflow-hidden justify-center py-10 md:py-[5rem] mx-5 '>
+    <div className="pt-[10rem] overflow-hidden">
+      <div className='flex items-center  justify-center py-10 md:py-[5rem] mx-5 '>
         <FlipWordsDemo/>
       </div>
       
@@ -99,7 +99,11 @@ const page = () => {
             style={{ backgroundImage: `url("${item.bgImage}")` }} 
            className=' flex items-center justify-center bg-cover min-h-[20rem]'
           >
-            <h1 className=' text-4xl md:text-6xl md:font-bold '>{item.title}</h1>
+            <motion.h1 
+            initial={{ y:200, opacity: 0}}
+            whileInView={{y:0, opacity: 1}}
+            transition={{duration:1}}
+            className=' text-4xl md:text-6xl md:font-bold '>{item.title}</motion.h1>
           </div>
 
           {/* Content Section */}
