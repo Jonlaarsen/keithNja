@@ -145,7 +145,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center lg:mx-10">
         {filteredUploads.map((upload) => (
-          <div
+          <motion.div
+          initial={{opacity:0}}
+          whileInView={{opacity:1}}
+          transition={{duration:0.5}}
             key={upload.id}
             className="cursor-pointer overflow-hidden relative group w-screen h-auto md:max-w-[25rem] lg:max-w-[27rem] 2xl:max-w-[31rem] md:h-[13.5rem] lg:h-[15rem]  2xl:h-[16.5rem]"
             onClick={() => openModal(upload)}
@@ -174,7 +177,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
                 </button>
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
 
