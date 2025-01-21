@@ -32,6 +32,8 @@
 name: Database Operations Deployment
 
 on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight UTC
   workflow_dispatch: # Triggered programmatically
     inputs:
       operation:
