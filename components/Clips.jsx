@@ -106,10 +106,24 @@ const Clips = ({ uploads, onUpdateClip }) => {
     }
   };
   
-  const filteredUploads =
-    selectedCategory === "All"
-      ? uploads
-      : uploads.filter((upload) => upload.categories === selectedCategory);
+  const filteredUploads = uploads
+  .filter(
+    (upload) =>
+      selectedCategory === "All" || upload.categories === selectedCategory
+  )
+  .sort((a, b) => {
+    // Prioritize IDs 1 to 6
+    const isAInPriority = a.id >= 1 && a.id <= 6;
+    const isBInPriority = b.id >= 1 && b.id <= 6;
+
+    if (isAInPriority && isBInPriority) return a.id - b.id; // Sort priority items by ID ascending
+    if (isAInPriority) return -1; // a comes first
+    if (isBInPriority) return 1; // b comes first
+
+    // For other items, sort by ID descending
+    return b.id - a.id;
+  });
+
 
   const categories = [
     { label: "All", value: "All" },
@@ -167,7 +181,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
             {isLoggedIn && (
               <div>
                 <button
-                  className="absolute top-4 left-4 text-white bg-blue-border-blue-800 p-2 rounded-full"
+                  className="absolute top-4 left-4 text-white bg-blue-800 p-2 rounded-full"
                   onClick={(e) => {
                     e.stopPropagation(); 
                     openEditModal(upload); 
