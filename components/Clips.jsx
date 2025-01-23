@@ -148,8 +148,8 @@ const Clips = ({ uploads, onUpdateClip }) => {
             onClick={() => setSelectedCategory(category.value)}
             className={`md:px-6 px-2 text-white py-2 md:text-xl font-[400] uppercase ${
               selectedCategory === category.value
-                ? "bg-blue-800 border-blue-800 text-white"
-                : "hover:bg-blue-border-blue-800 hover:text-white"
+                ? "bg-blue-800 border-blue-800 text-white transition-all ease-in-out duration-200"
+                : "hover:text-blue-800 transition-all ease-in-out duration-200 "
             }`}
           >
             {category.label}

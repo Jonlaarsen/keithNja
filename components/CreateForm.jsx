@@ -7,7 +7,6 @@ const CreateForm = () => {
     <div className="w-screen">
     <form
       action={create}
-      method='POST'
       style={{ maxWidth: '600px', margin: 'auto', marginTop:"15rem" }}
     >
       <div style={{ marginBottom: '1rem' }}>
