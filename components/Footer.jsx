@@ -5,7 +5,7 @@ import InfiniteCarousel from '@/components/InfiniteCarousel'
 
 const Footer = () => {
   return (
-    <div className='pb-[1rem] pt-[7rem] bg-background'>
+    <div className='pb-[1rem] pt-[7rem] bg-black '>
       <div className="flex flex-col text-md md:text-xl gap-[2rem]  w-full  text-center items-center justify-center h-[40vh] md:h-[20rem]">
         <h1 className="footerheader text-3xl text-center md:text-4xl pb-10">"Where Vision Meets Storytelling"</h1>
         <p className="font-[200]">Production & Services in Seoul and Worldwide</p>

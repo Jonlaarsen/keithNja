@@ -10,7 +10,7 @@ const page = () => {
     animate={{scale:1, opacity:1}}
     transition={{duration:0.7}}
     
-     className='grid grid-cols-1 md:grid-cols-2 pt-[12rem]  gap-4'>
+     className='grid grid-cols-1 md:grid-cols-2 pt-[12rem] pb-10  gap-4'>
       <div >
         <div className='md:pl-5'>
           <h1 className=' text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>

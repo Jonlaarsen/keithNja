@@ -26,7 +26,7 @@ const Stats = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.4, delay: 0.1 }}
       whileInView={true}
-      className='min-h-screen pt-[10rem] w-screen flex flex-col items-center justify-center'>
+      className='min-h-screen pt-[10rem] w-full flex flex-col items-center justify-center'>
       <div>
         <div>
             {stats.map((stat) => (

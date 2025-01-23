@@ -25,7 +25,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="w-screen uppercase  top-0 left-0 absolute  z-50 flex flex-row items-center justify-between px-10">
+    <div className="w-full uppercase  top-0 left-0 absolute  z-50 flex flex-row items-center justify-between px-10">
        
        {isHomePage ? (
         <Link href="/">

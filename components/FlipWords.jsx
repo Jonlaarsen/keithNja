@@ -9,12 +9,12 @@ export function FlipWordsDemo() {
   return (
     (<div className="h-[15rem] flex justify-center items-center px-4">
       <div
-        className="text-2xl md:text-6xl footerheader text-center mx-auto font-normal">
-        Posted Productions brings your vision to life,
-         <br />
-        With expertise in 
+        className="text-2xl md:text-5xl uppercase text-center md:text-left mx-auto font-normal">
+        <p>Posted Productions brings your vision to life, </p>
+         <p>With expertise in  <span> <FlipWords words={words}/></span></p>
+        
         <br className="block md:hidden"/>
-        <FlipWords words={words}/>
+        
         
       </div>
     </div>)
@@ -74,7 +74,7 @@ export const FlipWords = ({
           position: "absolute",
         }}
         className={cn(
-          "z-10 inline-block relative text-left text-4xl md:text-7xl text-blue-500 font-bold px-2",
+          "z-10 inline-block relative text-left uppercase text-4xl md:text-7xl text-blue-500 font-bold px-2",
           className
         )}
         key={currentWord}>

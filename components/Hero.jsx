@@ -11,7 +11,7 @@ const Hero = () => {
 
   return (
     
-    <div className="md:min-h-screen pb-[5rem] z-10">
+    <div className="md:min-h-screen z-10">
       <div className="flex flex-col items-center gap-8 justify-center">
         <div className="flex top-0 left-0 h-screen w-full items-center justify-center overflow-hidden relative">
            <iframe src="https://player.vimeo.com/video/1048469458?h=3224553ac2&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;controls=0&amp;loop=1&amp;dnt=1"

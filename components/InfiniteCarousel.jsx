@@ -18,7 +18,7 @@ const logos = [
   
 const InfiniteCarousel = () => {
     return (
-      <div className="relative overflow-hidden py-12">
+      <div className="relative overflow-hidden pt-12 mb-4">
         <motion.div
           className="flex whitespace-nowrap"
           initial={{ x: 0 }}
@@ -41,8 +41,8 @@ const InfiniteCarousel = () => {
           ))}
         </motion.div>
         {/* Gradient overlays */}
-        <div className="absolute top-0 left-0 h-full w-64 bg-gradient-to-r from-[var(--background)] to-transparent pointer-events-none"></div>
-        <div className="absolute top-0 right-0 h-full w-64 bg-gradient-to-l from-[var(--background)] to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 left-0 h-full w-64 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 right-0 h-full w-64 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
       </div>
     );
   };
