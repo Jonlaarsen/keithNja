@@ -1,22 +1,25 @@
 "use client";
 import { motion } from "framer-motion";
+import {BwImages} from '@/data/ImgData'
 
-const logos = [
-    "/postedlogo.png",
-    "/Posted.png",
-    "/Posted3.png",
-    "/postedlogo.png",
-    "/Posted.png",
-    "/Posted3.png",
-    "/postedlogo.png",
-    "/Posted.png",
-    "/Posted3.png",  
-    "/postedlogo.png",
-    "/Posted.png",
-    "/Posted3.png",
-  ];
+// const logos = [
+//     "/postedlogo.png",
+//     "/Posted.png",
+//     "/Posted3.png",
+//     "/postedlogo.png",
+//     "/Posted.png",
+//     "/Posted3.png",
+//     "/postedlogo.png",
+//     "/Posted.png",
+//     "/Posted3.png",  
+//     "/postedlogo.png",
+//     "/Posted.png",
+//     "/Posted3.png",
+//   ];
   
 const InfiniteCarousel = () => {
+
+  
     return (
       <div className="relative overflow-hidden pt-12 mb-4">
         <motion.div
@@ -31,12 +34,11 @@ const InfiniteCarousel = () => {
           style={{ gap: "10px" }} // Ensures consistent gap
         >
           {/* Combine logos and duplicates dynamically */}
-          {[...logos, ...logos].map((src, index) => (
+          {[...BwImages, ...BwImages].map((image, index) => (
             <img
               key={index}
-              src={src}
-              alt={`Logo ${index + 1}`}
-              className="h-12 mx-10 invert"
+              src={image.src}
+              className="h-[10rem] mx-10 invert object-fill"
             />
           ))}
         </motion.div>
