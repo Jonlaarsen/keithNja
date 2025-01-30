@@ -36,7 +36,7 @@ const Stats = () => {
             <h1 className='md:text-2xl text-xl  font-[300]'>Completed Works</h1>
           </div>
 
-          <div className='text-justify max-w-[55%] text-lg  font-[200] hiddenh-[30rem] w-[47rem] md:block '>
+          <div className='text-justify max-w-[55%] text-lg  font-[200] hidden h-[30rem] w-[47rem] md:block '>
           Posted Productions is a space <span className='italic font-bold'>“where vision meets storytelling”. </span> 
             We are a dynamic multimedia production company with <span className='font-bold'>over 9years of experience,
             specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast and music video projects.
