@@ -14,8 +14,8 @@ const page = () => {
           <p className='font-light text-lg italic'>We create and refine premium content across genres - news, podcast, travel, sports, music, social issues, true crime, entertainment, commercials, music video, brand contents and more</p>
       </div>
 
-      <div className='h-full w-full flex flex-col py-10'
-      style={{ backgroundImage: 'url("https://miro.medium.com/v2/resize:fit:1400/0*Er7_azDS4pmwTobF.png")' }} 
+      <div className='h-full w-full flex flex-col bg-cover py-10'
+      style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/d/1Hv3n5efBH3Xd6r1VyzA9K82fj8kqQKKJ=w1000")' }} 
       >          
       <h1 className='text-4xl md:text-7xl uppercase flex sticky top-10 left-[2rem] text-blue-600'>PREPRODUCTION</h1>
         <div className='grid grid-cols-1 md:grid-cols-2'>
@@ -50,9 +50,8 @@ const page = () => {
         </div>
       </div>
       
-      <div className='h-full w-full flex flex-col py-10'
-      style={{ backgroundImage: 'url("https://images.squarespace-cdn.com/content/v1/668baa90a93f73799f48b8ba/1726027163743-QYWYQZGF887V6VLJ475T/unsplash-image-iBEPt9udRz4.jpg?format=2500w")' }} 
-      >          
+      <div className='h-full w-full flex flex-col bg-cover bg-no-repeat py-10'
+      style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/d/108V4IfzZvY16La5QpfpLejFXluD75Ghp=w1000")' }}     >          
       <h1 className='text-4xl md:text-7xl uppercase flex sticky top-10 left-[2rem] text-blue-600'>FILMING</h1>
       <div className='grid grid-cols-1 md:grid-cols-2'>
         <div className=' h-full md:h-[30rem] md:hidden block overflow-hidden '>
@@ -91,8 +90,8 @@ const page = () => {
         </div>
       </div>
 
-      <div className='h-full w-full flex flex-col py-10'
-      style={{ backgroundImage: 'url("https://images.squarespace-cdn.com/content/v1/668baa90a93f73799f48b8ba/1726027199352-EYD3D2QN7HWL879V5CO6/unsplash-image-U4-_lvnjkd8.jpg?format=2500w")' }} 
+      <div className='h-full w-full flex flex-col bg-cover py-10'
+      style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/d/1d0H60YZXUzohtWth90XbPorxrPUnnxef=w1000")' }} 
       >          
       <h1 className='text-4xl md:text-7xl uppercase flex sticky top-10 md:left-[2rem] text-blue-600'>POSTPRODUCTION</h1>
       <div className='grid grid-cols-1 md:grid-cols-2'>
