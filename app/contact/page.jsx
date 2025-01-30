@@ -53,8 +53,7 @@ const page = () => {
       </div>
       <div className='w-full flex justify-center items-center'>
         <div className='w-full  overflow-hidden'>
-          <iframe src="https://player.vimeo.com/video/1050681248?h=d77227cbc9&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;controls=0" 
-          frameBorder="0" 
+          <iframe src="https://player.vimeo.com/video/1051779255?h=e8c1e1223f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;controls=0" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
           className=" w-[65rem] h-screen object-fill hidden md:block "        title="Contact us Video">
           </iframe></div>
@@ -69,3 +68,6 @@ const page = () => {
 }
 
 export default page
+
+
+

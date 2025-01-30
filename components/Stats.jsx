@@ -29,14 +29,14 @@ const Stats = () => {
       className='min-h-screen pt-[10rem] w-full flex flex-col items-center mx-auto justify-evenly'>
 
       
-        <div className='flex md:flex-row flex-col h-full w-full md:h-[30rem] items-center justify-center pb-10 md:mx-auto'>
+        <div className='flex md:flex-row flex-col w-full md:h-[30rem] items-center justify-center pb-10 md:mx-auto'>
           <div   className='text-center flex flex-col items-center justify-center md:w-[25%] p-4 md:p-10'>
             <span id='counter'
             className='text-5xl md:text-9xl font-[200]  text-blue-500'></span>
             <h1 className='md:text-2xl text-xl  font-[300]'>Completed Works</h1>
           </div>
 
-          <div className='text-justify max-w-[55%] text-lg  font-[200] hidden md:block '>
+          <div className='text-justify max-w-[55%] text-lg  font-[200] hiddenh-[30rem] w-[47rem] md:block '>
           Posted Productions is a space <span className='italic font-bold'>“where vision meets storytelling”. </span> 
             We are a dynamic multimedia production company with <span className='font-bold'>over 9years of experience,
             specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast and music video projects.
@@ -64,15 +64,15 @@ const Stats = () => {
         </div>
 
       
-      <div className='grid grid-cols-1 md:grid-cols-3 justify-evenly items-center gap-10 h-[40rem] w-full mb-[4rem] '>
-        <div className='wavy-circle  flex items-center justify-center text-center bg-slate-600  overflow-hidden'>
-        <video src="/videos/video1.mov" autoPlay loop  className='object-cover w-[50rem] h-[50rem]'   alt="" />
+      <div className='flex flex-col md:grid md:grid-cols-3 justify-evenly items-center gap-10 h-full md:h-[40rem] w-full mb-[4rem] '>
+        <div className='flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[30rem] md:w-[30rem]'>
+        <video src="/videos/video1.mov" autoPlay loop  className='object-cover md:w-[50rem] md:h-[50rem]'   alt="" />
         </div>
-        <div className='flower flex  items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden'>
-          <video src="/videos/video2.mov" autoPlay loop  className='object-cover w-[50rem] h-[50rem]'   alt="" />
+        <div className='flex  items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[30rem] md:w-[30rem]'>
+          <video src="/videos/video2.mov" autoPlay loop  className='object-cover md:w-[50rem] md:h-[50rem]'   alt="" />
         </div>
-        <div className='heart flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden'>
-        <video src="/videos/video3.mov" autoPlay loop  className='object-cover w-[50rem] h-[50rem]'  alt="" />
+        <div className='flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[30rem] md:w-[30rem]'>
+        <video src="/videos/video3.mov" autoPlay loop  className='object-cover md:w-[50rem] md:h-[50rem]'  alt="" />
         </div>
       </div>
       <h1 className='text-5xl md:text-7xl pt-10 mb-[-6px] md:mb-[-10px] text-white uppercase text-center'>Channel & Brand Collaborators</h1>
