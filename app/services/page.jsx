@@ -11,7 +11,7 @@ const page = () => {
     <div className='flex flex-col  pt-[8rem] items-center'>
       <div className='h-full pb-10  w-screen md:w-[65rem] flex flex-col text-center items-center justify-center'>
           <h1 className='footerheader font-bold text-3xl md:text-7xl text-blue-600'>Your Vision. Perfectly Crafted By Us</h1>
-          <p className='font-light text-lg italic'>We create and refine primueim content across genres - news, podcast, travel, sports, music, social issues, true crime, entertainment, commercials, music video, brand contents and more</p>
+          <p className='font-light text-lg italic'>We create and refine premium content across genres - news, podcast, travel, sports, music, social issues, true crime, entertainment, commercials, music video, brand contents and more</p>
       </div>
 
       <div className='h-full w-full flex flex-col py-10'
@@ -45,7 +45,7 @@ const page = () => {
           </div>
         </div>
         <div className='md:flex items-center justify-center text-center flex-col hidden '>
-          <h1 className='text-3xl md:text-5xl mt-[-2rem] w-[45rem] bg-blue-600 bg-opacity-50 py-2 px-8'>From Concept To Completion</h1>
+          <h1 className='text-3xl md:text-5xl mt-[-2rem] w-[45rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>From Concept To Completion</h1>
           <h2 className='text-xl md:text-3xl uppercase w-[40rem] font-[400] italic'>We handle it all no matter the scale!</h2>
         </div>
       </div>
@@ -86,8 +86,8 @@ const page = () => {
       </div>
         </div>
         <div className='md:flex items-center justify-center text-center flex-col  '>
-          <h1 className='text-3xl md:text-5xl md:mt-[-2rem] md:w-[40rem] bg-blue-600 bg-opacity-50 py-2 px-8'>Focus on your vision</h1>
-          <h2 className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>we will take care of the rest!</h2>
+          <h1 className='text-3xl md:text-5xl md:mt-[-2rem] md:w-[40rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>Focus on your vision</h1>
+          <h2 className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>we will take care of the rest! Seamless Filming, From Start to Finish</h2>
         </div>
       </div>
 
@@ -122,11 +122,10 @@ const page = () => {
           </div>
         </div>
         <div className='md:flex items-center justify-center text-center flex-col hidden '>
-          <h1 className='text-3xl md:text-5xl mt-[-2rem] w-[40rem] bg-blue-600 bg-opacity-50 py-2 px-8'>Bring your project to life</h1>
+          <h1 className='text-3xl md:text-5xl mt-[-2rem] w-[40rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>Bring your project to life</h1>
           <h2 className='text-xl md:text-3xl uppercase w-[40rem] font-[400] italic'>with our expert postproduction services!</h2>
         </div>
       </div>
-      <script src="https://player.vimeo.com/api/player.js"></script>
     </div>
     
   );
