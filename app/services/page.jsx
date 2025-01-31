@@ -1,8 +1,6 @@
 
 "use client"
 import React from 'react'
-import { motion } from "motion/react";
-import {} from '@/components/BoxReveal';
 import { TextAnimate } from '@/components/ui/text-animate';
 
 
@@ -24,16 +22,13 @@ const page = () => {
       <TextAnimate animation='slideRight' by='character'  className='text-4xl md:text-7xl uppercase flex md:relative w-full left-[2rem] top-11 text-blue-600'>PREPRODUCTION</TextAnimate>
         <div className='grid grid-cols-1 md:grid-cols-2'>
           <div>
-          <div className='h-full md:h-[30rem] overflow-hidden '>
-          
-            <iframe src="https://player.vimeo.com/video/1051779123?h=d0a2ca8508&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0" 
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-             title="Pre production"
-             className='h-[20rem] w-full md:w-[116%] md:h-[100%] object-fill '
-             >
-             </iframe>
+          <div className='h-[20rem] w-screen md:w-full md:h-[30rem] overflow-hidden '>
+          <iframe src="https://player.vimeo.com/video/1051779123?h=d0a2ca8508&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+          className='h-[20rem] w-screen md:w-[120%] md:h-[100%]  '
+          title="POST PRODUCTION"></iframe>
           </div>
-          </div>
+        </div>
           <div className='h-full md:h-[30rem] bg-black py-2 md:py-0'>
           <ul className='flex flex-col gap-6 h-full text-sm md:text-xl font-light text-center p-2 md:pl-5 justify-center'>
               <li
@@ -53,7 +48,7 @@ const page = () => {
          <TextAnimate animation="blurInUp" by="word" startOnView={false} className='text-3xl md:text-5xl  md:w-[45rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>
           From Concept To Completion
          </TextAnimate>
-          <TextAnimate animation='slideUp'   className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>We handle it all no matter the scale!</TextAnimate>
+          <TextAnimate animation='slideUp' className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>We handle it all no matter the scale!</TextAnimate>
           
         </div>
         
@@ -63,8 +58,8 @@ const page = () => {
        >          
       <TextAnimate animation='slideRight' by='character' className='text-4xl md:text-7xl uppercase flex md:relative w-full left-[2rem] top-11 text-blue-400'>FILMING</TextAnimate>
       <div className='grid grid-cols-1 md:grid-cols-2'>
-        <div className=' h-full md:h-[30rem] md:hidden block overflow-hidden '>
-          <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0" 
+        <div className=' h-full w-sc md:hidden block overflow-hidden '>
+        <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
           className='h-[20rem] w-[400px] md:w-[116%] md:h-[100%] object-fill '
            title="Filming and Production Service"></iframe>
@@ -83,8 +78,8 @@ const page = () => {
             </ul>
           </div>
           <div>
-          <div className='bg-black h-full md:h-[30rem] hidden md:block overflow-hidden '>
-          <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0" 
+          <div className='bg-black md:w-full md:h-[30rem] hidden md:block overflow-hidden '>
+          <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
           className='h-[20rem] w-[400px] md:w-[116%] md:h-[100%] object-fill '
            title="Filming and Production Service"></iframe>
@@ -104,15 +99,15 @@ const page = () => {
       >          
       <TextAnimate animation='slideRight' by='character' className='text-4xl md:text-7xl uppercase flex md:relative w-full left-[2rem] top-8 text-blue-200'>POSTPRODUCTION</TextAnimate>
       <div className='grid grid-cols-1 md:grid-cols-2'>
-      <div>
-          <div className='h-[20rem] md:h-[30rem] overflow-hidden '>
-          <iframe src="https://player.vimeo.com/video/1051779050?h=155e4c030a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0" 
+        <div>
+          <div className='h-[20rem] w-screen md:w-full md:h-[30rem] overflow-hidden '>
+          <iframe src="https://player.vimeo.com/video/1051779050?h=155e4c030a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
           className='h-[20rem] w-[400px] md:w-[116%] md:h-[100%] object-fill '
           title="POST PRODUCTION"></iframe>
           
           </div>
-          </div>
+        </div>
           <div className='h-full md:h-[30rem] bg-black py-2 md:py-0'>
           <ul
             className='flex flex-col gap-6 h-full text-sm md:text-xl font-light text-center p-2 md:pl-5 justify-center'>
@@ -148,48 +143,3 @@ const page = () => {
 
 export default page;
 
-
-// {sections.map((item)=>(
-//   <div key={item.title} className='grid grid-cols-2 items-center h-[35rem] w-screen justify-evenly'
-//   style={{ backgroundImage: `url("${item.bgImage}")` }} >
-//     <div className='h-full'>
-//       <h1 className='text-3xl md:text-5xl uppercase flex sticky top-5 left-[2rem] text-blue-600'>{item.title}</h1>
-//       <div className='bg-black h-full w-full'> hello</div>
-//     </div>
-//     <div className='bg-black bg-opacity-50 text-xl font-light pl-10 py-4'>
-//       {item.content}
-//     </div>
-//   </div>
-// ))}
-
-
-{/* <div className="pt-[10rem] overflow-hidden">
-      <div className='flex items-center  justify-center py-10 md:py-[5rem] mx-5 '>
-        <FlipWordsDemo/>
-      </div>
-      
-      {sections.map((item) => (
-        <motion.div
-          key={item.id}
-          className="h-full w-full grid grid-cols-1 md:grid-cols-2"
-          style={{ direction: item.id === 2 ? 'rtl' : 'ltr' }} 
-        >
-          
-          <div
-            style={{ backgroundImage: `url("${item.bgImage}")` }} 
-           className=' flex items-center justify-center bg-cover min-h-[20rem]'
-          >
-            <motion.h1 
-            initial={{ y:200, opacity: 0}}
-            whileInView={{y:0, opacity: 1}}
-            transition={{duration:1}}
-            className=' text-4xl md:text-6xl md:font-bold '>{item.title}</motion.h1>
-          </div>
-
-         
-          <div className="flex text-xl font-[300] md:text-3xl items-center text-center md:min-h-[40rem]  justify-center mx-5 py-[5rem]">
-            {item.content}
-          </div>
-        </motion.div>
-      ))}
-    </div> */}

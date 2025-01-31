@@ -68,8 +68,8 @@ const Navbar = () => {
       {/* Mobile Menu */}
       
       {isOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col bg-cover items-center justify-center'
-         style={{backgroundImage:"url('https://i.pinimg.com/originals/8b/0e/c0/8b0ec03e3a90f192d8b15327f675b342.gif')"}} >
+        <div className='fixed inset-0 bg-black bg-opacity-90 z-20 flex flex-col bg-cover items-center justify-center bg-[url("/MENU2.png")]'
+          >
             <Link 
             onClick={()=>toggleOpen(false)}
             href={'/'}>
