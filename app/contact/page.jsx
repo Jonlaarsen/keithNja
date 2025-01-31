@@ -12,38 +12,38 @@ const page = () => {
     
      className='grid grid-cols-1 md:grid-cols-2 pt-[12rem] pb-10  gap-4'>
       <div >
-        <div className='md:pl-5'>
+        <div className='md:pl-5 '>
           <h1 className=' text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
           <p className=' text-xl font-[300] px-5 w-[90%] pb-[3rem]'>Interested in working with us? <br/> Fill out some info and we will be in touch shortly!</p>
         </div>
         
         <form 
-        className='flex flex-col gap-5 md:pl-10 text-black'
+        className='flex flex-col gap-5 md:pl-10 '
         action="https://formsubmit.co/contact@posted-productions.com" method="POST">
           <div className='flex md: flex-col gap-5 w-[99vw] md:w-[80%]'>
             <div className='flex px-4 md:px-0 flex-col w-full'>
               <label htmlFor="firstname">First Name</label>
               <input 
-              className='h-[3rem] md:pl-5'
+              className='h-[3rem] md:pl-5 text-black'
               placeholder='required' type="text" name="firstname" required/>
             </div>
             <div className='flex px-4 md:px-0 flex-col w-full'>
               <label htmlFor="lastname">Last Name</label>
               <input 
-              className='h-[3rem] md:pl-5'
+              className='h-[3rem] md:pl-5 text-black'
               placeholder='required' type="text" name="lastname" required/>
             </div>
           </div>
           <div className='flex px-4 md:px-0 flex-col w-[99vw] md:w-[80%]'>
             <label htmlFor="email">Email</label>
             <input
-            className='h-[3rem]  md:pl-5'
+            className='h-[3rem]  md:pl-5 text-black'
             placeholder='required' type="email" name="email" required/>
           </div>
           <div className='flex px-4 md:px-0 flex-col w-[99vw] md:w-[80%]'>
             <label htmlFor="email">Message</label>
             <textarea 
-            className='h-[5rem] md:pl-5 text-black'
+            className='h-[5rem] md:pl-5  text-black'
             placeholder='required' name="message" type='text' required></textarea>
           </div>
           <div className='px-4 md:px-0 w-[99vw] md:w-[80%]'>
