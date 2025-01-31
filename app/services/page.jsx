@@ -19,13 +19,13 @@ const page = () => {
 
       <div className='h-full w-full flex flex-col py-2 md:py-10'
       >          
-      <TextAnimate animation='slideRight' by='character'  className='text-4xl md:text-7xl uppercase flex md:relative w-full left-[2rem] top-11 text-blue-600'>PREPRODUCTION</TextAnimate>
+      <TextAnimate animation='slideRight' by='character'  className='text-4xl md:text-7xl uppercase flex md:relative w-full left-[2rem] top-[3.2rem] text-blue-600'>PREPRODUCTION</TextAnimate>
         <div className='grid grid-cols-1 md:grid-cols-2'>
           <div>
           <div className='h-[20rem] w-screen md:w-full md:h-[30rem] overflow-hidden '>
-          <iframe src="https://player.vimeo.com/video/1051779123?h=d0a2ca8508&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
+          <iframe src="https://player.vimeo.com/video/1052204861?h=393f1113fb&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-          className='h-[20rem] w-screen md:w-[120%] md:h-[100%]  '
+          className='h-[20rem] w-screen md:w-[103%] md:h-[100%]'
           title="POST PRODUCTION"></iframe>
           </div>
         </div>
@@ -44,7 +44,7 @@ const page = () => {
             </ul>
           </div>
         </div>
-        <div className='md:flex items-center justify-center md:mt-[-2rem] text-center flex-col  '>
+        <div className='md:flex items-center justify-center md:mt-[-2.5rem] text-center flex-col  '>
          <TextAnimate animation="blurInUp" by="word" startOnView={false} className='text-3xl md:text-5xl  md:w-[45rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>
           From Concept To Completion
          </TextAnimate>
@@ -61,7 +61,7 @@ const page = () => {
         <div className=' h-full w-sc md:hidden block overflow-hidden '>
         <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          className='h-[20rem] w-[400px] md:w-[116%] md:h-[100%] object-fill '
+          className='h-[20rem] w-[400px] md:w-[110%] md:h-[100%] object-fill '
            title="Filming and Production Service"></iframe>
         </div>
       
@@ -81,13 +81,13 @@ const page = () => {
           <div className='bg-black md:w-full md:h-[30rem] hidden md:block overflow-hidden '>
           <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          className='h-[20rem] w-[400px] md:w-[116%] md:h-[100%] object-fill '
+          className='h-[20rem] w-[400px] md:w-[110%] md:h-[100%] object-fill '
            title="Filming and Production Service"></iframe>
           
           </div>
       </div>
         </div>
-        <div className='md:flex items-center md:mt-[-2rem] justify-center text-center flex-col  '>
+        <div className='md:flex items-center md:mt-[-1.5rem] justify-center text-center flex-col  '>
          
           <TextAnimate animation='blurInUp' by="word" className='text-3xl md:text-5xl  md:w-[40rem] bg-blue-400 bg-opacity-50 footerheader py-2 px-8'>Focus on your vision</TextAnimate>
           <TextAnimate animation='slideUp' className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>we will take care of the rest! Seamless Filming, From Start to Finish</TextAnimate>
@@ -103,7 +103,7 @@ const page = () => {
           <div className='h-[20rem] w-screen md:w-full md:h-[30rem] overflow-hidden '>
           <iframe src="https://player.vimeo.com/video/1051779050?h=155e4c030a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-          className='h-[20rem] w-[400px] md:w-[116%] md:h-[100%] object-fill '
+          className='h-[20rem] w-[400px] md:w-[110%] md:h-[100%] object-fill '
           title="POST PRODUCTION"></iframe>
           
           </div>
@@ -129,7 +129,7 @@ const page = () => {
             </ul>
           </div>
         </div>
-        <div className='flex items-center justify-center md:mt-[-2rem] text-center w-full flex-col '>
+        <div className='flex items-center justify-center md:mt-[-1.5rem] text-center w-full flex-col '>
          
           <TextAnimate animation='blurInUp' by="word" className='text-3xl md:text-5xl w-full md:w-[40rem] bg-blue-200 bg-opacity-50 footerheader py-2 px-8'>Bring your project to life</TextAnimate>
           <TextAnimate animation='slideUp' className='text-lg md:text-3xl uppercase md:w-[40rem] font-[400] italic'>with our expert postproduction services!</TextAnimate>
@@ -142,4 +142,5 @@ const page = () => {
 };
 
 export default page;
+
 
