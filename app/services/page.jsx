@@ -48,7 +48,7 @@ const page = () => {
          <TextAnimate animation="blurInUp" by="word" startOnView={false} className='text-3xl md:text-5xl  md:w-[45rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>
           From Concept To Completion
          </TextAnimate>
-          <TextAnimate animation='slideUp' className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>We handle it all no matter the scale!</TextAnimate>
+          <TextAnimate animation='slideUp' once={false} variants='h2' delay={0} duration={1} className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>We handle it all no matter the scale!</TextAnimate>
           
         </div>
         
