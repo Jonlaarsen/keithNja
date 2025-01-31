@@ -18,7 +18,7 @@ const page = () => {
         </div>
         
         <form 
-        className='flex flex-col gap-5 md:pl-10'
+        className='flex flex-col gap-5 md:pl-10 text-black'
         action="https://formsubmit.co/contact@posted-productions.com" method="POST">
           <div className='flex md: flex-col gap-5 w-[99vw] md:w-[80%]'>
             <div className='flex px-4 md:px-0 flex-col w-full'>
