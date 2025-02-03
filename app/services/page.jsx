@@ -12,7 +12,7 @@ const page = () => {
       <div className='h-full pb-10  w-full md:w-[70rem] flex flex-col text-center items-center px-4 md:px-0  justify-center'>
         
           <TextAnimate animation='slideLeft' startOnView={false} className='footerheader font-bold text-3xl md:text-7xl text-blue-800'>Your Vision. Perfectly Crafted By Us</TextAnimate>
-          <TextAnimate animation='slideDown' startOnView={false} className='font-light text-lg italic'>We create and refine premium content across genres - news, podcast, travel, sports, music, social issues, true crime, entertainment, commercials, music video, brand contents and more</TextAnimate>
+          <TextAnimate animation='slideDown' startOnView={false} className='font-light text-lg italic'>We create and refine premium content across genres - news, podcast, travel, sports, music, social issues, true crime, entertainment, commercials, music video, brand contents and more...</TextAnimate>
       
           
       </div>
@@ -44,8 +44,8 @@ const page = () => {
             </ul>
           </div>
         </div>
-        <div className='md:flex items-center justify-center md:mt-[-2.5rem] text-center flex-col  '>
-         <TextAnimate animation="blurInUp" by="word" startOnView={false} className='text-3xl md:text-5xl  md:w-[45rem] bg-blue-600 bg-opacity-50 footerheader py-2 px-8'>
+        <div className='md:flex items-center justify-center md:mt-[-2.5rem] text-center flex-col z-10 '>
+         <TextAnimate animation="blurInUp" by="word" startOnView={false} className='text-3xl md:text-5xl  md:w-[45rem] bg-blue-600 bg-opacity-60 footerheader py-2 px-8'>
           From Concept To Completion
          </TextAnimate>
           <TextAnimate animation='slideUp' className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>We handle it all no matter the scale!</TextAnimate>
@@ -87,9 +87,9 @@ const page = () => {
           </div>
       </div>
         </div>
-        <div className='md:flex items-center md:mt-[-1.5rem] justify-center text-center flex-col  '>
+        <div className='md:flex items-center md:mt-[-1.5rem] justify-center text-center flex-col z-10 '>
          
-          <TextAnimate animation='blurInUp' by="word" className='text-3xl md:text-5xl  md:w-[40rem] bg-blue-400 bg-opacity-50 footerheader py-2 px-8'>Focus on your vision</TextAnimate>
+          <TextAnimate animation='blurInUp' by="word" className='text-3xl md:text-5xl  md:w-[40rem] bg-blue-400 bg-opacity-60 footerheader py-2 px-8'>Focus on your vision</TextAnimate>
           <TextAnimate animation='slideUp' className='text-xl md:text-3xl uppercase md:w-[40rem] font-[400] italic'>we will take care of the rest! Seamless Filming, From Start to Finish</TextAnimate>
          
         </div>
@@ -129,9 +129,9 @@ const page = () => {
             </ul>
           </div>
         </div>
-        <div className='flex items-center justify-center md:mt-[-1.5rem] text-center w-full flex-col '>
+        <div className='flex items-center justify-center md:mt-[-1.5rem] text-center w-full flex-col z-10 '>
          
-          <TextAnimate animation='blurInUp' by="word" className='text-3xl md:text-5xl w-full md:w-[40rem] bg-blue-200 bg-opacity-50 footerheader py-2 px-8'>Bring your project to life</TextAnimate>
+          <TextAnimate animation='blurInUp' by="word" className='text-3xl md:text-5xl w-full md:w-[40rem] bg-blue-200 bg-opacity-60 footerheader py-2 px-8'>Bring your project to life</TextAnimate>
           <TextAnimate animation='slideUp' className='text-lg md:text-3xl uppercase md:w-[40rem] font-[400] italic'>with our expert postproduction services!</TextAnimate>
         
         </div>

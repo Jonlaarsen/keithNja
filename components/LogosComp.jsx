@@ -8,7 +8,7 @@ const LogosComp = () => {
    
  
     
-    <div className='grid md:grid-cols-6 grid-cols-3  w-full bg-white  gap-6 md:gap-20 py-10 px-[4rem] '>
+    <div className='grid md:grid-cols-6 grid-cols-3  w-full bg-blue-100  gap-6 md:gap-20 py-10 px-10 md:px-[12rem] '>
       {BrandImgs.map((item) =>
       (
         <div key={item.id} className='flex items-center justify-center'>

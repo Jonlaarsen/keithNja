@@ -42,7 +42,7 @@ export const BrandImgs=[
     {id:13, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-53%20(1)%2001%20Artboard%201.png?updatedAt=1737967804198'},
     {id:14, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-56%2001%20Artboard%201.png?updatedAt=1737967804189'},
     {id:15, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-48%20(1)%2001%20Artboard%201.png?updatedAt=1737967803992'},
-    {id:16, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-44%20(1)%2001%20Artboard%201.png?updatedAt=1737967800013'},
+    {id:16, src:'https://1000logos.net/wp-content/uploads/2023/01/Al-Jazeera-Logo.png'},
     {id:17, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-50%2001%20Artboard%201.png?updatedAt=1737967800038'},
     {id:18, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-54%20(1)%2001%20Artboard%201.png?updatedAt=1737967799760'},
     {id:19, src:'https://ik.imagekit.io/jonlaarsen/brands/Untitled-57%2001%20Artboard%201.png?updatedAt=1737967799752'},

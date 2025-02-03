@@ -30,7 +30,7 @@ const Stats = () => {
       className='min-h-screen pt-[10rem] w-full flex flex-col items-center mx-auto justify-evenly'>
 
       
-        <div className='flex md:flex-row flex-col w-full md:h-full items-center justify-center pb-10 md:mx-auto'>
+        <div className='flex md:flex-row flex-col w-full md:h-full items-center justify-center  md:mx-auto'>
           <div   className='text-center flex flex-col items-center justify-center md:w-[25%] p-4 md:p-10'>
             <span id='counter'
             className='text-5xl md:text-9xl font-[200]  text-blue-500'></span>
@@ -65,17 +65,17 @@ const Stats = () => {
 
       
       <div className='flex flex-col md:grid md:grid-cols-3 justify-evenly items-center gap-10 h-full md:h-[40rem] w-full mb-[4rem] '>
-        <div className='flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[30rem] md:w-[30rem]'>
+        <div className='flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[25rem] md:w-[25rem]'>
         <video src="/videos/video1.mov" autoPlay loop muted className='object-cover md:w-[50rem] md:h-[50rem]'   alt="" />
         </div>
-        <div className='flex  items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[30rem] md:w-[30rem]'>
+        <div className='flex  items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[25rem] md:w-[25rem]'>
           <video src="/videos/video2.mov" autoPlay loop muted className='object-cover md:w-[50rem] md:h-[50rem]'   alt="" />
         </div>
-        <div className='flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[30rem] md:w-[30rem]'>
+        <div className='flex items-center justify-center text-center bg-slate-600 rounded-full overflow-hidden w-[10rem] h-[10rem] md:h-[25rem] md:w-[25rem]'>
         <video src="/videos/video3.mov" autoPlay loop muted className='object-cover md:w-[50rem] md:h-[50rem]'  alt="" />
         </div>
       </div>
-      <h1 className='text-5xl md:text-7xl pt-10 mb-[-6px] md:mb-[-10px] text-white uppercase text-center'>Channel & Brand Collaborators</h1>
+      <h1 className='text-2xl md:text-5xl pt-10 text-blue-600 uppercase text-center'>Global Channels & Brand Collaborators so far...</h1>
       <LogosComp/>
     </motion.div>
   )
