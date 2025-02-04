@@ -13,7 +13,7 @@ const page = () => {
      className='grid grid-cols-1 md:grid-cols-2 pt-[12rem] pb-10  gap-4'>
       <div >
         <div className='md:pl-5 '>
-          <h1 className=' text-5xl md:text-8xl px-4 font-bold  pb-[5rem]'>CONTACT US</h1>
+          <h1 className=' text-5xl md:text-8xl px-4 font-bold  md:pb-[5rem]'>CONTACT US</h1>
           <p className=' text-xl font-[300] px-5 w-[90%] pb-[3rem]'>Interested in working with us? <br/> Fill out some info and we will be in touch shortly!</p>
         </div>
         

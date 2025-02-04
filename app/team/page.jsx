@@ -92,7 +92,7 @@ const page = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             whileInView={true}
              className='flex flex-col font-[500] gap-4 text-center mx-4 md:text-left md:mx-0'>
-              <h1 className='footerheader text-3xl font-semibold md:text-5xl '>{currentPep.name}</h1>
+              <h1 className='footerheader text-2xl font-semibold md:text-5xl '>{currentPep.name}</h1>
               <p className='text-sm'>{currentPep.desc}</p>
             </motion.div>
 
