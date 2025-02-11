@@ -9,7 +9,7 @@ import { TextAnimate } from './ui/text-animate';
 const Stats = () => {
   useCountUp({
     ref: 'counter',
-    end: 152,
+    end: 167,
     enableScrollSpy: true,
     scrollSpyDelay: 200,
   });
@@ -39,8 +39,8 @@ const Stats = () => {
           <div className='text-justify  text-lg font-[200] hidden h-full w-[47rem] md:block '>
           Posted Productions is a space <span className='italic font-bold'>“where vision meets storytelling”. </span> 
             We are a dynamic multimedia production company with <span className='font-bold'>over 9years of experience,
-            specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast and music video projects.
-            <span className='font-bold'>Our mission is to craft compelling narratives that resonate deeply, </span>
+            specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast, and music videos.
+            <span className='font-bold'> Our mission is to craft compelling narratives that resonate deeply, </span>
             whether it's capturing the raw authenticity of real-life stories or delivering creative productions for brands.
             At Posted Productions, we believe in the power of visuals to inspire,
             inform, and connect and <span className='font-bold'>we are here to help! </span>                  
@@ -55,8 +55,8 @@ const Stats = () => {
           <div className='text-left w-full p-10 text-sm  font-[200] md:hidden block '>
           Posted Productions is a space <span className='italic font-bold'>“where vision meets storytelling”. </span> 
             We are a dynamic multimedia production company with <span className='font-bold'>over 9years of experience,
-            specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast and music video projects.
-            <span className='font-bold'>Our mission is to craft compelling narratives that resonate deeply, </span>
+            specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast, and music videos.
+            <span className='font-bold'> Our mission is to craft compelling narratives that resonate deeply, </span>
             whether it's capturing the raw authenticity of real-life stories or delivering creative productions for brands.
             At Posted Productions, we believe in the power of visuals to inspire,
             inform, and connect and <span className='font-bold'>we are here to help! </span>                  

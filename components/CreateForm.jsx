@@ -56,7 +56,7 @@ const CreateForm = () => {
         />
       </div>
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="videoURL">Video URL</label>
+        <label htmlFor="videoURL">Video URL <span className='text-green-600'>www.youtube.com/watch</span> NOT <span className='text-red-600'>https://youtu.be/</span></label>
         <input
           id="videoURL"
           name="videoURL"

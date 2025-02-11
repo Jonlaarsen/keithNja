@@ -17,22 +17,32 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const [editedCategory, setEditedCategory] = useState("");
   const router = useRouter();
 
-  const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
+  // const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
 
   useEffect(() => {
     const isUserLoggedIn = document.cookie.includes("isLoggedin=true");
     setIsLoggedIn(isUserLoggedIn);
   }, []);
 
+  
+
   const openModal = (clip) => {
-    if (youtubeRegex.test(clip.videourl)) {
-      setCurrentClip(clip);
-      setIsModalOpen(true);
-      document.body.style.overflow = "hidden"; 
-    } else {
-      window.open(clip.videourl, "_blank");
+    let videoUrl = clip.videourl;
+  
+    // Regex to match both normal and short YouTube URLs
+    const youtubeRegex = /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = videoUrl.match(youtubeRegex);
+  
+    if (match) {
+      const videoId = match[1];
+      videoUrl = `https://www.youtube.com/embed/${videoId}`;
     }
+  
+    setCurrentClip({ ...clip, videourl: videoUrl });
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden"; 
   };
+  
 
   const closeModal = () => {
     setIsModalOpen(false);
