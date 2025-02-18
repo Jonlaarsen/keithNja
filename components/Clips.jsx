@@ -36,11 +36,14 @@ const Clips = ({ uploads, onUpdateClip }) => {
     if (match) {
       const videoId = match[1];
       videoUrl = `https://www.youtube.com/embed/${videoId}`;
+      setCurrentClip({ ...clip, videourl: videoUrl });
+      setIsModalOpen(true);
+      document.body.style.overflow = "hidden"; 
+    } else {
+      window.open(videoUrl, "_blank")
     }
   
-    setCurrentClip({ ...clip, videourl: videoUrl });
-    setIsModalOpen(true);
-    document.body.style.overflow = "hidden"; 
+   
   };
   
 
