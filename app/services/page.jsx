@@ -8,7 +8,7 @@ import { TextAnimate } from '@/components/ui/text-animate';
 
 const page = () => {
   return (
-    <div className='flex flex-col  pt-[8rem] items-center'>
+    <div className='flex flex-col md:overflow-x-hidden pt-[8rem] items-center'>
       <div className='h-full pb-10  w-full md:w-[70rem] flex flex-col text-center items-center px-4 md:px-0  justify-center'>
         
           <TextAnimate animation='slideLeft' startOnView={false} className='footerheader font-bold text-3xl md:text-7xl text-blue-800'>Your Vision. Perfectly Crafted By Us</TextAnimate>
@@ -61,12 +61,12 @@ const page = () => {
         <div className=' h-full w-sc md:hidden block overflow-hidden '>
         <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          className='h-[20rem] w-[400px] md:w-[110%] md:h-[100%] object-fill '
+          className='h-[20rem] min-w-[430px] md:w-[110%] md:h-[100%] object-fill '
            title="Filming and Production Service"></iframe>
         </div>
       
         <div className='h-full md:h-[30rem] bg-black py-2 md:py-0'>
-        <ul className='flex flex-col gap-6 h-full text-sm md:text-xl font-light text-center p-2 md:pl-5 justify-center'>
+        <ul className='flex flex-col gap-6 h-full text-sm md:text-xl font-light text-center px-5 p-2 md:pl-5 justify-center'>
               <li >
                 &#9830; Full Production Crew  
               <p >i.e. Producer, Director, DoP, Sound, Drone, PA, and more.</p>
@@ -81,7 +81,7 @@ const page = () => {
           <div className='bg-black md:w-full md:h-[30rem] hidden md:block overflow-hidden '>
           <iframe src="https://player.vimeo.com/video/1051778908?h=bbd723567f&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          className='h-[20rem] w-[400px] md:w-[110%] md:h-[100%] object-fill '
+          className='h-[20rem] min-w-[430px] md:w-[110%] md:h-[100%] object-fill '
            title="Filming and Production Service"></iframe>
           
           </div>
@@ -103,7 +103,7 @@ const page = () => {
           <div className='h-[20rem] w-screen md:w-full md:h-[30rem] overflow-hidden '>
           <iframe src="https://player.vimeo.com/video/1051779050?h=155e4c030a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;background=1" 
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
-          className='h-[20rem] w-[400px] md:w-[110%] md:h-[100%] object-fill '
+          className='h-[20rem] min-w-[430px] md:w-[110%] md:h-[100%] object-fill '
           title="POST PRODUCTION"></iframe>
           
           </div>
