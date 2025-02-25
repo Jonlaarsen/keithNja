@@ -27,18 +27,18 @@ const InfiniteCarousel = () => {
           initial={{ x: 0 }}
           animate={{ x: `-${100}%` }}
           transition={{
-            duration: 35,
+            duration: 30,
             repeat: Infinity,
             ease: "linear",
           }}
-          style={{ gap: "10px" }} // Ensures consistent gap
+          style={{ gap: "7px" }} // Ensures consistent gap
         >
           {/* Combine logos and duplicates dynamically */}
           {[...BwImages, ...BwImages].map((image, index) => (
             <img
               key={index}
               src={image.src}
-              className="h-[10rem] mx-10 invert object-fill"
+              className="h-[10rem] md:mx-10 invert object-fill"
             />
           ))}
         </motion.div>

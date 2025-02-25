@@ -38,7 +38,7 @@ const Stats = () => {
           </div>
           <div className='text-justify  text-lg font-[200] hidden h-full w-[47rem] md:block '>
           Posted Productions is a space <span className='italic font-bold'>“where vision meets storytelling”. </span> 
-            We are a dynamic multimedia production company with <span className='font-bold'>over 9years of experience,
+            We are a dynamic multimedia production company with <span className='font-bold'>over 9 years of experience,
             specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast, and music videos.
             <span className='font-bold'> Our mission is to craft compelling narratives that resonate deeply, </span>
             whether it's capturing the raw authenticity of real-life stories or delivering creative productions for brands.
@@ -52,9 +52,9 @@ const Stats = () => {
             <h1 className='md:text-2xl text-xl  font-[300]'>Global Channels & Brand Partners</h1>
           </div>
 
-          <div className='text-left w-full p-10 text-sm  font-[200] md:hidden block '>
+          <div className='text-justify w-full p-10 text-sm  font-[200] md:hidden block '>
           Posted Productions is a space <span className='italic font-bold'>“where vision meets storytelling”. </span> 
-            We are a dynamic multimedia production company with <span className='font-bold'>over 9years of experience,
+            We are a dynamic multimedia production company with <span className='font-bold'>over 9 years of experience,
             specialising in documentary filmmaking </span> while also creating impactful content for corporate, branded, news, podcast, and music videos.
             <span className='font-bold'> Our mission is to craft compelling narratives that resonate deeply, </span>
             whether it's capturing the raw authenticity of real-life stories or delivering creative productions for brands.
