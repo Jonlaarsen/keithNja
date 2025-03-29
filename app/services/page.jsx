@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { TextAnimate } from "@/components/ui/text-animate";
+import Head from "next/head";
 
 const page = () => {
   return (
