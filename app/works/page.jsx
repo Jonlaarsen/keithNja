@@ -1,5 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import Clips from "@/components/Clips";
+import Head from "next/head";
 
 // This is a server component that fetches data on the server side
 const fetchUploads = async () => {
