@@ -24,33 +24,29 @@ const Clips = ({ uploads, onUpdateClip }) => {
     setIsLoggedIn(isUserLoggedIn);
   }, []);
 
-  
-
   const openModal = (clip) => {
     let videoUrl = clip.videourl;
-  
+
     // Regex to match both normal and short YouTube URLs
-    const youtubeRegex = /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const youtubeRegex =
+      /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = videoUrl.match(youtubeRegex);
-  
+
     if (match) {
       const videoId = match[1];
       videoUrl = `https://www.youtube.com/embed/${videoId}`;
       setCurrentClip({ ...clip, videourl: videoUrl });
       setIsModalOpen(true);
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
     } else {
-      window.open(videoUrl, "_blank")
+      window.open(videoUrl, "_blank");
     }
-  
-   
   };
-  
 
   const closeModal = () => {
     setIsModalOpen(false);
     setCurrentClip(null);
-    document.body.style.overflow = "auto"; 
+    document.body.style.overflow = "auto";
   };
 
   const closeEditModal = () => {
@@ -58,28 +54,28 @@ const Clips = ({ uploads, onUpdateClip }) => {
     setEditedTitle("");
     setEditedSubtitle("");
     setEditedDescription("");
-    setEditedImgUrl(""); 
-    setEditedVideoUrl(""); 
-    setEditedCategory(""); 
+    setEditedImgUrl("");
+    setEditedVideoUrl("");
+    setEditedCategory("");
   };
 
   const openEditModal = (clip) => {
     setCurrentClip(clip);
     setEditedTitle(clip.title);
-    setEditedSubtitle(clip.subtitle); 
+    setEditedSubtitle(clip.subtitle);
     setEditedDescription(clip.description);
-    setEditedImgUrl(clip.imgurl); 
-    setEditedVideoUrl(clip.videourl); 
-    setEditedCategory(clip.categories); 
+    setEditedImgUrl(clip.imgurl);
+    setEditedVideoUrl(clip.videourl);
+    setEditedCategory(clip.categories);
     setIsEditModalOpen(true);
   };
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/upload/', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/upload/", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: currentClip.id,
           title: editedTitle,
@@ -91,52 +87,51 @@ const Clips = ({ uploads, onUpdateClip }) => {
         }),
       });
 
-      if (!response.ok) throw new Error('Failed to update clip.');
-      alert('Clip updated successfully!');
+      if (!response.ok) throw new Error("Failed to update clip.");
+      alert("Clip updated successfully!");
       closeEditModal();
     } catch (error) {
-      console.error('Error updating clip:', error);
-      alert('Error updating clip.');
+      console.error("Error updating clip:", error);
+      alert("Error updating clip.");
     }
   };
 
   const handleDelete = async (clipId) => {
-    if (!confirm('Are you sure you want to delete this clip?')) return;
+    if (!confirm("Are you sure you want to delete this clip?")) return;
     try {
-      const response = await fetch(`/api/upload/`, {  
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`/api/upload/`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: clipId
+          id: clipId,
         }),
       });
-  
-      if (!response.ok) throw new Error('Failed to delete clip.');
-      alert('Clip deleted successfully!');
+
+      if (!response.ok) throw new Error("Failed to delete clip.");
+      alert("Clip deleted successfully!");
       closeEditModal(); // Close the edit modal after deletion
     } catch (error) {
-      console.error('Error deleting clip:', error);
+      console.error("Error deleting clip:", error);
     }
   };
-  
+
   const filteredUploads = uploads
-  .filter(
-    (upload) =>
-      selectedCategory === "All" || upload.categories === selectedCategory
-  )
-  .sort((a, b) => {
-    // Prioritize IDs 1 to 6
-    const isAInPriority = a.id >= 1 && a.id <= 6;
-    const isBInPriority = b.id >= 1 && b.id <= 6;
+    .filter(
+      (upload) =>
+        selectedCategory === "All" || upload.categories === selectedCategory
+    )
+    .sort((a, b) => {
+      // Prioritize IDs 1 to 6
+      const isAInPriority = a.id >= 1 && a.id <= 6;
+      const isBInPriority = b.id >= 1 && b.id <= 6;
 
-    if (isAInPriority && isBInPriority) return a.id - b.id; // Sort priority items by ID ascending
-    if (isAInPriority) return -1; // a comes first
-    if (isBInPriority) return 1; // b comes first
+      if (isAInPriority && isBInPriority) return a.id - b.id; // Sort priority items by ID ascending
+      if (isAInPriority) return -1; // a comes first
+      if (isBInPriority) return 1; // b comes first
 
-    // For other items, sort by ID descending
-    return b.id - a.id;
-  });
-
+      // For other items, sort by ID descending
+      return b.id - a.id;
+    });
 
   const categories = [
     { label: "All", value: "All" },
@@ -173,22 +168,30 @@ const Clips = ({ uploads, onUpdateClip }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center lg:mx-10">
         {filteredUploads.map((upload) => (
           <motion.div
-          initial={{opacity:0}}
-          whileInView={{opacity:1}}
-          transition={{duration:0.5}}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
             key={upload.id}
             className="cursor-pointer overflow-hidden relative group w-screen h-auto md:max-w-[25rem] lg:max-w-[27rem] 2xl:max-w-[31rem] md:h-[13.5rem] lg:h-[15rem]  2xl:h-[16.5rem]"
             onClick={() => openModal(upload)}
           >
             <img
               src={upload.imgurl}
-              alt=""
+              alt={upload.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:brightness-[.25] group-hover:scale-110"
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center mx-8 text-center text-white">
-              <h1 className="hidden group-hover:block text-3xl mb-2 font-bold">{upload.title}</h1>
-              <h3 className="hidden group-hover:block text-[1.25rem] font-semibold w-[24rem]">"{upload.subtitle}"</h3>
-              <p className="hidden group-hover:block text-slate-200 font-semibold">{`{ `}{upload.description}{` }`}</p>
+              <h1 className="hidden group-hover:block text-3xl mb-2 font-bold">
+                {upload.title}
+              </h1>
+              <h3 className="hidden group-hover:block text-[1.25rem] font-semibold w-[24rem]">
+                "{upload.subtitle}"
+              </h3>
+              <p className="hidden group-hover:block text-slate-200 font-semibold">
+                {`{ `}
+                {upload.description}
+                {` }`}
+              </p>
             </div>
 
             {isLoggedIn && (
@@ -196,8 +199,8 @@ const Clips = ({ uploads, onUpdateClip }) => {
                 <button
                   className="absolute top-4 left-4 text-white bg-blue-800 p-2 rounded-full"
                   onClick={(e) => {
-                    e.stopPropagation(); 
-                    openEditModal(upload); 
+                    e.stopPropagation();
+                    openEditModal(upload);
                   }}
                 >
                   Edit
@@ -224,6 +227,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
               allow="autoplay"
               src={currentClip.videourl}
               type="video/mp4"
+              alt={currentClip.title}
             />
             <button
               onClick={closeModal}
@@ -241,7 +245,12 @@ const Clips = ({ uploads, onUpdateClip }) => {
             <h2 className="text-2xl font-bold mb-4">Edit Clip</h2>
             <form onSubmit={handleEditSubmit}>
               <div className="mb-4">
-                <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
+                <label
+                  htmlFor="title"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Title
+                </label>
                 <input
                   type="text"
                   id="title"
@@ -252,7 +261,12 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="subtitle" className="block text-sm font-medium text-gray-700">Subtitle</label>
+                <label
+                  htmlFor="subtitle"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Subtitle
+                </label>
                 <input
                   type="text"
                   id="subtitle"
@@ -263,7 +277,12 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Description
+                </label>
                 <textarea
                   id="description"
                   value={editedDescription}
@@ -273,7 +292,12 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="imgurl" className="block text-sm font-medium text-gray-700">Image URL</label>
+                <label
+                  htmlFor="imgurl"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Image URL
+                </label>
                 <input
                   type="text"
                   id="imgurl"
@@ -284,7 +308,12 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="videourl" className="block text-sm font-medium text-gray-700">Video URL</label>
+                <label
+                  htmlFor="videourl"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Video URL
+                </label>
                 <input
                   type="text"
                   id="videourl"
@@ -295,7 +324,12 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="categories" className="block text-sm font-medium text-gray-700">Category</label>
+                <label
+                  htmlFor="categories"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Category
+                </label>
                 <select
                   id="categories"
                   value={editedCategory}
@@ -303,7 +337,9 @@ const Clips = ({ uploads, onUpdateClip }) => {
                   className="mt-1 block w-full p-2 border rounded"
                 >
                   {categories.map((category) => (
-                    <option key={category.value} value={category.value}>{category.label}</option>
+                    <option key={category.value} value={category.value}>
+                      {category.label}
+                    </option>
                   ))}
                 </select>
               </div>
