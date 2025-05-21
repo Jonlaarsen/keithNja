@@ -1,45 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "motion/react"; // Ensure you're importing Motion correctly.
+import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 
-// Sample uploads data (clips)
-const sampleUploads = [
-  {
-    id: 1,
-    title: "Street Skateboarding Vibes",
-    subtitle: "Cruising the streets",
-    description: "An energetic street skate session in downtown.",
-    imgurl: "https://via.placeholder.com/600x400?text=Street+Skate",
-    videourl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    categories: "Documentary",
-  },
-  {
-    id: 2,
-    title: "Skatepark Trick Showcase",
-    subtitle: "Awesome flips and grinds",
-    description: "Best moments from the local skatepark.",
-    imgurl: "https://via.placeholder.com/600x400?text=Skatepark",
-    videourl: "https://youtu.be/jNQXAC9IVRw",
-    categories: "Music Video",
-  },
-  // … add more sample uploads as needed.
-];
-
-// Categories for filtering uploads.
-const categoriesOptions = [
-  { label: "All", value: "All" },
-  { label: "Documentary", value: "Documentary" },
-  { label: "Music Video", value: "Music Video" },
-  { label: "Branded & Corporate", value: "Branded And corporate" },
-  { label: "News and Podcast", value: "news and podcast" },
-];
-
-// --- Clips Component ---
 const Clips = ({ uploads, onUpdateClip }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [currentClip, setCurrentClip] = useState < any > null;
+  const [currentClip, setCurrentClip] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
@@ -50,18 +17,21 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const [editedCategory, setEditedCategory] = useState("");
   const router = useRouter();
 
+  // const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
+
   useEffect(() => {
-    // Check login status via a cookie, for example.
     const isUserLoggedIn = document.cookie.includes("isLoggedin=true");
     setIsLoggedIn(isUserLoggedIn);
   }, []);
 
-  // Open the modal and convert the video URL to an embed URL if needed.
   const openModal = (clip) => {
     let videoUrl = clip.videourl;
+
+    // Regex to match both normal and short YouTube URLs
     const youtubeRegex =
       /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = videoUrl.match(youtubeRegex);
+
     if (match) {
       const videoId = match[1];
       videoUrl = `https://www.youtube.com/embed/${videoId}`;
@@ -116,11 +86,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
           categories: editedCategory,
         }),
       });
+
       if (!response.ok) throw new Error("Failed to update clip.");
       alert("Clip updated successfully!");
       closeEditModal();
-      // Optional: trigger a refresh or callback.
-      onUpdateClip && onUpdateClip();
     } catch (error) {
       console.error("Error updating clip:", error);
       alert("Error updating clip.");
@@ -133,100 +102,132 @@ const Clips = ({ uploads, onUpdateClip }) => {
       const response = await fetch(`/api/upload/`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: clipId }),
+        body: JSON.stringify({
+          id: clipId,
+        }),
       });
+
       if (!response.ok) throw new Error("Failed to delete clip.");
       alert("Clip deleted successfully!");
-      closeEditModal();
-      onUpdateClip && onUpdateClip();
+      closeEditModal(); // Close the edit modal after deletion
     } catch (error) {
       console.error("Error deleting clip:", error);
     }
   };
 
-  // Filter and sort uploads.
   const filteredUploads = uploads
     .filter(
       (upload) =>
         selectedCategory === "All" || upload.categories === selectedCategory
     )
     .sort((a, b) => {
-      // Example: Prioritize lower IDs (customize as needed)
-      return a.id - b.id;
+      // Prioritize IDs 1 to 6
+      const isAInPriority = a.id >= 1 && a.id <= 6;
+      const isBInPriority = b.id >= 1 && b.id <= 6;
+
+      if (isAInPriority && isBInPriority) return a.id - b.id; // Sort priority items by ID ascending
+      if (isAInPriority) return -1; // a comes first
+      if (isBInPriority) return 1; // b comes first
+
+      // For other items, sort by ID descending
+      return b.id - a.id;
     });
 
+  const categories = [
+    { label: "All", value: "All" },
+    { label: "Documentary", value: "docummentary" },
+    { label: "Music Video", value: "MusicVideo" },
+    { label: "Branded And Corporate", value: "Branded And corporate" },
+    { label: "News and Podcast", value: "news and podcast" },
+  ];
+
   return (
-    <div className="w-full px-4">
-      {/* Category filter */}
-      <div className="flex flex-wrap justify-center mb-10">
-        {categoriesOptions.map((cat) => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      whileInView={true}
+      className="flex flex-col justify-center w-screen md:w-full overflow-x-hidden items-center md:pt-0 pt-[10rem] "
+    >
+      <div className="flex flex-wrap md:flex-row flex-col justify-center md:border-2 border-blue-800 mb-10 md:mb-[2rem] ">
+        {categories.map((category) => (
           <button
-            key={cat.value}
-            onClick={() => setSelectedCategory(cat.value)}
-            className={`px-6 py-2 text-white uppercase m-1 transition-colors duration-200 ${
-              selectedCategory === cat.value
-                ? "bg-blue-800"
-                : "bg-gray-500 hover:bg-blue-800"
+            key={category.value}
+            onClick={() => setSelectedCategory(category.value)}
+            className={`md:px-6 px-2 text-white py-2 md:text-xl font-[400] uppercase ${
+              selectedCategory === category.value
+                ? "bg-blue-800 border-blue-800 text-white transition-all ease-in-out duration-200"
+                : "hover:text-blue-800 transition-all ease-in-out duration-200 "
             }`}
           >
-            {cat.label}
+            {category.label}
           </button>
         ))}
       </div>
 
-      {/* Upload grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center lg:mx-10">
         {filteredUploads.map((upload) => (
           <motion.div
-            key={upload.id}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative cursor-pointer group overflow-hidden rounded-lg shadow-lg"
+            key={upload.id}
+            className="cursor-pointer overflow-hidden relative group w-screen h-auto md:max-w-[25rem] lg:max-w-[27rem] 2xl:max-w-[31rem] md:h-[13.5rem] lg:h-[15rem]  2xl:h-[16.5rem]"
             onClick={() => openModal(upload)}
           >
             <img
               src={upload.imgurl}
-              alt={upload.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-50"
+              alt=""
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:brightness-[.25] group-hover:scale-110"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-              <h1 className="text-3xl font-bold mb-2">{upload.title}</h1>
-              <h3 className="text-xl mb-2">{upload.subtitle}</h3>
-              <p className="px-4">{upload.description}</p>
+            <div className="absolute inset-0 flex flex-col justify-center items-center mx-8 text-center text-white">
+              <h1 className="hidden group-hover:block text-3xl mb-2 font-bold">
+                {upload.title}
+              </h1>
+              <h3 className="hidden group-hover:block text-[1.25rem] font-semibold w-[24rem]">
+                "{upload.subtitle}"
+              </h3>
+              <p className="hidden group-hover:block text-slate-200 font-semibold">
+                {`{ `}
+                {upload.description}
+                {` }`}
+              </p>
             </div>
+
             {isLoggedIn && (
-              <button
-                className="absolute top-4 left-4 bg-blue-800 text-white p-2 rounded-full"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openEditModal(upload);
-                }}
-              >
-                Edit
-              </button>
+              <div>
+                <button
+                  className="absolute top-4 left-4 text-white bg-blue-800 p-2 rounded-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openEditModal(upload);
+                  }}
+                >
+                  Edit
+                </button>
+              </div>
             )}
           </motion.div>
         ))}
       </div>
 
-      {/* Video Modal */}
-      {isModalOpen && currentClip && (
+      {isModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+          className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
           onClick={closeModal}
         >
           <div
-            className="relative bg-white overflow-hidden"
+            className="bg-white  overflow-hidden relative"
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
-              src={currentClip.videourl}
-              title={currentClip.title}
+              controls
+              autoPlay
               className="w-screen md:w-[60rem] h-[35rem]"
-              frameBorder="0"
               allow="autoplay"
-            ></iframe>
+              src={currentClip.videourl}
+              type="video/mp4"
+            />
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-white text-3xl font-bold"
@@ -237,14 +238,16 @@ const Clips = ({ uploads, onUpdateClip }) => {
         </div>
       )}
 
-      {/* Edit Modal */}
-      {isEditModalOpen && currentClip && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg w-[50rem] text-black">
+      {isEditModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg w-[50rem] text-black ">
             <h2 className="text-2xl font-bold mb-4">Edit Clip</h2>
             <form onSubmit={handleEditSubmit}>
               <div className="mb-4">
-                <label htmlFor="title" className="block text-sm font-medium">
+                <label
+                  htmlFor="title"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Title
                 </label>
                 <input
@@ -257,7 +260,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="subtitle" className="block text-sm font-medium">
+                <label
+                  htmlFor="subtitle"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Subtitle
                 </label>
                 <input
@@ -272,7 +278,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
               <div className="mb-4">
                 <label
                   htmlFor="description"
-                  className="block text-sm font-medium"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   Description
                 </label>
@@ -285,7 +291,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="imgurl" className="block text-sm font-medium">
+                <label
+                  htmlFor="imgurl"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Image URL
                 </label>
                 <input
@@ -298,7 +307,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="videourl" className="block text-sm font-medium">
+                <label
+                  htmlFor="videourl"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Video URL
                 </label>
                 <input
@@ -313,7 +325,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
               <div className="mb-4">
                 <label
                   htmlFor="categories"
-                  className="block text-sm font-medium"
+                  className="block text-sm font-medium text-gray-700"
                 >
                   Category
                 </label>
@@ -323,9 +335,9 @@ const Clips = ({ uploads, onUpdateClip }) => {
                   onChange={(e) => setEditedCategory(e.target.value)}
                   className="mt-1 block w-full p-2 border rounded"
                 >
-                  {categoriesOptions.map((cat) => (
-                    <option key={cat.value} value={cat.value}>
-                      {cat.label}
+                  {categories.map((category) => (
+                    <option key={category.value} value={category.value}>
+                      {category.label}
                     </option>
                   ))}
                 </select>
@@ -357,92 +369,8 @@ const Clips = ({ uploads, onUpdateClip }) => {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
-// --- Main Skateboard Blog Page Component ---
-export default function SkateBlogPage() {
-  const [theme, setTheme] = (useState < "light") | ("dark" > "light");
-
-  // Toggle dark mode (applied to html element)
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
-  // Framer Motion variants for the header and navigation
-  const headerVariant = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  return (
-    <div className="min-h-screen bg-[#FFFCF2] dark:bg-[#252422] dark:text-[#FFFCF2] font-sans">
-      {/* Header with Dark/Light Mode Toggle */}
-      <motion.header
-        initial="hidden"
-        animate="visible"
-        variants={headerVariant}
-        transition={{ duration: 0.8 }}
-        className="relative bg-gradient-to-r from-[#CCC5B9] to-[#EB5E28] dark:from-[#403D39] dark:to-[#252422] text-white py-16"
-      >
-        <div className="absolute top-4 right-4">
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="bg-[#FFFCF2] dark:bg-[#403D39] text-[#403D39] dark:text-[#FFFCF2] px-4 py-2 rounded shadow hover:opacity-80 transition-opacity"
-          >
-            {theme === "dark" ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div>
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Super Skate</h1>
-          <p className="text-xl md:text-2xl">
-            The Ultimate Skateboard Blog & Video Showcase
-          </p>
-        </div>
-      </motion.header>
-
-      {/* Navigation */}
-      <nav className="bg-[#FFFCF2] dark:bg-[#403D39] shadow">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.ul
-            className="flex space-x-8 py-4 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
-          >
-            {["Videos", "Skaters", "Blog", "Contact"].map((section) => (
-              <li
-                key={section}
-                className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
-              >
-                <a href={`#${section.toLowerCase()}`}>{section}</a>
-              </li>
-            ))}
-          </motion.ul>
-        </div>
-      </nav>
-
-      {/* Main Content Section (Videos using Clips Component) */}
-      <section id="videos" className="py-12">
-        <Clips
-          uploads={sampleUploads}
-          onUpdateClip={() => {
-            /* Optional refetch or update state here */
-          }}
-        />
-      </section>
-
-      {/* You could add additional sections (Skaters, Blog, Contact) below as needed */}
-      <footer className="bg-[#CCC5B9] dark:bg-[#403D39] py-6 shadow mt-12">
-        <div className="max-w-6xl mx-auto px-4 text-center text-[#403D39] dark:text-[#FFFCF2]">
-          &copy; {new Date().getFullYear()} Super Skate. All rights reserved.
-        </div>
-      </footer>
-    </div>
-  );
-}
+export default Clips;
