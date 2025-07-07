@@ -11,7 +11,7 @@ const fetchUploads = async () => {
 
   try {
     const result = await sql(
-      `SELECT * FROM videos ORDER BY category ASC, title ASC`
+      `SELECT * FROM uploads ORDER BY categories ASC, title ASC`
     );
     return result;
   } catch (error) {

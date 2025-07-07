@@ -11,9 +11,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedSubtitle, setEditedSubtitle] = useState("");
+  const [editedDescription, setEditedDescription] = useState("");
   const [editedImgUrl, setEditedImgUrl] = useState("");
   const [editedVideoUrl, setEditedVideoUrl] = useState("");
-  const [editedCategory, setEditedCategory] = useState("");
+  const [editedCategories, setEditedCategories] = useState("");
   const router = useRouter();
 
   // const youtubeRegex = /^(https?:\/\/)?(www\.)?youtube\.com\/(watch\?v=|embed\/)([a-zA-Z0-9_-]{11})/;
@@ -24,7 +25,13 @@ const Clips = ({ uploads, onUpdateClip }) => {
   }, []);
 
   const openModal = (clip) => {
-    let videoUrl = clip.videoURL;
+    // Handle both possible column names
+    let videoUrl = clip.videoURL || clip.videourl;
+
+    if (!videoUrl) {
+      console.error("No video URL found for clip:", clip);
+      return;
+    }
 
     // Regex to match both normal and short YouTube URLs
     const youtubeRegex =
@@ -52,18 +59,20 @@ const Clips = ({ uploads, onUpdateClip }) => {
     setIsEditModalOpen(false);
     setEditedTitle("");
     setEditedSubtitle("");
+    setEditedDescription("");
     setEditedImgUrl("");
     setEditedVideoUrl("");
-    setEditedCategory("");
+    setEditedCategories("");
   };
 
   const openEditModal = (clip) => {
     setCurrentClip(clip);
-    setEditedTitle(clip.title);
-    setEditedSubtitle(clip.subtitle);
-    setEditedImgUrl(clip.imgURL);
-    setEditedVideoUrl(clip.videoURL);
-    setEditedCategory(clip.category);
+    setEditedTitle(clip.title || "");
+    setEditedSubtitle(clip.subtitle || "");
+    setEditedDescription(clip.description || "");
+    setEditedImgUrl(clip.imgURL || clip.imgurl || "");
+    setEditedVideoUrl(clip.videoURL || clip.videourl || "");
+    setEditedCategories(clip.categories || "");
     setIsEditModalOpen(true);
   };
 
@@ -77,9 +86,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
           id: currentClip.id,
           title: editedTitle,
           subtitle: editedSubtitle,
+          description: editedDescription,
           imgURL: editedImgUrl,
           videoURL: editedVideoUrl,
-          category: editedCategory,
+          categories: editedCategories,
         }),
       });
 
@@ -118,7 +128,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const filteredUploads = uploads
     .filter(
       (upload) =>
-        selectedCategory === "All" || upload.category === selectedCategory
+        selectedCategory === "All" || upload.categories === selectedCategory
     )
     .sort((a, b) => {
       // Prioritize IDs 1 to 6
@@ -135,10 +145,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
 
   const categories = [
     { label: "All", value: "All" },
-    { label: "Documentary", value: "documentary" },
+    { label: "Documentary", value: "docummentary" },
     { label: "Music Video", value: "MusicVideo" },
-    { label: "Branded And Corporate", value: "branded" },
-    { label: "News and Podcast", value: "news" },
+    { label: "Branded And Corporate", value: "Branded And corporate" },
+    { label: "News and Podcast", value: "news and podcast" },
   ];
 
   return (
@@ -165,54 +175,65 @@ const Clips = ({ uploads, onUpdateClip }) => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-center lg:mx-10">
-        {filteredUploads.map((upload) => (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            key={upload.id}
-            className="cursor-pointer overflow-hidden relative group w-screen h-auto md:max-w-[25rem] lg:max-w-[27rem] 2xl:max-w-[31rem] md:h-[13.5rem] lg:h-[15rem]  2xl:h-[16.5rem]"
-            onClick={() => openModal(upload)}
-          >
-            <img
-              src={upload.imgURL}
-              alt=""
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:brightness-[.25] group-hover:scale-110"
-            />
-            <div className="absolute inset-0 flex flex-col justify-center items-center mx-8 text-center text-white">
-              <h1 className="hidden group-hover:block text-3xl mb-2 font-bold">
-                {upload.title}
-              </h1>
-              <h3 className="hidden group-hover:block text-[1.25rem] font-semibold w-[24rem]">
-                "{upload.subtitle}"
-              </h3>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 justify-center lg:mx-10">
+        {filteredUploads.map((upload) => {
+          // Handle both possible column names for image URL
+          const imageUrl = upload.imgURL || upload.imgurl;
+          const videoUrl = upload.videoURL || upload.videourl;
 
-            {isLoggedIn && (
-              <div>
-                <button
-                  className="absolute top-4 left-4 text-white bg-blue-800 p-2 rounded-full"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    openEditModal(upload);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-full"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDelete(upload.id);
-                  }}
-                >
-                  Delete
-                </button>
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              key={upload.id}
+              className="cursor-pointer overflow-hidden relative group w-screen h-auto md:max-w-[25rem] lg:max-w-[27rem] 2xl:max-w-[31rem] md:h-[13.5rem] lg:h-[15rem]  2xl:h-[16.5rem]"
+              onClick={() => openModal(upload)}
+            >
+              <img
+                src={imageUrl}
+                alt=""
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:brightness-[.25] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 flex flex-col justify-center items-center mx-8 text-center text-white">
+                <h1 className="hidden group-hover:block text-3xl mb-2 font-bold">
+                  {upload.title}
+                </h1>
+                <h3 className="hidden group-hover:block text-[1.25rem] font-semibold w-[24rem]">
+                  "{upload.subtitle}"
+                </h3>
+                <p className="hidden group-hover:block text-slate-200 font-semibold">
+                  {`{ `}
+                  {upload.description}
+                  {` }`}
+                </p>
               </div>
-            )}
-          </motion.div>
-        ))}
+
+              {isLoggedIn && (
+                <div>
+                  <button
+                    className="absolute top-4 left-4 text-white bg-blue-800 p-2 rounded-full"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openEditModal(upload);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-full"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(upload.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
 
       {isModalOpen && (
@@ -281,6 +302,21 @@ const Clips = ({ uploads, onUpdateClip }) => {
 
               <div className="mb-4">
                 <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Description
+                </label>
+                <textarea
+                  id="description"
+                  value={editedDescription}
+                  onChange={(e) => setEditedDescription(e.target.value)}
+                  className="mt-1 block w-full p-2 border rounded"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label
                   htmlFor="imgurl"
                   className="block text-sm font-medium text-gray-700"
                 >
@@ -320,15 +356,18 @@ const Clips = ({ uploads, onUpdateClip }) => {
                 </label>
                 <select
                   id="categories"
-                  value={editedCategory}
-                  onChange={(e) => setEditedCategory(e.target.value)}
+                  value={editedCategories}
+                  onChange={(e) => setEditedCategories(e.target.value)}
                   className="mt-1 block w-full p-2 border rounded"
                 >
-                  {categories.map((category) => (
-                    <option key={category.value} value={category.value}>
-                      {category.label}
-                    </option>
-                  ))}
+                  <option value="">Select a category</option>
+                  {categories
+                    .filter((cat) => cat.value !== "All")
+                    .map((category) => (
+                      <option key={category.value} value={category.value}>
+                        {category.label}
+                      </option>
+                    ))}
                 </select>
               </div>
 

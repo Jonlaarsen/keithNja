@@ -36,7 +36,7 @@ const Navbar = () => {
           />
         </Link>
       )}
-      <div className="flex items-center absolute space-x-4 right-[2rem] top-6">
+      <div className="flex sm:flex-row flex-col-reverse items-end space-y-2 sm:items-center absolute space-x-4 right-4 top-4 sm:right-[2rem] sm:top-6">
         <motion.div whileHover={{ scale: 1.1 }}>
           <a
             href="https://www.linkedin.com/in/posted-productions-00488833b/"

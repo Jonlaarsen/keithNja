@@ -14,7 +14,7 @@ export async function DELETE(req: Request) {
 
     // Check if the video exists
     const checkVideo = await sql(
-      `SELECT * FROM videos WHERE id = $1`,
+      `SELECT * FROM uploads WHERE id = $1`,
       [id]
     );
 
@@ -24,13 +24,13 @@ export async function DELETE(req: Request) {
 
     // Delete the video
     await sql(
-      `DELETE FROM videos WHERE id = $1`,
+      `DELETE FROM uploads WHERE id = $1`,
       [id]
     );
 
     // Revalidate cache
     revalidatePath('/');
-    revalidatePath('/work');
+    revalidatePath('/works');
     revalidatePath('/admin');
 
     return new NextResponse(null, { status: 204 });

@@ -14,6 +14,16 @@ export const create = async (formData: FormData) => {
   let videoURL = formData.get('videoURL') as string;
   const category = formData.get('category') as string;
 
+  // Log form data for debugging
+  console.log('Form data received:', {
+    title,
+    subtitle,
+    description,
+    imgURL,
+    videoURL,
+    category
+  });
+
   if (!title || !imgURL || !videoURL) {
     throw new Error('Title, imgURL, and videoURL are required.');
   }
@@ -33,29 +43,49 @@ export const create = async (formData: FormData) => {
   }
 
   try {
-    await sql(
-      `INSERT INTO uploads (title, subtitle, description, imgURL, videoURL, categories) 
-       VALUES ($1, $2, $3, $4, $5, $6)`,
-      [title, subtitle, description, imgURL, videoURL, category]
-    );
-    console.log('Data inserted successfully!');
+    console.log('Attempting to insert with values:', [title, subtitle, description, imgURL, videoURL, category]);
     
-    // Trigger Vercel deployment
-    await triggerVercelDeploy('create');
-    console.log('Vercel deployment triggered');
+    // Try to insert with the correct column names based on what exists in the database
+    try {
+      // Try with camelCase column names first
+      await sql(
+        `INSERT INTO uploads (title, subtitle, description, imgURL, videoURL, categories) 
+         VALUES ($1, $2, $3, $4, $5, $6)`,
+        [title, subtitle, description, imgURL, videoURL, category]
+      );
+    } catch (error) {
+      // If that fails, try with lowercase column names
+      await sql(
+        `INSERT INTO uploads (title, subtitle, description, imgurl, videourl, categories) 
+         VALUES ($1, $2, $3, $4, $5, $6)`,
+        [title, subtitle, description, imgURL, videoURL, category]
+      );
+    }
+    
+    console.log('Data inserted successfully!');
     
     // Revalidate cache for relevant pages
     revalidatePath('/');
-    revalidatePath('/work');
+    revalidatePath('/works');
     revalidatePath('/admin');
     
     console.log('Cache revalidated successfully');
     
-  } catch (error) {
-    console.error('Error inserting data:', error);
-    throw new Error('Database insertion failed.');
+    // Try to trigger Vercel deployment (but don't fail if it doesn't work)
+    try {
+      await triggerVercelDeploy('create');
+      console.log('Vercel deployment triggered');
+    } catch (deployError) {
+      console.log('Vercel deployment failed, but upload was successful:', deployError);
+    }
+    
+  } catch (error: any) {
+    console.error('Database error details:', error);
+    console.error('Error message:', error?.message || 'Unknown error');
+    console.error('Error stack:', error?.stack || 'No stack trace');
+    throw new Error(`Database insertion failed: ${error?.message || 'Unknown error'}`);
   }
   
-  // Redirect to work page to see the new content
-  redirect('/work');
+  // Redirect to works page to see the new content
+  redirect('/works');
 };
