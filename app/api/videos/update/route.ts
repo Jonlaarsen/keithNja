@@ -34,7 +34,7 @@ export async function PUT(req: Request) {
          WHERE id = $7 RETURNING *`,
         [title, subtitle, description, imgURL, videoURL, categories, id]
       );
-    } catch (error) {
+    } catch {
       // If that fails, try with lowercase column names
       result = await sql(
         `UPDATE uploads
@@ -50,7 +50,7 @@ export async function PUT(req: Request) {
     revalidatePath('/admin');
 
     return NextResponse.json(result[0], { status: 200 });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error updating video:', error);
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }

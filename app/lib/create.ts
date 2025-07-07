@@ -53,7 +53,7 @@ export const create = async (formData: FormData) => {
          VALUES ($1, $2, $3, $4, $5, $6)`,
         [title, subtitle, description, imgURL, videoURL, category]
       );
-    } catch (error) {
+    } catch {
       // If that fails, try with lowercase column names
       await sql(
         `INSERT INTO uploads (title, subtitle, description, imgurl, videourl, categories) 
@@ -79,11 +79,12 @@ export const create = async (formData: FormData) => {
       console.log('Vercel deployment failed, but upload was successful:', deployError);
     }
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Database error details:', error);
-    console.error('Error message:', error?.message || 'Unknown error');
-    console.error('Error stack:', error?.stack || 'No stack trace');
-    throw new Error(`Database insertion failed: ${error?.message || 'Unknown error'}`);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error message:', errorMessage);
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+    throw new Error(`Database insertion failed: ${errorMessage}`);
   }
   
   // Redirect to works page to see the new content
