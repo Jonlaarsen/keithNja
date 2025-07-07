@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    serverComponentsExternalPackages: ['@neondatabase/serverless'],
+  },
+  // Enable better caching behavior
+  generateEtags: false,
 };
 
 export default nextConfig;

@@ -1,7 +1,8 @@
 import Hero from "@/components/Hero";
 import Head from "next/head";
 
-
+// Enable immediate revalidation
+export const revalidate = 0;
 
 export default async function Page() {
 

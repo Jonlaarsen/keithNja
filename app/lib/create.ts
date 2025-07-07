@@ -1,5 +1,7 @@
 import { neon } from '@neondatabase/serverless';
-import { TriggerWorkflow } from './githubWorkflow';
+import { triggerVercelDeploy } from './vercelDeploy';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 export const create = async (formData: FormData) => {
   'use server';
@@ -37,11 +39,23 @@ export const create = async (formData: FormData) => {
       [title, subtitle, description, imgURL, videoURL, category]
     );
     console.log('Data inserted successfully!');
-    TriggerWorkflow('create')
-    console.log('workflow triggered')
+    
+    // Trigger Vercel deployment
+    await triggerVercelDeploy('create');
+    console.log('Vercel deployment triggered');
+    
+    // Revalidate cache for relevant pages
+    revalidatePath('/');
+    revalidatePath('/work');
+    revalidatePath('/admin');
+    
+    console.log('Cache revalidated successfully');
     
   } catch (error) {
     console.error('Error inserting data:', error);
     throw new Error('Database insertion failed.');
   }
+  
+  // Redirect to work page to see the new content
+  redirect('/work');
 };

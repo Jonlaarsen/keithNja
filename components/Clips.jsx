@@ -11,7 +11,6 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedSubtitle, setEditedSubtitle] = useState("");
-  const [editedDescription, setEditedDescription] = useState("");
   const [editedImgUrl, setEditedImgUrl] = useState("");
   const [editedVideoUrl, setEditedVideoUrl] = useState("");
   const [editedCategory, setEditedCategory] = useState("");
@@ -25,7 +24,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
   }, []);
 
   const openModal = (clip) => {
-    let videoUrl = clip.videourl;
+    let videoUrl = clip.videoURL;
 
     // Regex to match both normal and short YouTube URLs
     const youtubeRegex =
@@ -35,7 +34,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
     if (match) {
       const videoId = match[1];
       videoUrl = `https://www.youtube.com/embed/${videoId}`;
-      setCurrentClip({ ...clip, videourl: videoUrl });
+      setCurrentClip({ ...clip, videoURL: videoUrl });
       setIsModalOpen(true);
       document.body.style.overflow = "hidden";
     } else {
@@ -53,7 +52,6 @@ const Clips = ({ uploads, onUpdateClip }) => {
     setIsEditModalOpen(false);
     setEditedTitle("");
     setEditedSubtitle("");
-    setEditedDescription("");
     setEditedImgUrl("");
     setEditedVideoUrl("");
     setEditedCategory("");
@@ -63,33 +61,33 @@ const Clips = ({ uploads, onUpdateClip }) => {
     setCurrentClip(clip);
     setEditedTitle(clip.title);
     setEditedSubtitle(clip.subtitle);
-    setEditedDescription(clip.description);
-    setEditedImgUrl(clip.imgurl);
-    setEditedVideoUrl(clip.videourl);
-    setEditedCategory(clip.categories);
+    setEditedImgUrl(clip.imgURL);
+    setEditedVideoUrl(clip.videoURL);
+    setEditedCategory(clip.category);
     setIsEditModalOpen(true);
   };
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/upload/", {
+      const response = await fetch("/api/videos/update", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: currentClip.id,
           title: editedTitle,
           subtitle: editedSubtitle,
-          description: editedDescription,
-          imgurl: editedImgUrl,
-          videourl: editedVideoUrl,
-          categories: editedCategory,
+          imgURL: editedImgUrl,
+          videoURL: editedVideoUrl,
+          category: editedCategory,
         }),
       });
 
       if (!response.ok) throw new Error("Failed to update clip.");
       alert("Clip updated successfully!");
       closeEditModal();
+      // Refresh the page to show updated content
+      router.refresh();
     } catch (error) {
       console.error("Error updating clip:", error);
       alert("Error updating clip.");
@@ -99,7 +97,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const handleDelete = async (clipId) => {
     if (!confirm("Are you sure you want to delete this clip?")) return;
     try {
-      const response = await fetch(`/api/upload/`, {
+      const response = await fetch(`/api/videos/delete`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -110,6 +108,8 @@ const Clips = ({ uploads, onUpdateClip }) => {
       if (!response.ok) throw new Error("Failed to delete clip.");
       alert("Clip deleted successfully!");
       closeEditModal(); // Close the edit modal after deletion
+      // Refresh the page to show updated content
+      router.refresh();
     } catch (error) {
       console.error("Error deleting clip:", error);
     }
@@ -118,7 +118,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
   const filteredUploads = uploads
     .filter(
       (upload) =>
-        selectedCategory === "All" || upload.categories === selectedCategory
+        selectedCategory === "All" || upload.category === selectedCategory
     )
     .sort((a, b) => {
       // Prioritize IDs 1 to 6
@@ -135,10 +135,10 @@ const Clips = ({ uploads, onUpdateClip }) => {
 
   const categories = [
     { label: "All", value: "All" },
-    { label: "Documentary", value: "docummentary" },
+    { label: "Documentary", value: "documentary" },
     { label: "Music Video", value: "MusicVideo" },
-    { label: "Branded And Corporate", value: "Branded And corporate" },
-    { label: "News and Podcast", value: "news and podcast" },
+    { label: "Branded And Corporate", value: "branded" },
+    { label: "News and Podcast", value: "news" },
   ];
 
   return (
@@ -176,7 +176,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
             onClick={() => openModal(upload)}
           >
             <img
-              src={upload.imgurl}
+              src={upload.imgURL}
               alt=""
               className="w-full h-full object-cover transition-transform duration-500 group-hover:brightness-[.25] group-hover:scale-110"
             />
@@ -187,11 +187,6 @@ const Clips = ({ uploads, onUpdateClip }) => {
               <h3 className="hidden group-hover:block text-[1.25rem] font-semibold w-[24rem]">
                 "{upload.subtitle}"
               </h3>
-              <p className="hidden group-hover:block text-slate-200 font-semibold">
-                {`{ `}
-                {upload.description}
-                {` }`}
-              </p>
             </div>
 
             {isLoggedIn && (
@@ -204,6 +199,15 @@ const Clips = ({ uploads, onUpdateClip }) => {
                   }}
                 >
                   Edit
+                </button>
+                <button
+                  className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(upload.id);
+                  }}
+                >
+                  Delete
                 </button>
               </div>
             )}
@@ -225,7 +229,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
               autoPlay
               className="w-screen md:w-[60rem] h-[35rem]"
               allow="autoplay"
-              src={currentClip.videourl}
+              src={currentClip.videoURL}
               type="video/mp4"
             />
             <button
@@ -239,7 +243,7 @@ const Clips = ({ uploads, onUpdateClip }) => {
       )}
 
       {isEditModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg w-[50rem] text-black ">
             <h2 className="text-2xl font-bold mb-4">Edit Clip</h2>
             <form onSubmit={handleEditSubmit}>
@@ -271,21 +275,6 @@ const Clips = ({ uploads, onUpdateClip }) => {
                   id="subtitle"
                   value={editedSubtitle}
                   onChange={(e) => setEditedSubtitle(e.target.value)}
-                  className="mt-1 block w-full p-2 border rounded"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="description"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Description
-                </label>
-                <textarea
-                  id="description"
-                  value={editedDescription}
-                  onChange={(e) => setEditedDescription(e.target.value)}
                   className="mt-1 block w-full p-2 border rounded"
                 />
               </div>
@@ -343,26 +332,19 @@ const Clips = ({ uploads, onUpdateClip }) => {
                 </select>
               </div>
 
-              <div className="flex justify-between space-x-2">
+              <div className="flex justify-between">
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  Update
+                </button>
                 <button
                   type="button"
                   onClick={closeEditModal}
-                  className="px-4 py-2 bg-gray-300 rounded"
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
                 >
                   Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-800 text-white rounded"
-                >
-                  Save Changes
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(currentClip.id)}
-                  className="px-4 py-2 bg-red-500 text-white rounded"
-                >
-                  Delete
                 </button>
               </div>
             </form>

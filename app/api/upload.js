@@ -1,5 +1,5 @@
 import { query } from '../../lib/db';
-import {TriggerWorkflow} from '../lib/githubWorkflow'
+import { triggerVercelDeploy } from '../lib/vercelDeploy';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -16,7 +16,8 @@ export default async function handler(req, res) {
         [title, subtitle, description, url]
       );
 
-      await TriggerWorkflow('create');
+      // Trigger Vercel deployment
+      await triggerVercelDeploy('create');
 
       res.status(201).json(result.rows[0]);
     } catch (error) {

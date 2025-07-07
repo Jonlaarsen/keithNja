@@ -2,13 +2,16 @@ import { neon } from "@neondatabase/serverless";
 import Clips from "@/components/Clips";
 import Head from "next/head";
 
+// Enable immediate revalidation
+export const revalidate = 0;
+
 // This is a server component that fetches data on the server side
 const fetchUploads = async () => {
   const sql = neon(`${process.env.DATABASE_URL}`);
 
   try {
     const result = await sql(
-      `SELECT * FROM uploads ORDER BY categories ASC, title ASC`
+      `SELECT * FROM videos ORDER BY category ASC, title ASC`
     );
     return result;
   } catch (error) {

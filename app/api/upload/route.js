@@ -1,6 +1,6 @@
 import { query } from '../../lib/db';
 import { NextResponse } from 'next/server';
-import { TriggerWorkflow } from '@/app/lib/githubWorkflow';
+import { triggerVercelDeploy } from '@/app/lib/vercelDeploy';
 
 // app/api/upload/route.js
 // import { query } from '../../../lib/db'; // Adjust path if needed
@@ -96,7 +96,8 @@ export async function PUT(req) {
       [title, subtitle, description, imgurl, videourl, categories, id]
     );
 
-    await TriggerWorkflow('edit');
+    // Trigger Vercel deployment
+    await triggerVercelDeploy('edit');
 
     return NextResponse.json(result.rows[0], { status: 200 });
   } catch (error) {
@@ -130,7 +131,8 @@ export async function DELETE(req) {
       [id]
     );
 
-    await TriggerWorkflow('delete');
+    // Trigger Vercel deployment
+    await triggerVercelDeploy('delete');
 
     // Return empty response with 204 status
     return new NextResponse(null, { status: 204 });
