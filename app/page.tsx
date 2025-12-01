@@ -58,7 +58,7 @@ export default async function Page() {
       <div>
         <Hero />
         <h1 className="hidden">
-          Posted production | Expert production services in South Korea for
+          Posted Productions | Expert production services in South Korea for
           documentaries, commercials, and films. Trusted production company in
           Seoul for high-quality content creation.{" "}
         </h1>
