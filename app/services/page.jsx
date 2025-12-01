@@ -8,7 +8,8 @@ const page = () => {
     <>
       <Head>
         <title>
-          Professional Videography & Documentary Filmmaking in South Korea
+          Professional Videography & Documentary Filmmaking in South Korea |
+          Film , Tv and social media support
         </title>
         <meta
           name="description"

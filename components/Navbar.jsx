@@ -133,6 +133,7 @@ const Navbar = () => {
                 <Link
                   key={link.id}
                   href={link.path}
+                  rel="canonical"
                   className="text-white text-3xl md:text-5xl my-4 hover:text-blue-800 transition"
                 >
                   {link.title}

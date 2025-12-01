@@ -10,7 +10,8 @@ export default async function Page() {
     <>
       <Head>
         <title>
-          Leading Documentary Production Company in Seoul, South Korea
+          Posted productions - Leading Documentary Production Company in Seoul,
+          South Korea
         </title>
         <meta
           name="google-site-verification"
@@ -22,7 +23,7 @@ export default async function Page() {
         />
         <meta
           name="keywords"
-          content="Documentary production company in Seoul, Production company in South Korea, Production services in South Korea"
+          content="Documentary production company in Seoul, Production company in South Korea, Production services in South Korea, video production services seol, videao agency, commercial videography"
         />
         <meta
           property="og:title"
@@ -56,6 +57,7 @@ export default async function Page() {
       />
       <div>
         <Hero />
+        <p></p>
       </div>
     </>
   );
