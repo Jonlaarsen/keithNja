@@ -15,11 +15,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Posted Productions",
+  title: {
+    default: "Posted Productions | South Korea Fixer & Production Company",
+    template: "%s | Posted Productions",
+  },
   description:
-    "Expert production services in South Korea for documentaries, commercials, and films. Trusted production company in Seoul for high-quality content creation.",
-  keywords:
-    "Documentary production company in Seoul, Production company in South Korea, Production services in South Korea, video production services seol, videao agency, commercial videography",
+    "Trusted South Korea fixer services and full production support for films, TV, and commercial projects—your reliable South Korea production company. Posted Productions",
+  keywords: [
+    "Posted Productions",
+    "South Korea fixer",
+    "South Korea production company",
+    "video production service",
+    "video production services",
+    "video agency",
+    "production company",
+    "video production company",
+    "Documentary production company in Seoul",
+    "Production company in South Korea",
+    "Production services in South Korea",
+    "video production services seol",
+    "videao agency",
+    "commercial videography",
+  ].join(", "),
+  alternates: {
+    canonical: "https://www.posted-productions.com/",
+  },
 };
 
 export default function RootLayout({

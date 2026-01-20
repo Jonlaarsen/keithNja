@@ -1,37 +1,10 @@
 "use client";
 import React from "react";
 import { TextAnimate } from "@/components/ui/text-animate";
-import Head from "next/head";
 
 const page = () => {
   return (
     <>
-      <Head>
-        <title>
-          Professional Videography & Documentary Filmmaking in South Korea |
-          Film , Tv and social media support
-        </title>
-        <meta
-          name="description"
-          content="Expert video storytelling, corporate content production, and local producer services in South Korea. High-quality documentary filmmaking and videography services."
-        />
-        <meta
-          name="keywords"
-          content="Video storytelling services, Professional videography services, Local producer services in South Korea"
-        />
-        <meta
-          property="og:title"
-          content="Professional Videography & Documentary Filmmaking in South Korea"
-        />
-        <meta
-          property="og:description"
-          content="Expert video storytelling, corporate content production, and local producer services in South Korea. High-quality documentary filmmaking and videography services."
-        />
-        <meta
-          property="og:url"
-          content="https://www.posted-productions.com/services"
-        />
-      </Head>
       <div className="flex flex-col md:overflow-x-hidden pt-[8rem] items-center">
         <div className="h-full pb-10  w-full md:w-[70rem] flex flex-col text-center items-center px-4 md:px-0  justify-center">
           <TextAnimate
